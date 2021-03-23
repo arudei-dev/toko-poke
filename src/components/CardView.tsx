@@ -7,7 +7,7 @@ interface Props {
   onClick?: (e: React.MouseEvent) => void
 }
 
-const CardView: React.FC<Props> = ({ children, clickable }) => {
+const CardView: React.FC<Props> = ({ children, clickable, onClick }) => {
   const CardCss = css`
     width: 100%;
     min-height: 100px;
@@ -34,12 +34,14 @@ const CardView: React.FC<Props> = ({ children, clickable }) => {
     `}
   `;
 
-  const onCardClick = (e: React.MouseEvent) => {
-    console.log(e);
+  const _onClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    onClick && onClick(e)
   }
 
   return (
-    <div css={CardCss} onClick={onCardClick}>
+    <div css={CardCss} onClick={_onClick}>
       { children }
     </div>
   )
