@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { MyPokemonLists } from './pages/MyPokemonLists';
 import { PokemonDetails } from './pages/PokemonDetails';
 import { PokemonLists } from './pages/PokemonLists';
-// import './App.css';
+import './App.scss';
+
 
 function App() {
   return (
