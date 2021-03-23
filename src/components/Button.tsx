@@ -58,4 +58,4 @@ const Button: React.FC<Props> = ({title, onClick}) => {
   )
 }
 
-export default Button
+export { Button }
