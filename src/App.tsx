@@ -10,9 +10,9 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" exact             component={PokemonLists}/>
-          <Route path="/some-ids/details"   component={PokemonDetails}/>
-          <Route path="/profile/poke-lists" component={MyPokemonLists}/>
+          <Route path="/" exact              component={PokemonLists}/>
+          <Route path="/pokemon/:id/details" component={PokemonDetails}/>
+          <Route path="/profile/poke-lists"  component={MyPokemonLists}/>
        </Switch>
       </Router>
     </div>
