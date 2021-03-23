@@ -10,7 +10,7 @@ const PageBase: React.FC<Props> = ({ children }) => {
     background-color: #e0e0e0;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   `;
 
   return (
