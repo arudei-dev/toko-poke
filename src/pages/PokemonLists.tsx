@@ -1,10 +1,13 @@
-import { CardView } from 'components/CardView'
+import { useHistory } from "react-router-dom";
 import { GridView } from 'components/GridView'
 import { PageBase } from 'components/PageBase'
 import PokemonCard from 'components/PokemonCard'
+import React from 'react'
 import './PokemonLists.scss'
 
 function PokemonLists() {
+  let history = useHistory();
+
   const tempData = [
     {
       "name": "bulbasaur",
@@ -88,6 +91,10 @@ function PokemonLists() {
     }
   ]
 
+  const onPokemonCardClick = (e: React.MouseEvent, id: number) => {
+    history.push(`/pokemon/${id}/details`);
+  }
+
   return (
     <PageBase>
       <div className="PagePokemonLists">
@@ -99,7 +106,8 @@ function PokemonLists() {
             <PokemonCard
               id={idx + 1}
               pokeName={poke.name} 
-              autoCapitalize={true}/>
+              autoCapitalize={true}
+              onClick={(e) => onPokemonCardClick(e, idx + 1)}/>
           )) }
         </GridView>
       </div>
