@@ -2,7 +2,7 @@ import { TRootState, TAppTheme } from "./rootStateTypes"
 import { TRootAction } from './rootActions'
 
 
-const rootReducer = (state: TRootState, action: TRootAction) => {
+const rootReducer = (state: TRootState, action: TRootAction): TRootState => {
   switch (action.type) {
     case "CHANGE_THEME": 
       return {
@@ -13,6 +13,7 @@ const rootReducer = (state: TRootState, action: TRootAction) => {
     case "UPDATE_PROFILE_B":
     case "UPDATE_PROFILE_S":
     case "UPDATE_PROFILE_F":
+    default:
       return state
   }
 }
