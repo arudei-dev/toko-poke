@@ -26,8 +26,8 @@ export const cssPokemonSpriteRoot = css`
   }
 `
 
-export const cssPokemonNameRoot = css`
-  color: #001f3f;
+export const cssPokemonNameRoot = (isLoading: boolean) => css`
+  color: ${isLoading ? css`#00000033` : css`#001f3f;`};
   font-family: 'Ubuntu';
   font-weight: 600;
   font-size: 16pt;

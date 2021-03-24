@@ -39,22 +39,22 @@ const PokemonCard: React.FC<Props> = ({
   }
 
   return (
-    <CardView isClickable={!usePlaceholder} onClick={_onClick}>
+    <CardView isDisabled={usePlaceholder} onClick={_onClick}>
       <div css={cssPokemonCard}>
 
         <div css={cssPokemonSpriteRoot}>
           {
-            (!usePlaceholder && pokeSpriteURL) ? (
+            (!usePlaceholder || pokeSpriteURL) ? (
               <AsyncImage src={pokeSpriteURL} alt={`Pokemon '${pokeName}'`}>
-                <PokeSilhouette color="grey"/>
+                <PokeSilhouette color="#00000033"/>
               </AsyncImage>
             ) : (
-              <PokeSilhouette color="grey"/>
+              <PokeSilhouette color="#00000011"/>
             )
           }
         </div>
 
-        <div css={cssPokemonNameRoot}>
+        <div css={cssPokemonNameRoot(usePlaceholder ?? false)}>
           {
             (!usePlaceholder && pokeName) ? (
               autoCapitalize ? capitalizeEachWord(pokeName) : pokeName
@@ -64,7 +64,7 @@ const PokemonCard: React.FC<Props> = ({
           }
         </div>
         <div css={cssActionDivRoot}>
-          <Button isLoading={usePlaceholder} title="Catch 'em!"/>
+          <Button isDisabled={usePlaceholder} title="Catch 'em!"/>
         </div>
       </div>
     </CardView>
