@@ -3,7 +3,6 @@ import { css } from '@emotion/react'
 
 const cssButtonNormal = css`
   border-radius: 4px;
-  background: linear-gradient(145deg, #e0e0e0, #e0e0e0);
   box-shadow:  3px  3px 8px #bebebe,
               -3px -3px 8px #ffffff;
               
@@ -26,6 +25,11 @@ const cssButtonActive = css`
   }
 `
 
+const cssButtonDisabled = css`
+  box-shadow:  3px  3px 8px #bebebe66,
+              -3px -3px 8px #ffffff66;
+`
+
 export type CssButtonBaseProps = {
   isLoading: boolean,
   isDisabled: boolean,
@@ -38,16 +42,20 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
   outline: none;
   padding: 10px;
 
-  ${cssButtonNormal}
+  background: linear-gradient(145deg, #e0e0e0, #e0e0e0);
+
+  ${props.isDisabled 
+    ? cssButtonDisabled 
+    : cssButtonNormal}
 
   font-family: 'Ubuntu';
   font-weight: 600;
   font-size: 14pt;
 
 
-  ${props.isLoading && `color: #e0e0e0`}
+  ${(props.isLoading || props.isDisabled) && `color: #e0e0e0`}
 
-  ${!props.isLoading && css`
+  ${(!props.isLoading && !props.isDisabled) && css`
       cursor: pointer;
       
       &:focus, &:hover, &:active {
