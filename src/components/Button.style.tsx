@@ -26,15 +26,12 @@ const cssButtonActive = css`
   }
 `
 
-type CssProps = {
+export type CssButtonBaseProps = {
   isLoading: boolean,
   isDisabled: boolean,
 }
 
-const cssButtonBase = ({
-  isLoading,
-  isDisabled
-}: CssProps) => css`
+export const cssButtonBase = (props: CssButtonBaseProps) => css`
   width: 100%;
   border: none;
   text-decoration:none;
@@ -48,9 +45,9 @@ const cssButtonBase = ({
   font-size: 14pt;
 
 
-  ${isLoading && `color: #e0e0e0`}
+  ${props.isLoading && `color: #e0e0e0`}
 
-  ${!isLoading && `
+  ${!props.isLoading && `
       cursor: pointer;
       
       &:focus, &:hover, &:active {
@@ -63,5 +60,3 @@ const cssButtonBase = ({
     `
   }
 `
-
-export { cssButtonBase }
