@@ -47,7 +47,7 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
 
   ${props.isLoading && `color: #e0e0e0`}
 
-  ${!props.isLoading && `
+  ${!props.isLoading && css`
       cursor: pointer;
       
       &:focus, &:hover, &:active {

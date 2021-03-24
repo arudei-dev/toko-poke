@@ -32,11 +32,11 @@ export const cssCardView = (props: CssCardViewProps) => css`
   transition: box-shadow 150ms;
 
   
-  ${props.isClickable && `
+  ${props.isClickable && css`
     cursor: pointer;
     
-    ${cssCardViewHover}
+    ${cssCardViewHover};
 
-    ${cssCardViewActive}
+    ${cssCardViewActive};
   `}
 `
