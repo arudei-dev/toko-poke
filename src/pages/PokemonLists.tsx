@@ -104,6 +104,7 @@ function PokemonLists() {
         <GridView usePadding={true}>
           { tempData.map((poke, idx) => (
             <PokemonCard
+              key={idx}
               id={idx + 1}
               pokeName={poke.name} 
               autoCapitalize={true}
