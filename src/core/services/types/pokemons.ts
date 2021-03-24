@@ -9,6 +9,7 @@
 
 export interface pokemons_pokemons_results {
   __typename: "PokemonItem";
+  id: number | null;
   url: string | null;
   name: string | null;
   image: string | null;

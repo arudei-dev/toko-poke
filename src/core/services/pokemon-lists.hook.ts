@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
-import { pokemons_pokemons, pokemonsVariables } from './types/pokemons'
+import { pokemons_pokemons, pokemonsVariables, pokemons } from './types/pokemons'
 import { GET_LIST_POKE } from './pokemon-lists.gql'
 import { TQueryHook } from './types/base'
 
 
 const useQPokemonLists: TQueryHook<pokemonsVariables, pokemons_pokemons> = ({limit, offset}: pokemonsVariables) => {
-  const { data, loading, error, networkStatus } = useQuery<pokemons_pokemons, pokemonsVariables>(
+  const { data, loading, error, networkStatus } = useQuery<pokemons, pokemonsVariables>(
     GET_LIST_POKE, 
     {
       variables: {
@@ -15,7 +15,7 @@ const useQPokemonLists: TQueryHook<pokemonsVariables, pokemons_pokemons> = ({lim
     }
   )
 
-  return { data, loading, error, networkStatus }
+  return { data: data?.pokemons!, loading, error, networkStatus }
 }
 
 export {

@@ -9,6 +9,7 @@ const GET_LIST_POKE = gql`
       status
       message
       results {
+        id
         url
         name
         image
