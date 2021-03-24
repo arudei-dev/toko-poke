@@ -1,61 +1,70 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react"
+import React from "react"
+import PokeSilhouette from "assets/svg/PokeSilhouette"
 import { capitalizeEachWord } from "tools/string-helper"
-import Button from "./Button"
+import { AsyncImage } from "./AsyncImage"
+import { Button } from "./Button"
 import { CardView } from "./CardView"
+import {
+  cssPokemonCard,
+  cssPokemonSpriteRoot,
+  cssPokemonNameRoot,
+  cssActionDivRoot,
+} from './PokemonCard.style'
 
 interface Props {
   id: number,
-  pokeName: string,
+  pokeName?: string,
+  pokeSpriteURL?: string,
   autoCapitalize?: boolean,
+  usePlaceholder?: boolean,
+  onClick?: (e: React.MouseEvent) => void;
 }
 
-const PokemonCard: React.FC<Props> = ({ id, pokeName, autoCapitalize }) => {
+const PokemonCard: React.FC<Props> = ({ 
+  id, 
+  pokeName, 
+  pokeSpriteURL, 
+  autoCapitalize, 
+  usePlaceholder,
+  onClick 
+}) => {
 
-  const DivCss = css`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  `
 
-  const PokeImgCss = css`
-    width: 128px;
-    height: 128px;
-    object-fit: fill;
-    image-rendering: pixelated;
+  const _onClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
 
-    @media (max-width: 420px) {
-      width:  96px;
-      height: 96px;
-    }
-  `
-
-  const DivNameCss = css`
-    color: #001f3f;
-    font-family: 'Ubuntu';
-    font-weight: 600;
-    font-size: 16pt;
-  `;
-
-  const DivActionsCss = css`
-    padding: 8px;
-    padding-top: 16px;
-    width: 100%;
-  `;
-
-  const pokeImgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    onClick && onClick(e)
+  }
 
   return (
-    <CardView clickable={true}>
-      <div css={DivCss}>
-        <img css={PokeImgCss} src={pokeImgUrl}/>
-        <div css={DivNameCss}>
-          {autoCapitalize ? capitalizeEachWord(pokeName) : pokeName}
+    <CardView isClickable={!usePlaceholder} onClick={_onClick}>
+      <div css={cssPokemonCard}>
+
+        <div css={cssPokemonSpriteRoot}>
+          {
+            (!usePlaceholder && pokeSpriteURL) ? (
+              <AsyncImage src={pokeSpriteURL} alt={`Pokemon '${pokeName}'`}>
+                <PokeSilhouette color="grey"/>
+              </AsyncImage>
+            ) : (
+              <PokeSilhouette color="grey"/>
+            )
+          }
         </div>
-        <div css={DivActionsCss}>
-          <Button title="Catch 'em!"/>
+
+        <div css={cssPokemonNameRoot}>
+          {
+            (!usePlaceholder && pokeName) ? (
+              autoCapitalize ? capitalizeEachWord(pokeName) : pokeName
+            ) : (
+              "???"
+            )
+          }
+        </div>
+        <div css={cssActionDivRoot}>
+          <Button isLoading={usePlaceholder} title="Catch 'em!"/>
         </div>
       </div>
     </CardView>
