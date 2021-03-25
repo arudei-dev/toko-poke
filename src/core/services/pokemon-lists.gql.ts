@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const GET_LIST_POKE = gql`
-  query pokemons($limit: Int, $offset: Int) {
+  query pokemon_lists($limit: Int, $offset: Int) {
     pokemons(limit: $limit, offset: $offset) {
       count
       next
