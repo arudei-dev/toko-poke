@@ -34,7 +34,7 @@ const AsyncImage: React.FC<Props> = ({ src, children, alt, ...props }) => {
   `
 
   if (src === loadedSrc) return (
-    <img css={ImgCss} src={src} alt={alt} {...props}/>
+    <img css={ImgCss} src={src} alt={alt || 'No description available.'} {...props}/>
   )
   else {
     return <>{children}</>
