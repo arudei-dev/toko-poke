@@ -7,12 +7,15 @@ import { PokemonCard } from 'components/PokemonCard'
 import './PokemonLists.scss'
 import { parseUrlQuery } from 'tools/url-helper';
 
+const ITEM_LIMIT = 20;
+
 function PokemonLists() {
+
   let history = useHistory();
   const urlQueries = parseUrlQuery(history.location.search ?? "")
-  const page = urlQueries["page"] && (parseInt(urlQueries["page"]) - 1) || 0;
 
-  const ITEM_LIMIT = 20;
+  let page = urlQueries["page"] && parseInt(urlQueries["page"]) || 0;
+      page = page > 0 ? (page - 1) : 0;
 
   let { data: pokeData, loading, error } = useQPokemonLists({ 
     limit: ITEM_LIMIT, offset: (page * ITEM_LIMIT) 
@@ -24,7 +27,7 @@ function PokemonLists() {
   
   useEffect(() => {
 
-    console.log(pokeData)
+    console.log(page)
   }, [loading])
   
   const onPokemonCardClick = (e: React.MouseEvent, id: number) => {
