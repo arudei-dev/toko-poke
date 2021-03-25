@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode,
 }
 
-const AsyncImage: React.FC<Props> = ({ src, children, ...props }) => {
+const AsyncImage: React.FC<Props> = ({ src, children, alt, ...props }) => {
   const [loadedSrc, setLoadedSrc] = useState<string | null>(null)
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const AsyncImage: React.FC<Props> = ({ src, children, ...props }) => {
   `
 
   if (src === loadedSrc) return (
-    <img css={ImgCss} src={src} {...props}/>
+    <img css={ImgCss} src={src} alt={alt} {...props}/>
   )
   else {
     return <>{children}</>
