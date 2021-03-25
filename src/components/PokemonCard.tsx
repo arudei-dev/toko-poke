@@ -39,7 +39,11 @@ const PokemonCard: React.FC<Props> = ({
   }
 
   return (
-    <CardView isDisabled={usePlaceholder} onClick={_onClick}>
+    <CardView 
+      isDisabled={usePlaceholder} 
+      isClickable={!usePlaceholder} 
+      onClick={_onClick}
+    >
       <div css={cssPokemonCard}>
 
         <div css={cssPokemonSpriteRoot}>
@@ -57,6 +61,7 @@ const PokemonCard: React.FC<Props> = ({
         <div css={cssPokemonNameRoot(usePlaceholder ?? false)}>
           {
             (!usePlaceholder && pokeName) ? (
+              // Add character ellipsis
               autoCapitalize ? capitalizeEachWord(pokeName) : pokeName
             ) : (
               "???"
@@ -71,4 +76,4 @@ const PokemonCard: React.FC<Props> = ({
   )
 }
 
-export default PokemonCard
+export { PokemonCard }
