@@ -12,8 +12,8 @@ export const cssPokemonCard = css`
 `
 
 export const cssPokemonSpriteRoot = css`
-  width: 128px;
-  height: 128px;
+  width: 108px;
+  height: 108px;
   object-fit: fill;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -40,7 +40,8 @@ export const cssPokemonNameRoot = (props: CssPokemonNameRootType) => css`
   };
   font-family: 'Ubuntu';
   font-weight: 600;
-  font-size: 16pt;
+  font-size: 14pt;
+  padding-bottom: 8px;
 `
 
 export const cssActionDivRoot = css`

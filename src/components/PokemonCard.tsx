@@ -75,12 +75,12 @@ const PokemonCard: React.FC<Props> = ({
             )
           }
         </div>
-        <div css={cssActionDivRoot}>
+        {/* <div css={cssActionDivRoot}>
           <Button
             themeStyle={themeStyle}
             isDisabled={usePlaceholder} 
             title="Catch 'em!"/>
-        </div>
+        </div> */}
       </div>
     </CardView>
   )
