@@ -9,7 +9,7 @@ const useLQPokemonLists: TLazyQueryHook<PokemonListsVariables, PokemonLists_poke
     GET_LIST_POKE
   )
 
-  return [loadData, {data: data?.pokemons!, loading, error: error!, called}]
+  return [loadData, {data: data?.pokemons || undefined, loading, error, called}]
 }
 
 export {
