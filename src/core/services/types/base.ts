@@ -6,9 +6,9 @@ export type TQueryHook<T, R> = (input: T) => ApolloQueryResult<R | undefined>
 export type TLazyQueryHook<T, R> = () => [
   (options?: QueryLazyOptions<T> | undefined) => void,
   {
-    data: R, 
+    called: boolean,
     loading: boolean, 
-    error: ApolloError, 
-    called: boolean
+    error?: ApolloError, 
+    data?: R, 
   }
 ];
