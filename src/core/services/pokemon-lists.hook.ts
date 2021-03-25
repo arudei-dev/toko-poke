@@ -1,23 +1,17 @@
-import { useQuery } from '@apollo/client'
+import { useLazyQuery } from '@apollo/client'
 import { pokemons_pokemons, pokemonsVariables, pokemons } from './types/pokemons'
 import { GET_LIST_POKE } from './pokemon-lists.gql'
-import { TQueryHook } from './types/base'
+import { TQueryHook, TLazyQueryHook } from './types/base'
 
 
-const useQPokemonLists: TQueryHook<pokemonsVariables, pokemons_pokemons> = ({limit, offset}: pokemonsVariables) => {
-  const { data, loading, error, networkStatus } = useQuery<pokemons, pokemonsVariables>(
-    GET_LIST_POKE, 
-    {
-      variables: {
-        limit,
-        offset,
-      }
-    }
+const useLQPokemonLists: TLazyQueryHook<pokemonsVariables, pokemons_pokemons> = () => {
+  const [loadData, {data, loading, error, called}] = useLazyQuery<pokemons, pokemonsVariables>(
+    GET_LIST_POKE
   )
 
-  return { data: data?.pokemons!, loading, error, networkStatus }
+  return [loadData, {data: data?.pokemons!, loading, error: error!, called}]
 }
 
 export {
-  useQPokemonLists
+  useLQPokemonLists
 }
