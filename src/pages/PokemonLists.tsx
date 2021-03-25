@@ -1,115 +1,68 @@
-import { useHistory } from "react-router-dom";
+import React, { useEffect } from 'react'
+import { useHistory, useParams } from "react-router-dom";
 import { GridView } from 'components/GridView'
 import { PageBase } from 'components/PageBase'
-import PokemonCard from 'components/PokemonCard'
-import React from 'react'
+import { useQPokemonLists } from "core/services/pokemon-lists.hook";
+import { PokemonCard } from 'components/PokemonCard'
 import './PokemonLists.scss'
+import { parseUrlQuery } from 'tools/url-helper';
 
 function PokemonLists() {
   let history = useHistory();
+  const urlQueries = parseUrlQuery(history.location.search ?? "")
+  const page = urlQueries["page"] && (parseInt(urlQueries["page"]) - 1) || 0;
 
-  const tempData = [
-    {
-      "name": "bulbasaur",
-      "url": "https://pokeapi.co/api/v2/pokemon/1/"
-    },
-    {
-      "name": "ivysaur",
-      "url": "https://pokeapi.co/api/v2/pokemon/2/"
-    },
-    {
-      "name": "venusaur",
-      "url": "https://pokeapi.co/api/v2/pokemon/3/"
-    },
-    {
-      "name": "charmander",
-      "url": "https://pokeapi.co/api/v2/pokemon/4/"
-    },
-    {
-      "name": "charmeleon",
-      "url": "https://pokeapi.co/api/v2/pokemon/5/"
-    },
-    {
-      "name": "charizard",
-      "url": "https://pokeapi.co/api/v2/pokemon/6/"
-    },
-    {
-      "name": "squirtle",
-      "url": "https://pokeapi.co/api/v2/pokemon/7/"
-    },
-    {
-      "name": "wartortle",
-      "url": "https://pokeapi.co/api/v2/pokemon/8/"
-    },
-    {
-      "name": "blastoise",
-      "url": "https://pokeapi.co/api/v2/pokemon/9/"
-    },
-    {
-      "name": "caterpie",
-      "url": "https://pokeapi.co/api/v2/pokemon/10/"
-    },
-    {
-      "name": "metapod",
-      "url": "https://pokeapi.co/api/v2/pokemon/11/"
-    },
-    {
-      "name": "butterfree",
-      "url": "https://pokeapi.co/api/v2/pokemon/12/"
-    },
-    {
-      "name": "weedle",
-      "url": "https://pokeapi.co/api/v2/pokemon/13/"
-    },
-    {
-      "name": "kakuna",
-      "url": "https://pokeapi.co/api/v2/pokemon/14/"
-    },
-    {
-      "name": "beedrill",
-      "url": "https://pokeapi.co/api/v2/pokemon/15/"
-    },
-    {
-      "name": "pidgey",
-      "url": "https://pokeapi.co/api/v2/pokemon/16/"
-    },
-    {
-      "name": "pidgeotto",
-      "url": "https://pokeapi.co/api/v2/pokemon/17/"
-    },
-    {
-      "name": "pidgeot",
-      "url": "https://pokeapi.co/api/v2/pokemon/18/"
-    },
-    {
-      "name": "rattata",
-      "url": "https://pokeapi.co/api/v2/pokemon/19/"
-    },
-    {
-      "name": "raticate",
-      "url": "https://pokeapi.co/api/v2/pokemon/20/"
-    }
-  ]
+  const ITEM_LIMIT = 20;
 
+  let { data: pokeData, loading, error } = useQPokemonLists({ 
+    limit: ITEM_LIMIT, offset: (page * ITEM_LIMIT) 
+  })
+
+  // - check if pokeData.next is null (out of bounds)
+  // - cache max-count inside our context state,
+  //   and update each reload.
+  
+  useEffect(() => {
+
+    console.log(pokeData)
+  }, [loading])
+  
   const onPokemonCardClick = (e: React.MouseEvent, id: number) => {
     history.push(`/pokemon/${id}/details`);
   }
 
+  const renderComplete = () => (
+    pokeData?.results?.map(poke => (
+      <PokemonCard
+        key={poke?.id!}
+        id={poke?.id!}
+        pokeName={poke?.name!} 
+        pokeSpriteURL={poke?.image!}
+        autoCapitalize={true}
+        onClick={(e) => onPokemonCardClick(e, poke?.id!)}/>
+    ))
+  )
+
+  const renderLoading = () => (
+    Array.from({length: 20}, (_, i) => (
+      <PokemonCard
+        key={i}
+        id={i}
+        usePlaceholder={true}
+        />
+    ))
+  )
+
   return (
-    <PageBase>
+    <PageBase noYScrolling={loading}>
       <div className="PagePokemonLists">
         <div className="page-header">
           Gotta catch 'em all!
         </div>
         <GridView usePadding={true}>
-          { tempData.map((poke, idx) => (
-            <PokemonCard
-              key={idx}
-              id={idx + 1}
-              pokeName={poke.name} 
-              autoCapitalize={true}
-              onClick={(e) => onPokemonCardClick(e, idx + 1)}/>
-          )) }
+          {
+            loading ? renderLoading() : renderComplete()
+          }
         </GridView>
       </div>
     </PageBase>
