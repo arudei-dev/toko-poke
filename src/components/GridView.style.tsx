@@ -4,11 +4,11 @@ import { css } from '@emotion/react'
 
 const cssGridViewItem = (usePadding: boolean) => css`
   .grid-item {
-    min-width: 250px;
+    min-width: 200px;
     ${usePadding && css`padding: 20px;`}
 
     @media (max-width: 420px) {
-      min-width: 100px;
+      min-width: 170px;
       ${usePadding && css`padding: 12px;`}
     }
   }
@@ -22,7 +22,7 @@ export const cssGridView = (props: CssGridViewProps) => css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; // should be prop
 
   ${cssGridViewItem(props.usePadding)}
 `;
