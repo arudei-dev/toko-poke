@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultTheme, ThemeStyle } from './theme'
+import { DefaultThemeColors, ThemeStyle } from './theme'
 
 export type CssPageBaseProps = {
   noYScrolling: boolean,
@@ -8,7 +8,7 @@ export type CssPageBaseProps = {
 }
 
 export const cssPageBase = (props: CssPageBaseProps) => css`
-  background-color: ${DefaultTheme(props.ThemeStyle).BACKGROUND_COLOR};
+  background-color: ${DefaultThemeColors(props.ThemeStyle).BACKGROUND_COLOR};
   width: 100%;
   height: 100%;
   overflow-y: ${props.noYScrolling ? css`none` : css`auto`};

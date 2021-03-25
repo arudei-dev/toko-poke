@@ -1,18 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultTheme, ThemeStyle } from './theme'
+import { DefaultThemeColors, ThemeStyle } from './theme'
 
 const cssCardViewHover = (type: ThemeStyle) => css`
   &:hover {
-    box-shadow:  10px  10px 20px ${DefaultTheme(type).NEU_SHADOW_PDARK},
-                -10px -10px 20px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
+    box-shadow:  10px  10px 20px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -10px -10px 20px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
   }
 `
 
 const cssCardViewActive = (type: ThemeStyle) => css`
   &:active:not(:focus-within) {
-    box-shadow: inset  7px  7px 14px ${DefaultTheme(type).NEU_SHADOW_PDARK},
-                inset -7px -7px 14px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
+    box-shadow: inset  7px  7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
   }
 `
 
@@ -24,8 +24,8 @@ const cssCardViewDisabled = (type: ThemeStyle) => css`
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome, Edge, Opera and Firefox */
-  box-shadow:  6px  6px 11px ${DefaultTheme(type).NEU_SHADOW_PDARK + "55"},
-              -6px -6px 11px ${DefaultTheme(type).NEU_SHADOW_PLIGHT + "55"};
+  box-shadow:  6px  6px 11px ${DefaultThemeColors(type).NEU_SHADOW_PDARK + "55"},
+              -6px -6px 11px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "55"};
 `
 
 export type CssCardViewProps = {
@@ -39,9 +39,9 @@ export const cssCardView = (props: CssCardViewProps) => css`
   min-height: 100px;
   padding: 10px;
   border-radius: 15px;
-  background: ${DefaultTheme(props.ThemeStyle).BACKGROUND_COLOR};
-  box-shadow:  6px  6px 11px ${DefaultTheme(props.ThemeStyle).NEU_SHADOW_PDARK},
-              -6px -6px 11px ${DefaultTheme(props.ThemeStyle).NEU_SHADOW_PLIGHT};
+  background: ${DefaultThemeColors(props.ThemeStyle).BACKGROUND_COLOR};
+  box-shadow:  6px  6px 11px ${DefaultThemeColors(props.ThemeStyle).NEU_SHADOW_PDARK},
+              -6px -6px 11px ${DefaultThemeColors(props.ThemeStyle).NEU_SHADOW_PLIGHT};
               
   transition: box-shadow 150ms;
 

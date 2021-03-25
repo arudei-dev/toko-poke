@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultTheme, ThemeStyle } from './theme'
+import { DefaultThemeColors, ThemeStyle } from './theme'
 
 
 export const cssPokemonCard = css`
@@ -35,8 +35,8 @@ export type CssPokemonNameRootType = {
 export const cssPokemonNameRoot = (props: CssPokemonNameRootType) => css`
   color: ${
     props.isLoading 
-    ? DefaultTheme(props.themeStyle).TEXT_COLOR_DISABLED 
-    : DefaultTheme(props.themeStyle).TEXT_COLOR_PRIMARY 
+    ? DefaultThemeColors(props.themeStyle).TEXT_COLOR_DISABLED 
+    : DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY 
   };
   font-family: 'Ubuntu';
   font-weight: 600;

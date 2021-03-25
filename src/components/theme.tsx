@@ -1,7 +1,7 @@
 import { TAppTheme as ThemeStyle } from 'core/rootStateTypes'
 
 
-export type DefaultThemeProps = {
+export type DefaultThemeColorsProps = {
   BACKGROUND_COLOR:  string,
 
   TEXT_COLOR_PRIMARY: string,
@@ -15,7 +15,7 @@ export type DefaultThemeProps = {
   NEU_SHADOW_PLIGHT: string,
 }
 
-export const DefaultThemeLight: DefaultThemeProps = {
+export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   BACKGROUND_COLOR: "#e9edf0",
   
   TEXT_COLOR_PRIMARY: "black",
@@ -29,12 +29,12 @@ export const DefaultThemeLight: DefaultThemeProps = {
   NEU_SHADOW_PLIGHT: "#ffffff",
 }
 
-export const DefaultThemeDark: DefaultThemeProps = {
+export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
   BACKGROUND_COLOR: "#2a2d32",
   
   TEXT_COLOR_PRIMARY: "white",
   TEXT_COLOR_ALT: "white",
-  TEXT_COLOR_DISABLED: "#ffffff33",
+  TEXT_COLOR_DISABLED: "#ffffff11",
   
   HIGHLIGHT_COLOR_FROM: "#26292d",
   HIGHLIGHT_COLOR_TO: "#2d3036",
@@ -43,8 +43,8 @@ export const DefaultThemeDark: DefaultThemeProps = {
   NEU_SHADOW_PLIGHT: "#30343a",
 }
 
-export const DefaultTheme = (type: ThemeStyle): DefaultThemeProps => (
-  type === "light" ? {...DefaultThemeLight} : {...DefaultThemeDark}
+export const DefaultThemeColors = (type: ThemeStyle): DefaultThemeColorsProps => (
+  type === "light" ? {...DefaultThemeColorsLight} : {...DefaultThemeColorsDark}
 )
 
 export type { ThemeStyle };

@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultTheme, ThemeStyle } from './theme'
+import { DefaultThemeColors, ThemeStyle } from './theme'
 
 const cssButtonNormal = (type: ThemeStyle) => css`
   border-radius: 4px;
-  box-shadow:  3px  3px 8px ${DefaultTheme(type).NEU_SHADOW_PDARK},
-              -3px -3px 8px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
+  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
               
   transition: box-shadow 150ms;
 `
@@ -14,25 +14,25 @@ const cssButtonHover = (type: ThemeStyle) => css`
   &:hover {
     background: linear-gradient(
         145deg, 
-        ${DefaultTheme(type).HIGHLIGHT_COLOR_TO}, 
-        ${DefaultTheme(type).HIGHLIGHT_COLOR_FROM}
+        ${DefaultThemeColors(type).HIGHLIGHT_COLOR_TO}, 
+        ${DefaultThemeColors(type).HIGHLIGHT_COLOR_FROM}
       );
-    box-shadow:  7px 7px 14px  ${DefaultTheme(type).NEU_SHADOW_PDARK},
-                -7px -7px 14px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
+    box-shadow:  7px 7px 14px  ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
   }
 `
 
 const cssButtonActive = (type: ThemeStyle) => css`
   &:active {
-    background: ${DefaultTheme(type).BACKGROUND_COLOR};
-    box-shadow: inset  5px  5px 10px ${DefaultTheme(type).NEU_SHADOW_PDARK},
-                inset -5px -5px 10px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
+    background: ${DefaultThemeColors(type).BACKGROUND_COLOR};
+    box-shadow: inset  5px  5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -5px -5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
   }
 `
 
 const cssButtonDisabled = (type: ThemeStyle) => css`
-  box-shadow:  3px  3px 8px ${DefaultTheme(type).NEU_SHADOW_PDARK + "66"},
-              -3px -3px 8px ${DefaultTheme(type).NEU_SHADOW_PLIGHT + "66"};
+  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK + "66"},
+              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "66"};
 `
 
 export type CssButtonBaseProps = {
@@ -48,9 +48,9 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
   outline: none;
   padding: 10px;
 
-  color: ${DefaultTheme(props.themeStyle).TEXT_COLOR_PRIMARY};
+  color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
 
-  background: ${DefaultTheme(props.themeStyle).BACKGROUND_COLOR};
+  background: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
   ${props.isDisabled 
     ? cssButtonDisabled(props.themeStyle) 
@@ -63,7 +63,7 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
 
   ${(props.isLoading 
       || props.isDisabled) 
-    && css`color: ${DefaultTheme(props.themeStyle).BACKGROUND_COLOR}`}
+    && css`color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR}`}
 
   ${(!props.isLoading && !props.isDisabled) && css`
       cursor: pointer;
