@@ -1,11 +1,11 @@
 import { useLazyQuery } from '@apollo/client'
 import { TQueryHook, TLazyQueryHook } from './types/base'
 import { GET_LIST_POKE } from './pokemon-lists.gql'
-import { pokemon_lists_pokemons, pokemon_listsVariables, pokemon_lists } from './types/pokemon_lists'
+import { PokemonLists_pokemons, PokemonListsVariables, PokemonLists } from './types/PokemonLists'
 
 
-const useLQPokemonLists: TLazyQueryHook<pokemon_listsVariables, pokemon_lists_pokemons> = () => {
-  const [loadData, {data, loading, error, called}] = useLazyQuery<pokemon_lists, pokemon_listsVariables>(
+const useLQPokemonLists: TLazyQueryHook<PokemonListsVariables, PokemonLists_pokemons> = () => {
+  const [loadData, {data, loading, error, called}] = useLazyQuery<PokemonLists, PokemonListsVariables>(
     GET_LIST_POKE
   )
 
