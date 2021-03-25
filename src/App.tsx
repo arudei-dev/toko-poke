@@ -14,9 +14,9 @@ function App() {
         <RootStateProvider>
           <Router>
             <Switch>
-              <Route path="/" exact              component={PokemonLists}/>
-              <Route path="/pokemon/:id/details" component={PokemonDetails}/>
-              <Route path="/profile/poke-lists"  component={MyPokemonLists}/>
+              <Route exact path="/"                    component={PokemonLists}/>
+              <Route exact path="/pokemon/:id/details" component={PokemonDetails}/>
+              <Route exact path="/profile/poke-lists"  component={MyPokemonLists}/>
             </Switch>
           </Router>
         </RootStateProvider>
