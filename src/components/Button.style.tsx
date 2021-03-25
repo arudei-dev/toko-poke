@@ -1,38 +1,44 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { DefaultTheme, ThemeStyle } from './theme'
 
-const cssButtonNormal = css`
+const cssButtonNormal = (type: ThemeStyle) => css`
   border-radius: 4px;
-  box-shadow:  3px  3px 8px #bebebe,
-              -3px -3px 8px #ffffff;
+  box-shadow:  3px  3px 8px ${DefaultTheme(type).NEU_SHADOW_PDARK},
+              -3px -3px 8px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
               
   transition: box-shadow 150ms;
 `
 
-const cssButtonHover = css`
+const cssButtonHover = (type: ThemeStyle) => css`
   &:hover {
-    background: linear-gradient(145deg, #f0f0f0, #cacaca);
-    box-shadow:  7px 7px 14px #bebebe,
-                -7px -7px 14px #ffffff;
+    background: linear-gradient(
+        145deg, 
+        ${DefaultTheme(type).HIGHLIGHT_COLOR_TO}, 
+        ${DefaultTheme(type).HIGHLIGHT_COLOR_FROM}
+      );
+    box-shadow:  7px 7px 14px  ${DefaultTheme(type).NEU_SHADOW_PDARK},
+                -7px -7px 14px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
   }
 `
 
-const cssButtonActive = css`
+const cssButtonActive = (type: ThemeStyle) => css`
   &:active {
-    background: linear-gradient(145deg, #e0e0e0, #e0e0e0);
-    box-shadow: inset  5px  5px 10px #bebebe,
-                inset -5px -5px 10px #ffffff;
+    background: ${DefaultTheme(type).BACKGROUND_COLOR};
+    box-shadow: inset  5px  5px 10px ${DefaultTheme(type).NEU_SHADOW_PDARK},
+                inset -5px -5px 10px ${DefaultTheme(type).NEU_SHADOW_PLIGHT};
   }
 `
 
-const cssButtonDisabled = css`
-  box-shadow:  3px  3px 8px #bebebe66,
-              -3px -3px 8px #ffffff66;
+const cssButtonDisabled = (type: ThemeStyle) => css`
+  box-shadow:  3px  3px 8px ${DefaultTheme(type).NEU_SHADOW_PDARK + "66"},
+              -3px -3px 8px ${DefaultTheme(type).NEU_SHADOW_PLIGHT + "66"};
 `
 
 export type CssButtonBaseProps = {
   isLoading: boolean,
   isDisabled: boolean,
+  themeStyle: ThemeStyle
 }
 
 export const cssButtonBase = (props: CssButtonBaseProps) => css`
@@ -42,18 +48,22 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
   outline: none;
   padding: 10px;
 
-  background: linear-gradient(145deg, #e0e0e0, #e0e0e0);
+  color: ${DefaultTheme(props.themeStyle).TEXT_COLOR_PRIMARY};
+
+  background: ${DefaultTheme(props.themeStyle).BACKGROUND_COLOR};
 
   ${props.isDisabled 
-    ? cssButtonDisabled 
-    : cssButtonNormal}
+    ? cssButtonDisabled(props.themeStyle) 
+    : cssButtonNormal(props.themeStyle)}
 
   font-family: 'Ubuntu';
   font-weight: 600;
   font-size: 14pt;
 
 
-  ${(props.isLoading || props.isDisabled) && `color: #e0e0e0`}
+  ${(props.isLoading 
+      || props.isDisabled) 
+    && css`color: ${DefaultTheme(props.themeStyle).BACKGROUND_COLOR}`}
 
   ${(!props.isLoading && !props.isDisabled) && css`
       cursor: pointer;
@@ -62,9 +72,14 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
         border: none;
       }
 
-      ${cssButtonHover}
+      ${cssButtonHover(props.themeStyle)}
       
-      ${cssButtonActive}
+      ${cssButtonActive(props.themeStyle)}
     `
   }
 `
+
+
+export type {
+  ThemeStyle
+}

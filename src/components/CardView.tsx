@@ -1,15 +1,22 @@
 /** @jsxImportSource @emotion/react */
-import { cssCardView } from './CardView.style'
+import { cssCardView, ThemeStyle } from './CardView.style'
 
 interface Props {
   children?: React.ReactNode,
   isClickable?: boolean,
   isDisabled?: boolean,
   isLoading?: boolean,
-  onClick?: (e: React.MouseEvent) => void
+  onClick?: (e: React.MouseEvent) => void,
+  themeStyle?: ThemeStyle,
 }
 
-const CardView: React.FC<Props> = ({ children, isClickable, isDisabled, onClick }) => {
+const CardView: React.FC<Props> = ({ 
+  children, 
+  isClickable, 
+  isDisabled, 
+  onClick, 
+  themeStyle
+}) => {
 
   const _onClick = (e: React.MouseEvent) => {
     if (!isClickable || isDisabled) return
@@ -24,7 +31,7 @@ const CardView: React.FC<Props> = ({ children, isClickable, isDisabled, onClick 
       css={cssCardView({
         isClickable: isClickable ?? false,
         isDisabled: isDisabled ?? false,
-        themeType: "light"
+        ThemeStyle: themeStyle ?? "light"
       })} 
       onClick={_onClick}>
       { children }

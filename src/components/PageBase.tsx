@@ -1,17 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { cssPageBase } from './PageBase.style'
+import { cssPageBase, ThemeStyle } from './PageBase.style'
 
 interface Props {
   noYScrolling?: boolean,
   children?: React.ReactNode,
+  themeStyle?: ThemeStyle
 }
 
-const PageBase: React.FC<Props> = ({ children, noYScrolling }) => {
+const PageBase: React.FC<Props> = ({ children, noYScrolling, themeStyle }) => {
   return (
     <div css={cssPageBase({
       noYScrolling: noYScrolling ?? false,
-      themeType: "light"
+      ThemeStyle: themeStyle ?? "light"
     })}>
       { children }
     </div>

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { DefaultTheme, ThemeStyle } from './theme'
 
 
 export const cssPokemonCard = css`
@@ -26,8 +27,17 @@ export const cssPokemonSpriteRoot = css`
   }
 `
 
-export const cssPokemonNameRoot = (isLoading: boolean) => css`
-  color: ${isLoading ? css`#00000033` : css`#001f3f;`};
+export type CssPokemonNameRootType = {
+  isLoading: boolean,
+  themeStyle: ThemeStyle,
+}
+
+export const cssPokemonNameRoot = (props: CssPokemonNameRootType) => css`
+  color: ${
+    props.isLoading 
+    ? DefaultTheme(props.themeStyle).TEXT_COLOR_DISABLED 
+    : DefaultTheme(props.themeStyle).TEXT_COLOR_PRIMARY 
+  };
   font-family: 'Ubuntu';
   font-weight: 600;
   font-size: 16pt;
@@ -39,27 +49,6 @@ export const cssActionDivRoot = css`
   width: 100%;
 `
 
-// const cssGridViewItem = (usePadding: boolean) => css`
-//   .grid-item {
-//     min-width: 250px;
-//     ${usePadding && css`padding: 20px;`}
-
-//     @media (max-width: 420px) {
-//       min-width: 100px;
-//       ${usePadding && css`padding: 12px;`}
-//     }
-//   }
-// `
-
-// export type CssGridViewProps = {
-//   usePadding: boolean,
-// }
-
-// export const cssGridView = (props: CssGridViewProps) => css`
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   justify-content: center;
-
-//   ${cssGridViewItem(props.usePadding)}
-// `;
+export type {
+  ThemeStyle
+}

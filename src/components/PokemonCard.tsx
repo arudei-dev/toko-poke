@@ -10,6 +10,7 @@ import {
   cssPokemonSpriteRoot,
   cssPokemonNameRoot,
   cssActionDivRoot,
+  ThemeStyle,
 } from './PokemonCard.style'
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
   pokeSpriteURL?: string,
   autoCapitalize?: boolean,
   usePlaceholder?: boolean,
+  themeStyle?: ThemeStyle,
   onClick?: (e: React.MouseEvent) => void;
 }
 
@@ -27,7 +29,8 @@ const PokemonCard: React.FC<Props> = ({
   pokeSpriteURL, 
   autoCapitalize, 
   usePlaceholder,
-  onClick 
+  onClick,
+  themeStyle
 }) => {
 
 
@@ -43,6 +46,7 @@ const PokemonCard: React.FC<Props> = ({
       isDisabled={usePlaceholder} 
       isClickable={!usePlaceholder} 
       onClick={_onClick}
+      themeStyle={themeStyle}
     >
       <div css={cssPokemonCard}>
 
@@ -58,7 +62,10 @@ const PokemonCard: React.FC<Props> = ({
           }
         </div>
 
-        <div css={cssPokemonNameRoot(usePlaceholder ?? false)}>
+        <div css={cssPokemonNameRoot({
+          isLoading: usePlaceholder ?? false,
+          themeStyle: themeStyle ?? 'light',
+        })}>
           {
             (!usePlaceholder && pokeName) ? (
               // Add character ellipsis
@@ -69,7 +76,10 @@ const PokemonCard: React.FC<Props> = ({
           }
         </div>
         <div css={cssActionDivRoot}>
-          <Button isDisabled={usePlaceholder} title="Catch 'em!"/>
+          <Button
+            themeStyle={themeStyle}
+            isDisabled={usePlaceholder} 
+            title="Catch 'em!"/>
         </div>
       </div>
     </CardView>
