@@ -1,6 +1,5 @@
+import { TAppTheme as ThemeStyle } from 'core/rootStateTypes'
 
-
-// export const BACKGROUND_COLOR = "#e0e0e0";
 
 export type DefaultThemeProps = {
   BACKGROUND_COLOR:  string,
@@ -44,8 +43,8 @@ export const DefaultThemeDark: DefaultThemeProps = {
   NEU_SHADOW_PLIGHT: "#30343a",
 }
 
-export type ThemeStyle = "light" | "dark"
-
 export const DefaultTheme = (type: ThemeStyle): DefaultThemeProps => (
   type === "light" ? {...DefaultThemeLight} : {...DefaultThemeDark}
 )
+
+export type { ThemeStyle };
