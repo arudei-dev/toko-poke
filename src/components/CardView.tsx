@@ -24,6 +24,7 @@ const CardView: React.FC<Props> = ({ children, isClickable, isDisabled, onClick 
       css={cssCardView({
         isClickable: isClickable ?? false,
         isDisabled: isDisabled ?? false,
+        themeType: "light"
       })} 
       onClick={_onClick}>
       { children }
