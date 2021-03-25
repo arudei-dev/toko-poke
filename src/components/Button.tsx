@@ -8,9 +8,17 @@ interface Props {
   isLoading?: boolean
   onClick?: (e: React.MouseEvent) => void
   themeStyle?: ThemeStyle
+  stretchWidth?: boolean
 }
 
-const Button: React.FC<Props> = ({title, isLoading, isDisabled, onClick, themeStyle}) => {
+const Button: React.FC<Props> = ({
+  title, 
+  isLoading, 
+  isDisabled, 
+  onClick, 
+  themeStyle,
+  stretchWidth,
+}) => {
 
   const _onClick = (e: React.MouseEvent) => {
     if (isLoading || isDisabled) return
@@ -26,7 +34,8 @@ const Button: React.FC<Props> = ({title, isLoading, isDisabled, onClick, themeSt
       css={cssButtonBase({ 
         isLoading: isLoading ?? false, 
         isDisabled: isDisabled ?? false,
-        themeStyle: themeStyle ?? 'light' 
+        themeStyle: themeStyle ?? 'light',
+        stretchWidth: stretchWidth ?? false,
       })} 
       onClick={_onClick}>
       {title}

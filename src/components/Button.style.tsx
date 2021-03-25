@@ -31,18 +31,24 @@ const cssButtonActive = (type: ThemeStyle) => css`
 `
 
 const cssButtonDisabled = (type: ThemeStyle) => css`
-  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK + "66"},
-              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "66"};
+  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK  + "77"},
+              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "77"};
+
+  &:disabled {
+    color: ${DefaultThemeColors(type).TEXT_COLOR_DISABLED};
+  }
 `
 
 export type CssButtonBaseProps = {
   isLoading: boolean,
   isDisabled: boolean,
-  themeStyle: ThemeStyle
+  themeStyle: ThemeStyle,
+  stretchWidth: boolean,
 }
 
 export const cssButtonBase = (props: CssButtonBaseProps) => css`
-  width: 100%;
+  /* width: 100%; */
+  ${props.stretchWidth && css`width: 100%;`}
   border: none;
   text-decoration:none;
   outline: none;
