@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { cssInfoChip, TInfoChipSize } from './InfoChip.style'
 import { ThemeStyle } from './theme'
+import { Text } from './Text'
 
 interface Props {
   title: string
@@ -18,7 +19,11 @@ const InfoChip: React.FC<Props> = ({
       size: size ?? 'small',
       themeStyle: themeStyle ?? 'light'
     })}>
-      { title }
+      <Text 
+        text={title}
+        textColor="primary"
+        themeStyle={themeStyle}
+        />
     </div>
   )
 }
