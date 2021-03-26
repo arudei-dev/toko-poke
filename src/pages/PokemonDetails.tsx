@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import { useLQPokemonDetailsByName } from "core/services/pokemon-details.hook";
 import { useRootState } from 'core/rootContext';
-import { PageBase } from "components/PageBase";
-import './PokemonDetails.scss'
-import { CardView } from 'components/CardView';
-import { AsyncImage } from 'components/AsyncImage';
-import PokeSilhouette from 'assets/svg/PokeSilhouette';
 import { capitalizeEachWord } from 'tools/string-helper';
-import { Button } from 'components/Button';
+import { PokeSilhouette } from 'assets/svg/PokeSilhouette';
+import { PageBase }       from "components/PageBase";
+import { CardView }       from 'components/CardView';
+import { AsyncImage }     from 'components/AsyncImage';
+import { Button }         from 'components/Button';
+import { InfoChip }       from 'components/InfoChip';
+import './PokemonDetails.scss'
 
 interface Props {}
 
@@ -60,7 +61,23 @@ const PokemonDetails: React.FC<Props> = ({ ...props }) => {
       </div>
 
       <div className="poke-types">
-        { /* Add chip ui (control) */ }
+        <div className="header">
+          Pokemon Types
+        </div>
+
+        <div className="poke-types-list">
+          {
+            pokeData?.types?.map((type, idx) => (
+              type?.type?.name ? (
+                <InfoChip 
+                  key={`pokeType-${type}-${idx}`}
+                  size="small"
+                  title={type.type.name}
+                  />
+              ) : <></>
+            ))
+          }
+        </div>
       </div>
     </>
   )
@@ -89,7 +106,7 @@ const PokemonDetails: React.FC<Props> = ({ ...props }) => {
           </CardView>
         </div>
         <div className="fragment poke-additionals">
-
+          
         </div>
       </div>
     </PageBase>

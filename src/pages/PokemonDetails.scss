@@ -43,6 +43,33 @@
           padding: 8px;
           padding-top: 16px;
         }
+
+        .poke-types {
+          width: 100%;
+          padding-top: 12px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .header {
+            color: #ffffff55;
+            text-transform: uppercase;
+            font-family: 'Geomanist';
+            font-size: 12pt;
+            font-weight: 600;
+          }
+          
+          .poke-types-list {
+            width: 100%;
+            padding-top: 4px;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
       }
 
     }
