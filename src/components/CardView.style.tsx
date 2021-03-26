@@ -4,18 +4,18 @@ import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from './theme'
 
 const cssCardViewHover = (type: ThemeStyle) => css`
   &:hover {
-    ${DefaultThemeProperties.boxShadowType0.hover(type)}
+    ${DefaultThemeProperties.actnBoxShadow0.hover(type)}
   }
 `
 
 const cssCardViewActive = (type: ThemeStyle) => css`
   &:active:not(:focus-within) {                
-    ${DefaultThemeProperties.boxShadowType0.active(type)}
+    ${DefaultThemeProperties.actnBoxShadow0.active(type)}
   }
 `
 
 const cssCardViewDisabled = (type: ThemeStyle) => css`  
-  ${DefaultThemeProperties.boxShadowType0.disabled(type)}
+  ${DefaultThemeProperties.actnBoxShadow0.disabled(type)}
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -38,7 +38,7 @@ export const cssCardView = (props: CssCardViewProps) => css`
   ${props.stretchWidth ?  css`width: 100%;`  : css`min-width: 100px;` }
   ${props.stretchHeight ? css`height: 100%;` : css`min-height: 100px;` }
   
-  ${DefaultThemeProperties.boxShadowType0.normal(props.ThemeStyle)}
+  ${DefaultThemeProperties.actnBoxShadow0.normal(props.ThemeStyle)}
   transition: box-shadow 150ms;
 
   padding: 10px;
