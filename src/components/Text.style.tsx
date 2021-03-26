@@ -11,9 +11,9 @@ export type cssTextProps = {
 
 export const cssText = (props: cssTextProps) => css`
   color: ${
-    props.textColor == 'primary'
+    props.textColor === 'primary'
     ? DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY
-    : props.textColor == 'secondary'
+    : props.textColor === 'secondary'
       ? DefaultThemeColors(props.themeStyle).TEXT_COLOR_ALT
       : DefaultThemeColors(props.themeStyle).TEXT_COLOR_DISABLED
   };
