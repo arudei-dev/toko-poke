@@ -5,7 +5,7 @@ import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from './theme'
 const cssButtonNormal = (type: ThemeStyle) => css`
   border-radius: 4px;
               
-  ${DefaultThemeProperties.boxShadowType1.normal(type)}
+  ${DefaultThemeProperties.actnBoxShadow1.normal(type)}
 
   transition: box-shadow 150ms;
 `
@@ -18,7 +18,7 @@ const cssButtonHover = (type: ThemeStyle) => css`
         ${DefaultThemeColors(type).HIGHLIGHT_COLOR_FROM}
       );
 
-    ${DefaultThemeProperties.boxShadowType1.hover(type)}
+    ${DefaultThemeProperties.actnBoxShadow1.hover(type)}
 
   }
 `
@@ -27,7 +27,7 @@ const cssButtonActive = (type: ThemeStyle) => css`
   &:active {
     background: ${DefaultThemeColors(type).BACKGROUND_COLOR};
 
-    ${DefaultThemeProperties.boxShadowType1.active(type)}
+    ${DefaultThemeProperties.actnBoxShadow1.active(type)}
 
   }
 `
@@ -36,7 +36,7 @@ const cssButtonDisabled = (type: ThemeStyle) => css`
   &:disabled {
     color: ${DefaultThemeColors(type).TEXT_COLOR_DISABLED};
 
-    ${DefaultThemeProperties.boxShadowType1.disabled(type)}
+    ${DefaultThemeProperties.actnBoxShadow1.disabled(type)}
   }
 `
 
