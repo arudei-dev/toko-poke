@@ -1,0 +1,50 @@
+.page-pokemon-details {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". .";
+
+  .fragment {
+    width: 100%;
+    height: 100%;
+
+    &.poke-details {
+      padding: 24px;
+
+      .details-content {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+          
+        .poke-avatar {
+          width: 200px;
+          image-rendering: pixelated;
+        }
+
+        .poke-infohero {
+          color: white;
+          font-family: "Ubuntu";
+          font-size: 36pt;
+          font-weight: 600;
+        }
+        
+        .poke-actions {
+          width: 100%;
+
+          padding: 8px;
+          padding-top: 16px;
+        }
+      }
+
+    }
+  }
+}
