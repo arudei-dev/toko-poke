@@ -19,7 +19,8 @@ export type DefaultThemeColorsProps = {
 }
 
 export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
-  BACKGROUND_COLOR: "#e9edf0",
+  // BACKGROUND_COLOR: "#e9edf0",
+  BACKGROUND_COLOR: "#e0e5ec",
   
   TEXT_COLOR_PRIMARY: "black",
   TEXT_COLOR_ALT: "black",
@@ -28,8 +29,9 @@ export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   HIGHLIGHT_COLOR_FROM: "#d2d5d8",
   HIGHLIGHT_COLOR_TO: "#f9feff",
 
-  NEU_SHADOW_PDARK:  "#d3dbe6",
-  NEU_SHADOW_PLIGHT: "#ffffff",
+  // NEU_SHADOW_PDARK:  "#d3dbe6",
+  NEU_SHADOW_PDARK:  "rgba(163,177,198,0.7)",
+  NEU_SHADOW_PLIGHT: "rgba(255,255,255, 0.8)",
 }
 
 export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
@@ -75,9 +77,28 @@ const boxShadowType1 = {
   `,
 }
 
+const boxShadowType0 = {
+  normal: (type: ThemeStyle) => css`
+    box-shadow:  4px  4px 10px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -4px -4px 10px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  hover: (type: ThemeStyle) => css`
+    box-shadow:  9px  9px 16px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -9px -9px 16px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  active: (type: ThemeStyle) => css`
+    box-shadow: inset  7px  7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  disabled: (type: ThemeStyle) => css`
+    box-shadow:  6px  6px 11px ${DefaultThemeColors(type).NEU_SHADOW_PDARK + "55"},
+                -6px -6px 11px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "55"};
+  `,
+}
 
 
 export const DefaultThemeProperties = {
   bkgColorDefault,
+  boxShadowType0,
   boxShadowType1
 }
