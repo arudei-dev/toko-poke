@@ -5,7 +5,7 @@ interface Props {
   color: string,
 }
 
-const PokeSilhouette: React.FC<Props> = ({ color, ...props }) => {
+export const PokeSilhouette: React.FC<Props> = ({ color, ...props }) => {
   const SvgCss = css`
     width: 100%;
     height: 100%;
@@ -52,5 +52,3 @@ const PokeSilhouette: React.FC<Props> = ({ color, ...props }) => {
 
   )
 }
-
-export default PokeSilhouette
