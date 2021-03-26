@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
 import React, { useEffect, useState } from "react"
+import { cssImg } from './AsyncImage.style'
 
 interface Props {
   src?: string,
@@ -28,13 +29,9 @@ const AsyncImage: React.FC<Props> = ({ src, children, alt, ...props }) => {
 
   }, [src])
 
-  const ImgCss = css`
-    width: 100%;
-    height: 100%;
-  `
 
   if (src === loadedSrc) return (
-    <img css={ImgCss} src={src} alt={alt || 'No description available.'} {...props}/>
+    <img css={cssImg} src={src} alt={alt || 'No description available.'} {...props}/>
   )
   else {
     return <>{children}</>
