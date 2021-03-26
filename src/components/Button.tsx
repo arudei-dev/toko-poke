@@ -1,6 +1,6 @@
 // /** @jsxImportSource @emotion/react */
 import React from 'react';
-import { cssButtonBase, ThemeStyle } from './Button.style'
+import { ButtonStyle, cssButtonBase, ThemeStyle } from './Button.style'
 
 interface Props {
   title: string
@@ -8,6 +8,7 @@ interface Props {
   isLoading?: boolean
   onClick?: (e: React.MouseEvent) => void
   themeStyle?: ThemeStyle
+  buttonStyle?: ButtonStyle
   stretchWidth?: boolean
 }
 
@@ -17,6 +18,7 @@ const Button: React.FC<Props> = ({
   isDisabled, 
   onClick, 
   themeStyle,
+  buttonStyle,
   stretchWidth,
 }) => {
 
@@ -36,6 +38,7 @@ const Button: React.FC<Props> = ({
         isDisabled: isDisabled ?? false,
         themeStyle: themeStyle ?? 'light',
         stretchWidth: stretchWidth ?? false,
+        buttonStyle: buttonStyle ?? 'normal'
       })} 
       onClick={_onClick}>
       {title}

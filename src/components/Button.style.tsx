@@ -40,10 +40,14 @@ const cssButtonDisabled = (type: ThemeStyle) => css`
   }
 `
 
+
+export type ButtonStyle = 'normal' | 'primary'
+
 export type CssButtonBaseProps = {
   isLoading: boolean,
   isDisabled: boolean,
   themeStyle: ThemeStyle,
+  buttonStyle: ButtonStyle,
   stretchWidth: boolean,
 }
 
