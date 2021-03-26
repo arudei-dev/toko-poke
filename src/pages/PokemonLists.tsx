@@ -103,7 +103,7 @@ const PokemonLists = () => {
       themeStyle={useTheme} 
       >
       <div className="page-pokemon-lists">
-        <GridView usePadding={true}>
+        <GridView usePadding="medium">
           {
             (loading || !called)  ? _renderLoading() : _renderComplete()
           }

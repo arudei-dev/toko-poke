@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { cssGridView } from './GridView.style'
+import { cssGridView, TCssPaddingSize } from './GridView.style'
 import React from 'react';
 
 interface Props {
   children?: React.ReactNode | React.ReactNode[],
   alignContent?: 'left' | 'center' | 'right'
-  usePadding?: boolean
+  usePadding?: TCssPaddingSize
 }
 
 const GridView: React.FC<Props> = ({
@@ -15,7 +15,7 @@ const GridView: React.FC<Props> = ({
 }) => {
   return (
     <div css={cssGridView({
-      usePadding: usePadding ?? true,
+      usePadding: usePadding ?? 'none',
       alignContent: alignContent ?? 'center'
     })}>
       { children && React.Children.map(children, child => {
