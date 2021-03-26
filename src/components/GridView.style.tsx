@@ -14,15 +14,24 @@ const cssGridViewItem = (usePadding: boolean) => css`
   }
 `
 
+export type TCssAlignContent = 'left' | 'center' | 'right'
+
 export type CssGridViewProps = {
   usePadding: boolean,
+  alignContent: TCssAlignContent,
 }
 
 export const cssGridView = (props: CssGridViewProps) => css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center; // should be prop
+  justify-content: ${
+    props.alignContent === 'center'
+    ? css`center`
+    : props.alignContent === 'left'
+      ? css`flex-start`
+      : css`flex-end`
+  }; // should be prop
 
   ${cssGridViewItem(props.usePadding)}
 `;
