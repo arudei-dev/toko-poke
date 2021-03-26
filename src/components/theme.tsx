@@ -16,6 +16,12 @@ export type DefaultThemeColorsProps = {
 
   NEU_SHADOW_PDARK:  string,
   NEU_SHADOW_PLIGHT: string,
+
+  STATUSCOLOR_BLANK: string,
+  STATUSCOLOR_SUCCESS: string,
+  STATUSCOLOR_INFO: string,
+  STATUSCOLOR_WARN: string,
+  STATUSCOLOR_DANGER: string,
 }
 
 export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
@@ -32,6 +38,12 @@ export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   // NEU_SHADOW_PDARK:  "#d3dbe6",
   NEU_SHADOW_PDARK:  "rgba(163,177,198,0.7)",
   NEU_SHADOW_PLIGHT: "rgba(255,255,255, 0.8)",
+
+  STATUSCOLOR_BLANK: "#ffffffaa",
+  STATUSCOLOR_SUCCESS: "#30624D",
+  STATUSCOLOR_WARN: "#F0AF41",
+  STATUSCOLOR_INFO: "#1E58AD",
+  STATUSCOLOR_DANGER: "#9C2D31",
 }
 
 export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
@@ -46,6 +58,12 @@ export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
 
   NEU_SHADOW_PDARK: "#24262b",
   NEU_SHADOW_PLIGHT: "#30343a",
+
+  STATUSCOLOR_BLANK: "#000000aa",
+  STATUSCOLOR_SUCCESS: "#30624D",
+  STATUSCOLOR_WARN: "#F0AF41",
+  STATUSCOLOR_INFO: "#1E58AD",
+  STATUSCOLOR_DANGER: "#9C2D31",
 }
 
 export const DefaultThemeColors = (type: ThemeStyle): DefaultThemeColorsProps => (
@@ -58,7 +76,7 @@ const bkgColorDefault = (type: ThemeStyle) => css`
   background-color: ${DefaultThemeColors(type).BACKGROUND_COLOR};
 `
 
-const boxShadowType1 = {
+const actnBoxShadow1 = {
   normal: (type: ThemeStyle) => css`
     box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
                 -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
@@ -77,7 +95,7 @@ const boxShadowType1 = {
   `,
 }
 
-const boxShadowType0 = {
+const actnBoxShadow0 = {
   normal: (type: ThemeStyle) => css`
     box-shadow:  4px  4px 10px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
                 -4px -4px 10px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
@@ -96,9 +114,29 @@ const boxShadowType0 = {
   `,
 }
 
+const boxShadow = {
+  small: (type: ThemeStyle) => css`
+    box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+}
+
+const boxShadowInset = {
+  small: (type: ThemeStyle) => css`
+    box-shadow: inset  5px  5px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -5px -5px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  medium: (type: ThemeStyle) => css`
+    box-shadow: inset  7px  7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `
+}
+
 
 export const DefaultThemeProperties = {
   bkgColorDefault,
-  boxShadowType0,
-  boxShadowType1
+  actnBoxShadow0,
+  actnBoxShadow1,
+  boxShadow,
+  boxShadowInset,
 }
