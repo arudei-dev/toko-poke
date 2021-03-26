@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { cssGridView, TCssPaddingSize } from './GridView.style'
+import { cssGridView, TCssAlignContent, TCssPaddingSize } from './GridView.style'
 import React from 'react';
 
 interface Props {
   children?: React.ReactNode | React.ReactNode[],
-  alignContent?: 'left' | 'center' | 'right'
+  alignContent?: TCssAlignContent
   usePadding?: TCssPaddingSize
 }
 

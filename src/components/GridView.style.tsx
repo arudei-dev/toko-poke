@@ -2,7 +2,8 @@
 import { css } from '@emotion/react'
 
 
-export type TCssAlignContent = 'left' | 'center' | 'right'
+export type TCssAlignContent = 'flex-start' | 'center' | 'flex-end' 
+                                | 'space-between' | 'space-around' | 'space-evenly'
 export type TCssPaddingSize = 'none' | 'small' | 'medium' | 'large'
 
 const cssGridViewItem = (usePadding: TCssPaddingSize) => {
@@ -28,11 +29,11 @@ const cssGridViewItem = (usePadding: TCssPaddingSize) => {
 
   return css`
     .grid-item {
-      min-width: 200px;
+      /* min-width: 200px; */
       padding: ${paddingSize.Desktop};
 
       @media (max-width: 420px) {
-        min-width: 170px;
+        /* min-width: 170px; */
         padding: ${paddingSize.MobileS}
       }
     }
@@ -49,13 +50,7 @@ export const cssGridView = (props: CssGridViewProps) => css`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: ${
-    props.alignContent === 'center'
-    ? css`center`
-    : props.alignContent === 'left'
-      ? css`flex-start`
-      : css`flex-end`
-  }; // should be prop
+  justify-content: ${props.alignContent}; // should be prop
 
   ${cssGridViewItem(props.usePadding)}
 `;
