@@ -46,6 +46,7 @@ const PokemonCard: React.FC<Props> = ({
       isDisabled={usePlaceholder} 
       isClickable={!usePlaceholder} 
       onClick={_onClick}
+      stretchWidth={true}
       themeStyle={themeStyle}
     >
       <div css={cssPokemonCard}>
