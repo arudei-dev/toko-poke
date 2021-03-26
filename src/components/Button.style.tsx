@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, ThemeStyle } from './theme'
+import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from './theme'
 
 const cssButtonNormal = (type: ThemeStyle) => css`
   border-radius: 4px;
-  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
-              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
               
+  ${DefaultThemeProperties.boxShadowType1.normal(type)}
+
   transition: box-shadow 150ms;
 `
 
@@ -17,25 +17,26 @@ const cssButtonHover = (type: ThemeStyle) => css`
         ${DefaultThemeColors(type).HIGHLIGHT_COLOR_TO}, 
         ${DefaultThemeColors(type).HIGHLIGHT_COLOR_FROM}
       );
-    box-shadow:  7px 7px 14px  ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
-                -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+
+    ${DefaultThemeProperties.boxShadowType1.hover(type)}
+
   }
 `
 
 const cssButtonActive = (type: ThemeStyle) => css`
   &:active {
     background: ${DefaultThemeColors(type).BACKGROUND_COLOR};
-    box-shadow: inset  5px  5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
-                inset -5px -5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+
+    ${DefaultThemeProperties.boxShadowType1.active(type)}
+
   }
 `
 
 const cssButtonDisabled = (type: ThemeStyle) => css`
-  box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK  + "77"},
-              -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "77"};
-
   &:disabled {
     color: ${DefaultThemeColors(type).TEXT_COLOR_DISABLED};
+
+    ${DefaultThemeProperties.boxShadowType1.disabled(type)}
   }
 `
 

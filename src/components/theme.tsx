@@ -1,4 +1,7 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { TAppTheme as ThemeStyle } from 'core/rootStateTypes'
+export type { ThemeStyle };
 
 
 export type DefaultThemeColorsProps = {
@@ -47,4 +50,34 @@ export const DefaultThemeColors = (type: ThemeStyle): DefaultThemeColorsProps =>
   type === "light" ? {...DefaultThemeColorsLight} : {...DefaultThemeColorsDark}
 )
 
-export type { ThemeStyle };
+
+
+const bkgColorDefault = (type: ThemeStyle) => css`
+  background-color: ${DefaultThemeColors(type).BACKGROUND_COLOR};
+`
+
+const boxShadowType1 = {
+  normal: (type: ThemeStyle) => css`
+    box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  hover: (type: ThemeStyle) => css`
+    box-shadow:  7px 7px 14px  ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                -7px -7px 14px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  active: (type: ThemeStyle) => css`
+    box-shadow: inset  5px  5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PDARK},
+                inset -5px -5px 10px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT};
+  `,
+  disabled: (type: ThemeStyle) => css`
+    box-shadow:  3px  3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PDARK  + "77"},
+                -3px -3px 8px ${DefaultThemeColors(type).NEU_SHADOW_PLIGHT + "77"};
+  `,
+}
+
+
+
+export const DefaultThemeProperties = {
+  bkgColorDefault,
+  boxShadowType1
+}
