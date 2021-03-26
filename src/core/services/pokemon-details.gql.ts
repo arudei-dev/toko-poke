@@ -6,14 +6,30 @@ const GET_POKE_DETAILS = gql`
     name
     sprites {
       front_default
+      front_female
+      front_shiny
+      front_shiny_female
     }
-    moves {
-      move {
+    weight
+    types {
+      type {
         name
       }
     }
-    types {
-      type {
+    species {
+      url
+      name
+    }
+    stats {
+      base_stat
+      effort
+      stat {
+        url
+        name
+      }
+    }
+    moves {
+      move {
         name
       }
     }
