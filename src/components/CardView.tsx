@@ -6,6 +6,8 @@ interface Props {
   isClickable?: boolean,
   isDisabled?: boolean,
   isLoading?: boolean,
+  stretchWidth?: boolean,
+  stretchHeight?: boolean,
   onClick?: (e: React.MouseEvent) => void,
   themeStyle?: ThemeStyle,
 }
@@ -15,7 +17,9 @@ const CardView: React.FC<Props> = ({
   isClickable, 
   isDisabled, 
   onClick, 
-  themeStyle
+  stretchWidth,
+  stretchHeight,
+  themeStyle,
 }) => {
 
   const _onClick = (e: React.MouseEvent) => {
@@ -31,7 +35,9 @@ const CardView: React.FC<Props> = ({
       css={cssCardView({
         isClickable: isClickable ?? false,
         isDisabled: isDisabled ?? false,
-        ThemeStyle: themeStyle ?? "light"
+        stretchWidth: stretchWidth ?? false,
+        stretchHeight: stretchHeight ?? false,
+        ThemeStyle: themeStyle ?? "light",
       })} 
       onClick={_onClick}>
       { children }

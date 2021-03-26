@@ -32,11 +32,14 @@ export type CssCardViewProps = {
   isClickable: boolean,
   isDisabled: boolean,
   ThemeStyle: ThemeStyle,
+  stretchWidth?: boolean,
+  stretchHeight?: boolean,
 }
 
 export const cssCardView = (props: CssCardViewProps) => css`
-  width: 100%;
-  min-height: 100px;
+  ${props.stretchWidth ?  css`width: 100%;`  : css`min-width: 100px;` }
+  ${props.stretchHeight ? css`height: 100%;` : css`min-height: 100px;` }
+  
   padding: 10px;
   border-radius: 15px;
   background: ${DefaultThemeColors(props.ThemeStyle).BACKGROUND_COLOR};
