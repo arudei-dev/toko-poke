@@ -1,18 +1,16 @@
+
+
 // /** @jsxImportSource @emotion/react */
 import React from 'react';
-import { ButtonStyle, cssButtonBase, ThemeStyle } from './Button.style'
+import { BaseButtonProps } from './_base'
+import { cssNormalButtonBase } from './_normalButton.style'
 
-interface Props {
+
+export type NormalButtonProps = Partial<BaseButtonProps> & {
   title: string
-  isDisabled?: boolean
-  isLoading?: boolean
-  onClick?: (e: React.MouseEvent) => void
-  themeStyle?: ThemeStyle
-  buttonStyle?: ButtonStyle
-  stretchWidth?: boolean
 }
 
-const Button: React.FC<Props> = ({
+export const NormalButton: React.FC<NormalButtonProps> = ({
   title, 
   isLoading, 
   isDisabled, 
@@ -20,6 +18,7 @@ const Button: React.FC<Props> = ({
   themeStyle,
   buttonStyle,
   stretchWidth,
+  stretchHeight,
 }) => {
 
   const _onClick = (e: React.MouseEvent) => {
@@ -33,17 +32,16 @@ const Button: React.FC<Props> = ({
   return (
     <button 
       disabled={isDisabled ?? false}
-      css={cssButtonBase({ 
+      css={cssNormalButtonBase({ 
         isLoading: isLoading ?? false, 
         isDisabled: isDisabled ?? false,
         themeStyle: themeStyle ?? 'light',
+        buttonStyle: buttonStyle ?? 'normal',
         stretchWidth: stretchWidth ?? false,
-        buttonStyle: buttonStyle ?? 'normal'
+        stretchHeight: stretchHeight ?? false,
       })} 
       onClick={_onClick}>
       {title}
     </button>
   )
 }
-
-export { Button }

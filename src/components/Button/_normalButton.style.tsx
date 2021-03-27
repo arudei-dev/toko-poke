@@ -1,8 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from './theme'
+import { 
+  DefaultThemeColors, 
+  DefaultThemeProperties, 
+  ThemeStyle 
+} from 'components/theme'
+import { ButtonBaseProps } from './_base.style'
 
-const cssButtonNormal = (type: ThemeStyle) => css`
+const cssNormalButtonNormal = (type: ThemeStyle) => css`
   border-radius: 4px;
               
   ${DefaultThemeProperties.actnBoxShadow1.normal(type)}
@@ -10,7 +15,7 @@ const cssButtonNormal = (type: ThemeStyle) => css`
   transition: box-shadow 150ms;
 `
 
-const cssButtonHover = (type: ThemeStyle) => css`
+const cssNormalButtonHover = (type: ThemeStyle) => css`
   &:hover {
     background: linear-gradient(
         145deg, 
@@ -23,7 +28,7 @@ const cssButtonHover = (type: ThemeStyle) => css`
   }
 `
 
-const cssButtonActive = (type: ThemeStyle) => css`
+const cssNormalButtonActive = (type: ThemeStyle) => css`
   &:active {
     background: ${DefaultThemeColors(type).BACKGROUND_COLOR};
 
@@ -32,7 +37,7 @@ const cssButtonActive = (type: ThemeStyle) => css`
   }
 `
 
-const cssButtonDisabled = (type: ThemeStyle) => css`
+const cssNormalButtonDisabled = (type: ThemeStyle) => css`
   &:disabled {
     color: ${DefaultThemeColors(type).TEXT_COLOR_DISABLED};
 
@@ -41,17 +46,11 @@ const cssButtonDisabled = (type: ThemeStyle) => css`
 `
 
 
-export type ButtonStyle = 'normal' | 'primary'
+export type NormalButtonBaseProps = ButtonBaseProps & {
 
-export type CssButtonBaseProps = {
-  isLoading: boolean,
-  isDisabled: boolean,
-  themeStyle: ThemeStyle,
-  buttonStyle: ButtonStyle,
-  stretchWidth: boolean,
 }
 
-export const cssButtonBase = (props: CssButtonBaseProps) => css`
+export const cssNormalButtonBase = (props: NormalButtonBaseProps) => css`
   /* width: 100%; */
   ${props.stretchWidth && css`width: 100%;`}
   border: none;
@@ -64,8 +63,8 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
   background: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
   ${props.isDisabled 
-    ? cssButtonDisabled(props.themeStyle) 
-    : cssButtonNormal(props.themeStyle)}
+    ? cssNormalButtonDisabled(props.themeStyle) 
+    : cssNormalButtonNormal(props.themeStyle)}
 
   font-family: 'Ubuntu';
   font-weight: 600;
@@ -83,9 +82,9 @@ export const cssButtonBase = (props: CssButtonBaseProps) => css`
         border: none;
       }
 
-      ${cssButtonHover(props.themeStyle)}
+      ${cssNormalButtonHover(props.themeStyle)}
       
-      ${cssButtonActive(props.themeStyle)}
+      ${cssNormalButtonActive(props.themeStyle)}
     `
   }
 `
