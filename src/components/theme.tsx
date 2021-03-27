@@ -29,7 +29,7 @@ export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   BACKGROUND_COLOR: "#e0e5ec",
   
   TEXT_COLOR_PRIMARY: "black",
-  TEXT_COLOR_ALT: "black",
+  TEXT_COLOR_ALT: "#00000077",
   TEXT_COLOR_DISABLED: "#00000033",
 
   HIGHLIGHT_COLOR_FROM: "#d2d5d8",
@@ -50,7 +50,7 @@ export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
   BACKGROUND_COLOR: "#2a2d32",
   
   TEXT_COLOR_PRIMARY: "white",
-  TEXT_COLOR_ALT: "white",
+  TEXT_COLOR_ALT: "#ffffff77",
   TEXT_COLOR_DISABLED: "#ffffff11",
   
   HIGHLIGHT_COLOR_FROM: "#26292d",
@@ -132,6 +132,17 @@ const boxShadowInset = {
   `
 }
 
+const mqSizes = {
+  mobileS: "320px",
+  mobileM: "480px",
+  mobileL: "600px",
+  desktopS: "768px",
+  desktopM: "900px",
+  desktopL: "1024px",
+  dekstopXL: "1200px",
+}
+
+
 
 export const DefaultThemeProperties = {
   bkgColorDefault,
@@ -139,4 +150,9 @@ export const DefaultThemeProperties = {
   actnBoxShadow1,
   boxShadow,
   boxShadowInset,
+}
+
+export {
+  mqSizes
+  // buildMediaQuery
 }
