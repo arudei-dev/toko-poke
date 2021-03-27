@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from "react-router-dom";
-import { useLQPokemonLists } from "core/services/pokemon-lists.hook";
+import { useLQPokemonLists } from "core/api/pokemon-lists.hook";
 import { useRootState } from 'core/rootContext';
 import { parseUrlQuery } from 'tools/url-helper';
 import { GridView } from 'components/GridView'
