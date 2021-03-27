@@ -1,8 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { ButtonBaseProps } from './_base.style'
-import { StandardButton } from './_standardButton'
-
-
-export {
-  StandardButton
-}
+// export { ButtonBaseProps } from './_base.style'
+export { StandardButton } from './_standardButton'
+export { ToggleButton } from './_toggleButton'
