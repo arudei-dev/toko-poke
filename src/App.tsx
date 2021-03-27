@@ -5,6 +5,7 @@ import { MyPokemonLists } from './pages/MyPokemonLists';
 import { PokemonDetails } from './pages/PokemonDetails';
 import { PokemonLists } from './pages/PokemonLists';
 import './App.scss';
+import { AppFrame } from 'views/AppFrame';
 
 
 function App() {
@@ -12,13 +13,15 @@ function App() {
     <div className="App">
       <RootApolloProvider>
         <RootStateProvider>
-          <Router>
-            <Switch>
-              <Route exact path="/"                          component={PokemonLists}/>
-              <Route exact path="/pokemon/:pokeName/details" component={PokemonDetails}/>
-              <Route exact path="/profile/poke-lists"        component={MyPokemonLists}/>
-            </Switch>
-          </Router>
+          <AppFrame>
+            <Router>
+              <Switch>
+                <Route exact path="/"                          component={PokemonLists}/>
+                <Route exact path="/pokemon/:pokeName/details" component={PokemonDetails}/>
+                <Route exact path="/profile/poke-lists"        component={MyPokemonLists}/>
+              </Switch>
+            </Router>
+          </AppFrame>
         </RootStateProvider>
       </RootApolloProvider>
     </div>
