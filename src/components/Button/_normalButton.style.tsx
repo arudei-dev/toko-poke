@@ -5,12 +5,12 @@ import {
   DefaultThemeProperties, 
   ThemeStyle 
 } from 'components/theme'
-import { ButtonBaseProps } from './_base.style'
+import { ButtonBaseProps, ButtonStyle } from './_base.style'
 
-const cssNormalButtonNormal = (type: ThemeStyle) => css`
+const cssNormalButtonNormal = (type: ThemeStyle, style: ButtonStyle) => css`
   border-radius: 4px;
               
-  ${DefaultThemeProperties.actnBoxShadow1.normal(type)}
+  ${style !== 'borderless' && DefaultThemeProperties.actnBoxShadow1.normal(type)}
 
   transition: box-shadow 150ms;
 `
@@ -37,11 +37,11 @@ const cssNormalButtonActive = (type: ThemeStyle) => css`
   }
 `
 
-const cssNormalButtonDisabled = (type: ThemeStyle) => css`
+const cssNormalButtonDisabled = (type: ThemeStyle, style: ButtonStyle) => css`
   &:disabled {
     color: ${DefaultThemeColors(type).TEXT_COLOR_DISABLED};
 
-    ${DefaultThemeProperties.actnBoxShadow1.disabled(type)}
+    ${style !== 'borderless' && DefaultThemeProperties.actnBoxShadow1.disabled(type)}
   }
 `
 
@@ -63,8 +63,8 @@ export const cssNormalButtonBase = (props: NormalButtonBaseProps) => css`
   background: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
   ${props.isDisabled 
-    ? cssNormalButtonDisabled(props.themeStyle) 
-    : cssNormalButtonNormal(props.themeStyle)}
+    ? cssNormalButtonDisabled(props.themeStyle, props.buttonStyle) 
+    : cssNormalButtonNormal(props.themeStyle,  props.buttonStyle)}
 
   font-family: 'Ubuntu';
   font-weight: 600;

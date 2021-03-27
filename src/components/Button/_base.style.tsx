@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { ThemeStyle } from 'components/theme'
 
 
-export type ButtonStyle = 'normal' | 'primary'
+export type ButtonStyle = 'normal' | 'primary' | 'borderless'
 
 export type ButtonBaseProps = {
   isLoading: boolean,
