@@ -20,18 +20,17 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
 }) => {
 
   const _cssLayout = css`
-    .additionals-list {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
 
-      @media (max-width: ${mqSizes.desktopL}) {
-        overflow-y: visible;
-      }
-      
-      padding-right: 8px;
+    @media (max-width: ${mqSizes.desktopL}) {
+      overflow-y: visible;
+    }
+    
+    padding-right: 8px;
 
-      .move-item {
+    .move-item {
         width: 180px;
         height: 120px;
         
@@ -43,6 +42,11 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
         @media (max-width: ${mqSizes.mobileM}) {
           width: 140px;
           height: 120px;
+        }
+
+        @media (max-width: ${mqSizes.mobileS}) {
+          width: 120px;
+          height: 100px;
         }
 
         
@@ -71,6 +75,10 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
             font-weight: 700;
     
             padding-bottom: 8px;
+
+            @media (max-width: ${mqSizes.mobileS}) {
+              font-size: 8pt;
+            }
           }
     
           .item-title {
@@ -85,10 +93,13 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
             text-transform: capitalize;
             text-overflow: ellipsis;
             overflow-y: auto;
-            
+
+            @media (max-width: ${mqSizes.mobileS}) {
+              font-size: 14pt;
+            line-height: 18pt;
+            }
           }
         }
-      }
     }
   `
 
