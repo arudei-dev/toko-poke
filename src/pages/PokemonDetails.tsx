@@ -27,6 +27,12 @@ import { cssPagePokemonDetails } from './PokemonDetails.style'
 
 interface Props {}
 
+// Separate CardView:
+// - Clickable CardView (Elevated)
+// - Decoration CardView (Elevated, Sunken)
+//   https://dribbble.com/shots/9834284-Advertisement-Dashboard-ADPOD
+
+
 const PokemonDetails: React.FC<Props> = ({ ...props }) => {
   let enableOneColumn = useMediaQuery({
     queryType: 'max-width',
@@ -133,7 +139,12 @@ const PokemonDetails: React.FC<Props> = ({ ...props }) => {
       noYScrolling={loading || !called}
       >
 
-      <div className="page-pokemon-details" css={cssPagePokemonDetails()}>
+      <div 
+        className="page-pokemon-details" 
+        css={cssPagePokemonDetails({
+          themeStyle: themeStyle ?? 'light'
+        })}
+        >
         <div className="fragment poke-details">
           <CardView 
             isLoading={loading || !called}
@@ -238,6 +249,7 @@ const LayoutDetailsMobile: React.FC<LayoutDetailsProps> = ({
             checked={tabActive === 'moves'}
             stretchWidth={false}
             stretchHeight={false}
+            themeStyle={themeStyle}
             onClick={e => onToggleButtonClick('moves')}
             />
         </div>
@@ -249,6 +261,7 @@ const LayoutDetailsMobile: React.FC<LayoutDetailsProps> = ({
             checked={tabActive === 'stats'}
             stretchWidth={false}
             stretchHeight={false}
+            themeStyle={themeStyle}
             onClick={e => onToggleButtonClick('stats')}
             />
         </div>

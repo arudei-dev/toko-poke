@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { mqSizes } from 'components/theme'
+import { mqSizes, ThemeStyle } from 'components/theme'
 
 
 export const cssFragmentPokeDetails = () => css`
@@ -203,7 +203,11 @@ export const cssFragmentPokeDetails = () => css`
   }
 `
 
-export const cssPagePokemonDetails = () => css`
+type PagePokemonDetailsProps = {
+  themeStyle: ThemeStyle
+}
+
+export const cssPagePokemonDetails = (props: PagePokemonDetailsProps) => css`
   width: 100%;
   height: 100%;
 
@@ -277,6 +281,8 @@ export const cssPagePokemonDetails = () => css`
 
         padding-bottom: 16px;
 
+        color: ${props.themeStyle === 'dark' ? css`white` : css`black`};
+
         @media (max-width: ${mqSizes.desktopL}) {
           display: flex;
           flex-direction: row;
@@ -285,77 +291,6 @@ export const cssPagePokemonDetails = () => css`
             /* width: 120px;
             height: 48px; */
             padding-right: 16px;
-          }
-        }
-      }
-
-      .additionals-list {
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-
-        @media (max-width: ${mqSizes.desktopL}) {
-          overflow-y: visible;
-        }
-        
-        padding-right: 8px;
-
-        .move-item {
-          width: 180px;
-          height: 120px;
-          
-          @media (max-width: ${mqSizes.mobileL}) {
-            width: 170px;
-            height: 120px;
-          }
-
-          @media (max-width: ${mqSizes.mobileM}) {
-            width: 140px;
-            height: 120px;
-          }
-
-          
-          .item-cover {
-            width: 100%;
-            height: 100%;
-            padding: 8px 4px;
-
-            min-height: 0 !important;
-            min-width: 0 !important;
-
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: minmax(0, auto) minmax(0, 1fr) !important;
-            gap: 0px 0px;
-            grid-template-areas:
-              "."
-              ".";
-
-            overflow: hidden;
-
-            .item-subtitle {
-              width: 100%;
-              font-family: 'Geomanist';
-              font-size: 9pt;
-              font-weight: 700;
-    
-              padding-bottom: 8px;
-            }
-    
-            .item-title {
-              width: 100%;
-              height: 100%;
-
-              font-family: 'Geomanist';
-              font-size: 18pt;
-              font-weight: 400;
-              line-height: 24pt;
-    
-              text-transform: capitalize;
-              text-overflow: ellipsis;
-              overflow-y: auto;
-              
-            }
           }
         }
       }
