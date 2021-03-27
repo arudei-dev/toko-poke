@@ -6,7 +6,7 @@ import { parseUrlQuery } from 'tools/url-helper';
 import { GridView } from 'components/GridView'
 import { PageBase } from 'components/PageBase'
 import { PokemonCard } from 'components/PokemonCard'
-import { NormalButton } from 'components/Button';
+import { StandardButton } from 'components/Button';
 import './PokemonLists.scss'
 
 const ITEM_LIMIT = 20;
@@ -109,14 +109,14 @@ const PokemonLists = () => {
           }
         </GridView>
         <div className="view-actions">
-          <NormalButton
+          <StandardButton
             themeStyle={useTheme}
             isDisabled={page < 2 && true}
             title="Previous page"
             onClick={_onPreviousPageClick}
             />
           <div className="separator"/>
-          <NormalButton
+          <StandardButton
             themeStyle={useTheme}
             title="Next page"
             onClick={_onNextPageClick}

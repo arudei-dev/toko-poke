@@ -15,36 +15,36 @@ import {
   cssButtonBaseDisabled,
 } from './_base.style'
 
-export type NormalButtonBaseProps = ButtonBaseProps & {}
+export type StandardButtonBaseProps = ButtonBaseProps & {}
 
 
-const cssNormalButtonNormal = (props: NormalButtonBaseProps) => css`
+const cssStandardButtonNormal = (props: StandardButtonBaseProps) => css`
   ${cssButtonBaseNormal(props)}
 
   border-radius: 4px;
 `
 
-const cssNormalButtonHover = (props: NormalButtonBaseProps) => css`
+const cssStandardButtonHover = (props: StandardButtonBaseProps) => css`
   ${cssButtonBaseHover(props)}
 `
 
-const cssNormalButtonActive = (props: NormalButtonBaseProps) => css`
+const cssStandardButtonActive = (props: StandardButtonBaseProps) => css`
   ${cssButtonBaseActive(props)}
 `
 
-const cssNormalButtonDisabled = (props: NormalButtonBaseProps) => css`
+const cssStandardButtonDisabled = (props: StandardButtonBaseProps) => css`
   ${cssButtonBaseDisabled(props)}
 `
 
 
-export const cssNormalButtonBase = (props: NormalButtonBaseProps) => css`
+export const cssStandardButtonBase = (props: StandardButtonBaseProps) => css`
 
   ${cssButtonBase(props)}
   
-  ${cssNormalButtonNormal(props)}
+  ${cssStandardButtonNormal(props)}
 
   &:disabled {
-    ${cssNormalButtonDisabled(props)}
+    ${cssStandardButtonDisabled(props)}
   }
 
   ${
@@ -62,11 +62,11 @@ export const cssNormalButtonBase = (props: NormalButtonBaseProps) => css`
       }
 
       &:hover {
-        ${cssNormalButtonHover(props)}
+        ${cssStandardButtonHover(props)}
       }
       
       &:active {
-        ${cssNormalButtonActive(props)}
+        ${cssStandardButtonActive(props)}
       }
     `
   }

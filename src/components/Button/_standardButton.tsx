@@ -3,14 +3,14 @@
 // /** @jsxImportSource @emotion/react */
 import React from 'react';
 import { BaseButtonProps } from './_base'
-import { cssNormalButtonBase } from './_normalButton.style'
+import { cssStandardButtonBase } from './_standardButton.style'
 
 
-export type NormalButtonProps = Partial<BaseButtonProps> & {
+export type StandardButtonProps = Partial<BaseButtonProps> & {
   title: string
 }
 
-export const NormalButton: React.FC<NormalButtonProps> = ({
+export const StandardButton: React.FC<StandardButtonProps> = ({
   title, 
   isLoading, 
   isDisabled, 
@@ -32,7 +32,7 @@ export const NormalButton: React.FC<NormalButtonProps> = ({
   return (
     <button 
       disabled={isDisabled ?? false}
-      css={cssNormalButtonBase({ 
+      css={cssStandardButtonBase({ 
         isLoading: isLoading ?? false, 
         isDisabled: isDisabled ?? false,
         themeStyle: themeStyle ?? 'light',
