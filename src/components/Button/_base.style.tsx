@@ -26,12 +26,6 @@ export const cssButtonBaseNormal = (props: ButtonBaseProps) => css`
 `
 
 export const cssButtonBaseHover = (props: ButtonBaseProps) => css`
-  background: linear-gradient(
-      145deg, 
-      ${DefaultThemeColors(props.themeStyle).HIGHLIGHT_COLOR_TO}, 
-      ${DefaultThemeColors(props.themeStyle).HIGHLIGHT_COLOR_FROM}
-    );
-
   ${DefaultThemeProperties.actnBoxShadow1.hover(props.themeStyle)}
 `
 

@@ -21,6 +21,12 @@ export type StandardButtonBaseProps = ButtonBaseProps & {}
 const cssStandardButtonNormal = (props: StandardButtonBaseProps) => css`
   ${cssButtonBaseNormal(props)}
 
+  background: linear-gradient(
+      145deg, 
+      ${DefaultThemeColors(props.themeStyle).HIGHLIGHT_COLOR_TO}, 
+      ${DefaultThemeColors(props.themeStyle).HIGHLIGHT_COLOR_FROM}
+    );
+
   border-radius: 4px;
 `
 
@@ -71,8 +77,3 @@ export const cssStandardButtonBase = (props: StandardButtonBaseProps) => css`
     `
   }
 `
-
-
-export type {
-  ThemeStyle
-}
