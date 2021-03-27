@@ -15,9 +15,9 @@ const cssGridViewItem = (usePadding: TCssPaddingSize) => {
 
   if (usePadding === 'small') 
     paddingSize = {
-      Desktop: "12px",
-      MobileL: "8px",
-      MobileS: "4px",
+      Desktop: "16px",
+      MobileL: "12px",
+      MobileS: "8px",
     }
 
   else if (usePadding === 'medium') 
