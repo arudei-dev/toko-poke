@@ -133,7 +133,7 @@ const boxShadowInset = {
 }
 
 const mqSizes = {
-  mobileS: "320px",
+  mobileS: "360px",
   mobileM: "480px",
   mobileL: "600px",
   desktopS: "768px",
