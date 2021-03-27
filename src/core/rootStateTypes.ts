@@ -1,9 +1,12 @@
-import { PokemonLists_pokemons_results } from './services/types/PokemonLists'
+import { PokemonLists_pokemons_results } from './api/types/PokemonLists'
 
 export type TAppTheme = 'light' | 'dark'
 
 export type TMyProfile = {
-  myPokeList: [PokemonLists_pokemons_results],
+  myPokeList: {
+    nickname: string,
+    species: PokemonLists_pokemons_results,
+  }[],
 }
 
 export type TRootState = {
