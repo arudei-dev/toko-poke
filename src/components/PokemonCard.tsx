@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from "react"
 import { PokeSilhouette } from "assets/svg/PokeSilhouette"
-import { capitalizeEachWord } from "core/services/string-helper"
+import { capitalizeEachWord } from "core/utils/string-helper"
 import { AsyncImage } from "./AsyncImage"
 import { CardView } from "./CardView"
 import {

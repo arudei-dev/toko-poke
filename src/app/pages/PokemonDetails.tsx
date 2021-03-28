@@ -8,7 +8,7 @@ import {
 } from 'core/types/graphql/PokeDetails';
 import { useRootState }          from 'core/hooks/rootState';
 import { useMediaQuery }         from 'core/hooks/mediaQuery';
-import { capitalizeEachWord }    from 'core/services/string-helper';
+import { capitalizeEachWord }    from 'core/utils/string-helper';
 import { PokeSilhouette }        from 'assets/svg/PokeSilhouette';
 import {
   PageBase,
