@@ -15,7 +15,8 @@ const MSG_NICKNAME_NOT_AVAILABLE = "Sorry, but there's already a pokemon with th
 export type PokemonCatchSaveEventPkg = {
   pokeId: number, 
   pokeName: string, 
-  pokeNickname: string
+  pokeNickname: string,
+  pokeImageURL?: string | null,
 }
 
 interface Props extends Partial<ThemeAwareLayout> {
@@ -42,7 +43,8 @@ export const LayoutCatchPokemonLucky: React.FC<Props> = ({
     onSaveClick && onSaveClick({
       pokeId: pokeData?.id!,
       pokeName: pokeData?.name!,
-      pokeNickname: givenNickname
+      pokeImageURL: pokeData?.image,
+      pokeNickname: givenNickname,
     })
   }
 

@@ -42,7 +42,6 @@ export const ModalCatchPokemon = () => {
 
     const myPokeList = appState.myProfile?.myPokeList || []
 
-    // setNicknameOops(true)
     const nicknameNotAvailable = 
       (myPokeList.length !== 0) 
       && myPokeList.filter(poke => (
@@ -59,6 +58,7 @@ export const ModalCatchPokemon = () => {
       species: {
         id: p.pokeId,
         name: p.pokeName,
+        image: p.pokeImageURL
       }
     }))
 
