@@ -1,4 +1,5 @@
-import { TAppState, TAppTheme } from "./types"
+import { AppThemeStyle } from 'core/types/general-types'
+import { TAppState } from "./state"
 import { TAppAction } from './actions'
 
 
@@ -7,7 +8,7 @@ const appReducer = (state: TAppState, action: TAppAction): TAppState => {
     case "CHANGE_THEME": 
       return {
         ...state,
-        useTheme: action.payload as TAppTheme,
+        useTheme: action.payload as AppThemeStyle,
       }
 
     case "UPDATE_PROFILE_B":

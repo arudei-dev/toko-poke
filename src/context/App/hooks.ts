@@ -1,7 +1,7 @@
 import { Dispatch, useContext } from 'react'
 import { TAppAction } from './actions'
-import { TAppState } from './types'
-import { AppState, AppDispatch } from './init'
+import { TAppState } from './state'
+import { AppState, AppDispatch } from './provider'
 
 
 export const useAppState = (): TAppState => {

@@ -1,10 +1,15 @@
-import { useReducer } from 'react'
-import { appReducer} from './reducer'
+import { useReducer, createContext, Dispatch } from 'react'
+import { appReducer } from './reducer'
+import { TAppAction } from './actions'
 import {
-  initialState,
-  AppState,
-  AppDispatch
-} from './init'
+  TMyProfile,
+  TAppState,
+  initialState
+} from './state'
+
+
+export const AppState    = createContext<TAppState | undefined>(undefined)
+export const AppDispatch = createContext<Dispatch<TAppAction> | undefined>(undefined)
 
 
 export const AppStateProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
