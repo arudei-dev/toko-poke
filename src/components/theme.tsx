@@ -7,6 +7,8 @@ export type { ThemeStyle };
 export type DefaultThemeColorsProps = {
   BACKGROUND_COLOR:  string,
 
+  BACKGROUND_OVERLAY_COLOR: string
+
   TEXT_COLOR_PRIMARY: string,
   TEXT_COLOR_ALT: string,
   TEXT_COLOR_DISABLED: string,
@@ -27,6 +29,8 @@ export type DefaultThemeColorsProps = {
 export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   // BACKGROUND_COLOR: "#e9edf0",
   BACKGROUND_COLOR: "#e0e5ec",
+
+  BACKGROUND_OVERLAY_COLOR: "rgba(220, 225, 230, 0.9)",
   
   TEXT_COLOR_PRIMARY: "black",
   TEXT_COLOR_ALT: "#00000077",
@@ -47,7 +51,9 @@ export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
 }
 
 export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
-  BACKGROUND_COLOR: "#2a2d32",
+  BACKGROUND_COLOR: "rgb(42, 45, 50)",
+
+  BACKGROUND_OVERLAY_COLOR: "rgba(42, 45, 50, 0.95)",
   
   TEXT_COLOR_PRIMARY: "white",
   TEXT_COLOR_ALT: "#ffffff77",
@@ -60,10 +66,10 @@ export const DefaultThemeColorsDark: DefaultThemeColorsProps = {
   NEU_SHADOW_PLIGHT: "#30343a",
 
   STATUSCOLOR_BLANK: "#000000aa",
-  STATUSCOLOR_SUCCESS: "#30624D",
-  STATUSCOLOR_WARN: "#F0AF41",
-  STATUSCOLOR_INFO: "#1E58AD",
-  STATUSCOLOR_DANGER: "#9C2D31",
+  STATUSCOLOR_SUCCESS: "rgb(48, 98, 77)",
+  STATUSCOLOR_WARN: "rgb(240, 175, 65)",
+  STATUSCOLOR_INFO: "rgb(30, 88, 173)",
+  STATUSCOLOR_DANGER: "rgb(226, 55, 60)",
 }
 
 export const DefaultThemeColors = (type: ThemeStyle): DefaultThemeColorsProps => (
@@ -142,6 +148,9 @@ const mqSizes = {
   dekstopXL: "1200px",
 }
 
+export type ThemeAwareLayout = {
+  themeStyle: ThemeStyle
+}
 
 
 export const DefaultThemeProperties = {
