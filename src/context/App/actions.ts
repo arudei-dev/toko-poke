@@ -1,18 +1,18 @@
 import { TAppTheme, TMyProfile } from "./types"
 
-export type TRootActionType = "CHANGE_THEME" 
+export type TAppActionType = "CHANGE_THEME" 
                               | "UPDATE_PROFILE_B" | "UPDATE_PROFILE_S" | "UPDATE_PROFILE_F"
 
 export type TPayload = TAppTheme 
                         | TMyProfile
 
 
-export type TRootAction = {
-  type: TRootActionType,
+export type TAppAction = {
+  type: TAppActionType,
   payload?: TPayload,
 }
 
-const actChangeTheme = (theme: TAppTheme): TRootAction => ({
+const actChangeTheme = (theme: TAppTheme): TAppAction => ({
   type: "CHANGE_THEME",
   payload: theme,
 })

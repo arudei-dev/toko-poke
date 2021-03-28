@@ -1,28 +1,28 @@
 import { Dispatch, useContext } from 'react'
-import { TRootAction } from './actions'
-import { TRootState } from './types'
-import { RootState, RootDispatch } from './init'
+import { TAppAction } from './actions'
+import { TAppState } from './types'
+import { AppState, AppDispatch } from './init'
 
 
-export const useRootState = (): TRootState => {
-  const context = useContext(RootState)
+export const useAppState = (): TAppState => {
+  const context = useContext(AppState)
 
   if (context === undefined) {
-    throw new Error("Please use useRootState() within RootStateProvider.")
+    throw new Error("Please use useAppState() within AppStateProvider.")
   }
 
   return context 
 }
 
-export const useRootDispatch = (): Dispatch<TRootAction> => {
-  const context = useContext(RootDispatch)
+export const useAppDispatch = (): Dispatch<TAppAction> => {
+  const context = useContext(AppDispatch)
 
   if (context === undefined) {
-    throw new Error("Please use useRootDispatch() within RootStateProvider.")
+    throw new Error("Please use useAppDispatch() within AppStateProvider.")
   }
 
   return context 
 }
 
-export const useRootContext = (): [TRootState, Dispatch<TRootAction>] =>
-  [useRootState(), useRootDispatch()]
+export const useAppContext = (): [TAppState, Dispatch<TAppAction>] =>
+  [useAppState(), useAppDispatch()]

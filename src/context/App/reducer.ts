@@ -1,8 +1,8 @@
-import { TRootState, TAppTheme } from "./types"
-import { TRootAction } from './actions'
+import { TAppState, TAppTheme } from "./types"
+import { TAppAction } from './actions'
 
 
-const rootReducer = (state: TRootState, action: TRootAction): TRootState => {
+const appReducer = (state: TAppState, action: TAppAction): TAppState => {
   switch (action.type) {
     case "CHANGE_THEME": 
       return {
@@ -19,5 +19,5 @@ const rootReducer = (state: TRootState, action: TRootAction): TRootState => {
 }
 
 export {
-  rootReducer
+  appReducer
 }

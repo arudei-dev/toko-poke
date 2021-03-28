@@ -9,7 +9,7 @@ export type TMyProfile = {
   }[],
 }
 
-export type TRootState = {
+export type TAppState = {
   useTheme: TAppTheme,
   myProfile?: TMyProfile,
 }

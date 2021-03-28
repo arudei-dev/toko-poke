@@ -6,7 +6,7 @@ import {
   PokeDetails_moves, 
   PokeDetails_stats 
 } from 'context/Apollo/types/PokeDetails';
-import { useRootState }          from 'context/App/hooks';
+import { useAppState }          from 'context/App/hooks';
 import { useMediaQuery }         from 'core/services/mediaQuery';
 import { capitalizeEachWord }    from 'core/utils/string-helper';
 import { PokeSilhouette }        from 'assets/svg/PokeSilhouette';
@@ -41,7 +41,7 @@ const PokemonDetails: React.FC<Props> = ({ ...props }) => {
   })
   let { pokeName } = useParams<{ pokeName: string, }>()
 
-  const { useTheme: themeStyle } = useRootState()
+  const { useTheme: themeStyle } = useAppState()
 
   const [loadDetails, { called, loading, data: pokeData, error }] = useLQPokemonDetailsByName()
 

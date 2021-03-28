@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // import { RootApolloProvider } from 'context/Apollo/'
-// import { RootStateProvider } from 'context/App'
+// import { AppStateProvider } from 'context/App'
 import { RootProviders } from 'context'
 import { MyPokemonLists } from './pages/MyPokemonLists';
 import { PokemonDetails } from './pages/PokemonDetails';

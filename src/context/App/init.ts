@@ -1,16 +1,16 @@
 import { createContext, Dispatch } from 'react'
-import { TRootAction } from './actions'
+import { TAppAction } from './actions'
 import {
   TAppTheme,
   TMyProfile,
-  TRootState
+  TAppState
 } from './types'
 
 
-export const initialState: TRootState = {
+export const initialState: TAppState = {
   useTheme: 'light'
 }
 
-export const RootState    = createContext<TRootState | undefined>(undefined)
-export const RootDispatch = createContext<Dispatch<TRootAction> | undefined>(undefined)
+export const AppState    = createContext<TAppState | undefined>(undefined)
+export const AppDispatch = createContext<Dispatch<TAppAction> | undefined>(undefined)
 

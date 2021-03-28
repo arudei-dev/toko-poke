@@ -1,20 +1,20 @@
 import { useReducer } from 'react'
-import { rootReducer } from './reducer'
+import { appReducer} from './reducer'
 import {
   initialState,
-  RootState,
-  RootDispatch
+  AppState,
+  AppDispatch
 } from './init'
 
 
-export const RootStateProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
-  const [state, dispatch] = useReducer(rootReducer, initialState)
+export const AppStateProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
+  const [state, dispatch] = useReducer(appReducer, initialState)
 
   return (
-    <RootState.Provider value={state}>
-      <RootDispatch.Provider value={dispatch}>
+    <AppState.Provider value={state}>
+      <AppDispatch.Provider value={dispatch}>
         { children }
-      </RootDispatch.Provider>
-    </RootState.Provider>
+      </AppDispatch.Provider>
+    </AppState.Provider>
   )
 }

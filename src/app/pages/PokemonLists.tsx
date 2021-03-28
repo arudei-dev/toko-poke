@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from "react-router-dom";
 import { useLQPokemonLists } from "context/Apollo/services/lqPokemonLists";
-import { useRootState } from 'context/App/hooks';
+import { useAppState } from 'context/App/hooks';
 import { parseUrlQuery } from 'core/utils/url-helper';
 import { GridView } from 'components/GridView'
 import { PageBase } from 'components/PageBase'
@@ -16,7 +16,7 @@ const ITEM_LIMIT = 20;
 
 
 const PokemonLists = () => {
-  const { useTheme } = useRootState()
+  const { useTheme } = useAppState()
 
   const history = useHistory()
   const location = useLocation()

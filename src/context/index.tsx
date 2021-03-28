@@ -1,5 +1,5 @@
 import { RootApolloProvider } from './Apollo/provider'
-import { RootStateProvider } from './App/provider'
+import { AppStateProvider } from './App/provider'
 
 
 interface Props {
@@ -9,9 +9,9 @@ interface Props {
 export const RootProviders: React.FC<Props> = ({ children }) => {
   return (
     <RootApolloProvider>
-      <RootStateProvider>
+      <AppStateProvider>
         {children}
-      </RootStateProvider>
+      </AppStateProvider>
     </RootApolloProvider>
   )
 }
