@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
-import { useLQPokemonDetailsByName } from "core/api/pokemon-details.hook";
+import { useLQPokemonDetailsByName } from "context/Apollo/services/lqPokemonDetails";
 import { 
   PokeDetails_moves, 
   PokeDetails_stats 
-} from 'core/types/graphql/PokeDetails';
-import { useRootState }          from 'core/hooks/rootState';
-import { useMediaQuery }         from 'core/hooks/mediaQuery';
+} from 'context/Apollo/types/PokeDetails';
+import { useRootState }          from 'context/App/hooks';
+import { useMediaQuery }         from 'core/services/mediaQuery';
 import { capitalizeEachWord }    from 'core/utils/string-helper';
 import { PokeSilhouette }        from 'assets/svg/PokeSilhouette';
 import {

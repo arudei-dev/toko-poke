@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from "react-router-dom";
-import { useLQPokemonLists } from "core/api/pokemon-lists.hook";
-import { useRootState } from 'core/hooks/rootState';
+import { useLQPokemonLists } from "context/Apollo/services/lqPokemonLists";
+import { useRootState } from 'context/App/hooks';
 import { parseUrlQuery } from 'core/utils/url-helper';
 import { GridView } from 'components/GridView'
 import { PageBase } from 'components/PageBase'

@@ -1,5 +1,5 @@
-import { TRootState, TAppTheme } from "./rootStateTypes"
-import { TRootAction } from './rootActions'
+import { TRootState, TAppTheme } from "./types"
+import { TRootAction } from './actions'
 
 
 const rootReducer = (state: TRootState, action: TRootAction): TRootState => {

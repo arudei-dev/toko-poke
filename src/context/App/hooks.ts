@@ -1,13 +1,11 @@
 import { Dispatch, useContext } from 'react'
-import {
-  TRootState,
-  TRootAction,
-  rootState,
-  rootDispatch,
-} from 'core/rootContext'
+import { TRootAction } from './actions'
+import { TRootState } from './types'
+import { RootState, RootDispatch } from './init'
+
 
 export const useRootState = (): TRootState => {
-  const context = useContext(rootState)
+  const context = useContext(RootState)
 
   if (context === undefined) {
     throw new Error("Please use useRootState() within RootStateProvider.")
@@ -17,7 +15,7 @@ export const useRootState = (): TRootState => {
 }
 
 export const useRootDispatch = (): Dispatch<TRootAction> => {
-  const context = useContext(rootDispatch)
+  const context = useContext(RootDispatch)
 
   if (context === undefined) {
     throw new Error("Please use useRootDispatch() within RootStateProvider.")

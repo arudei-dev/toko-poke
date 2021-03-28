@@ -1,4 +1,4 @@
-import { PokemonLists_pokemons_results } from './types/graphql/PokemonLists'
+import { PokemonLists_pokemons_results } from 'context/Apollo/types/PokemonLists'
 
 export type TAppTheme = 'light' | 'dark'
 
