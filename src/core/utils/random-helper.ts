@@ -17,5 +17,6 @@ function rollADice(): number {
 
 export {
   tossACoin,
-  rollADice
+  rollADice,
+  CoinFace
 }
