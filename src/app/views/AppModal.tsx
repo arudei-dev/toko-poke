@@ -4,33 +4,48 @@
 /** @jsxImportSource @emotion/react */
 import { CardView, StandardButton } from "components"
 import { cssAppModalView } from "./AppModal.style"
-import { CloseIcon } from 'assets/svg/CloseIcon'
-import SadPikaImg from 'assets/img/sad-pika-min.png'
+import { useAppState } from 'context/App/hooks'
+import { useModalContext } from 'context/Modal/hooks'
+import { ModalController } from "app/modals"
+import { React } from "@ungap/global-this"
 
 
 export const AppModalView = () => {
-  return (
-    <div css={cssAppModalView()}>
-      <CardView>
-        <div className="modal-inner">
-          <div className="modal-titlebar">
-            <div className="titlebar-title">
-              Modal Title
-            </div>
-            <div className="titlebar-actions">
-              <StandardButton 
-                title={(
-                  <div className="icon-close">
-                    <CloseIcon color="black"/>
-                  </div>
-                )}
-                />
-            </div>
-          </div>
-          
+  const appState = useAppState()
+  const themeStyle = appState.useTheme
 
+  const [modalState, modalDispatch] = useModalContext()
+
+  const _onCloseButtonClick = () => {
+    modalDispatch({
+      type: "CLOSE_MODAL"
+    })
+  }
+
+  const _onOuterDivClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault()
+
+    _onCloseButtonClick()
+  }
+
+  return (
+    (modalState.showModal) ? (
+      <div 
+        css={cssAppModalView({
+          themeStyle
+        })} 
+        onClick={_onOuterDivClick}>
+        <div className="modal-enclosing" onClick={e => e.stopPropagation()}>
+          <CardView
+            themeStyle={themeStyle}>
+            <div className="modal-inner">              
+              <ModalController/>
+            </div>
+          </CardView>
         </div>
-      </CardView>
-    </div>
+      </div>
+    ) : (
+      <></>
+    )
   )
 }

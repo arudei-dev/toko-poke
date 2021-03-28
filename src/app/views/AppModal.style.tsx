@@ -1,66 +1,41 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { mqSizes } from 'components/theme'
+import { DefaultThemeColors, mqSizes, ThemeStyle } from 'components/theme'
 
 
-export const cssAppModalView = () => css`
+export type CssAppModalViewProps = {
+  themeStyle: ThemeStyle
+}
 
-.modal-inner {
-    width: 400px;
-    height: 350px;
+export const cssAppModalView = (props: CssAppModalViewProps) => css`
 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "."
-      ".";
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_OVERLAY_COLOR};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .hide {
+    display: none;
+  }
+
+  .modal-inner {
 
     @media (max-width: ${mqSizes.mobileM}) {
-      width: 300px;
-      height: 300px;
+      min-width: 300px;
+      min-height: 150px;
     }
     @media (max-width: ${mqSizes.mobileS}) {
-      width: 250px;
-    }
-
-    .modal-titlebar {
-      min-height: 48px;
-
-      display: grid;
-      grid-template-columns: 1fr auto;
-      grid-template-rows: 1fr;
-      gap: 0px 0px;
-      grid-template-areas:
-        ". .";
-
-      .titlebar-title {
-        width: 100%;
-        height: 100%;
-        padding-left: 8px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        font-family: 'Ubuntu';
-        font-size: 21pt;
-        font-weight: 600;
-
-        @media (max-width: ${mqSizes.mobileM}) {
-          font-size: 18pt;
-        }
-        @media (max-width: ${mqSizes.mobileS}) {
-          font-size: 14pt;
-        }
-      }
-
-      .icon-close {
-        width: 24px;
-        height: 24px;
-      }
-
+      min-width: 250px;
     }
   }
 `
