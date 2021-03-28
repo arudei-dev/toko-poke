@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { PokeDetails_stats } from 'core/api/types/PokeDetails'
+import { PokeDetails_stats } from 'core/types/graphql/PokeDetails'
 import { mqSizes, ThemeStyle } from 'components/theme';
 import { GridView } from 'components/GridView';
 import { CardView } from 'components/CardView';

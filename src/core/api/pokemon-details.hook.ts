@@ -1,11 +1,11 @@
 import { useLazyQuery } from '@apollo/client'
-import { TQueryHook, TLazyQueryHook } from './types/base'
+import { TQueryHook, TLazyQueryHook } from 'core/types/graphql/base'
 import { GET_POKE_DETAILS } from './pokemon-details.gql'
 import { 
   PokemonDetailsByName,
   PokemonDetailsByNameVariables, 
   PokemonDetailsByName_pokemon 
-} from './types/PokemonDetailsByName'
+} from 'core/types/graphql/PokemonDetailsByName'
 
 
 const useLQPokemonDetailsByName: TLazyQueryHook<PokemonDetailsByNameVariables, PokemonDetailsByName_pokemon> = () => {

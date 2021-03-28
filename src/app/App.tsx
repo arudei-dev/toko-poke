@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { RootApolloProvider } from 'core/services/apollo-init'
-import { RootStateProvider } from 'core/rootContext'
+import { RootApolloProvider } from 'core/providers/Apollo'
+import { RootStateProvider } from 'core/providers/RootState'
 import { MyPokemonLists } from './pages/MyPokemonLists';
 import { PokemonDetails } from './pages/PokemonDetails';
 import { PokemonLists } from './pages/PokemonLists';
 import './App.scss';
-import { AppFrame } from 'views/AppFrame';
+import { AppFrame } from 'app/views/AppFrame';
 
 
 function App() {

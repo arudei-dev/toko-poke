@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "apollo-codegen": "apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/core/api/**.gql.ts --tagName=gql --addTypename  types"
+    "apollo-codegen": "apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --includes=src/core/api/**.gql.ts --tagName=gql --outputFlat src/core/types/graphql"
   },
   "eslintConfig": {
     "extends": [

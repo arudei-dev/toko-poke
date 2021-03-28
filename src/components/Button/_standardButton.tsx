@@ -5,7 +5,7 @@ import { cssStandardButtonBase } from './_standardButton.style'
 
 
 export type StandardButtonProps = Partial<BaseButtonProps> & {
-  title: string
+  title: React.ReactNode // TODO: Proper button children!!!
 }
 
 export const StandardButton: React.FC<StandardButtonProps> = ({

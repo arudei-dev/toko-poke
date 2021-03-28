@@ -1,4 +1,4 @@
-import { PokemonLists_pokemons_results } from './api/types/PokemonLists'
+import { PokemonLists_pokemons_results } from './types/graphql/PokemonLists'
 
 export type TAppTheme = 'light' | 'dark'
 

@@ -5,10 +5,10 @@ import { useLQPokemonDetailsByName } from "core/api/pokemon-details.hook";
 import { 
   PokeDetails_moves, 
   PokeDetails_stats 
-} from 'core/api/types/PokeDetails';
-import { useRootState }          from 'core/rootContext';
+} from 'core/types/graphql/PokeDetails';
+import { useRootState }          from 'core/hooks/rootState';
 import { useMediaQuery }         from 'core/hooks/mediaQuery';
-import { capitalizeEachWord }    from 'tools/string-helper';
+import { capitalizeEachWord }    from 'core/services/string-helper';
 import { PokeSilhouette }        from 'assets/svg/PokeSilhouette';
 import {
   PageBase,
@@ -16,13 +16,14 @@ import {
   AsyncImage,
   InfoChip,
   Text,
+
   StandardButton,
   ToggleButton,
 } from 'components'
 
 import { mqSizes, ThemeStyle } from 'components/theme';
-import { LayoutPokemonMovesList } from './layouts/PokemonMovesList';
-import { LayoutPokemonStatsList } from './layouts/PokemonStatsList';
+import { LayoutPokemonMovesList } from '../layouts/PokemonMovesList';
+import { LayoutPokemonStatsList } from '../layouts/PokemonStatsList';
 import { cssPagePokemonDetails } from './PokemonDetails.style'
 
 interface Props {}
