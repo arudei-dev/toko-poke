@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { TAppTheme as ThemeStyle } from 'context/App/types'
+import { AppThemeStyle as ThemeStyle } from 'core/types/general-types'
 export type { ThemeStyle };
 
 
