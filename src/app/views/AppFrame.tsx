@@ -15,9 +15,8 @@ export const AppFrame: React.FC<AppFrameProps> = ({
       <div className="app-main content">
         { children }
       </div>
-      <div className="app-main modals">
-        <AppModalView/>
-      </div>
+      
+      <AppModalView/>
     </div>
   )
 }
