@@ -1,4 +1,5 @@
-import { useReducer, createContext, Dispatch } from 'react'
+import { useEffect, useReducer, createContext, Dispatch } from 'react'
+import { useLocalStorage } from 'core/services/localStorage'
 import { appReducer } from './reducer'
 import { TAppAction } from './actions'
 import {
@@ -13,7 +14,13 @@ export const AppDispatch = createContext<Dispatch<TAppAction> | undefined>(undef
 
 
 export const AppStateProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState)
+  const [localState, setLocalState] = useLocalStorage<TAppState>({key: "appState", initialValue: initialState})
+
+  const [state, dispatch] = useReducer(appReducer, localState)
+
+  useEffect(() => {
+    setLocalState(state)
+  }, [state])
 
   return (
     <AppState.Provider value={state}>
