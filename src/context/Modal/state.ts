@@ -1,8 +1,4 @@
-
-export type TModalPayload = {
-  modalType: string,
-  modalPayload: any,
-}
+import { TModalRegistry as TModalPayload } from 'app/modals'
 
 export type TModalState = {
   showModal: boolean,
@@ -12,7 +8,9 @@ export type TModalState = {
 export const initialModalState: TModalState = {
   showModal: false,
   modal: {
-    modalType: '',
+    modalType: null,
     modalPayload: null,
   }
 }
+
+export type { TModalPayload }
