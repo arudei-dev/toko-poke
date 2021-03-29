@@ -66,7 +66,6 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         <label className="switch">
           <input 
             type="checkbox" 
-            defaultChecked={isPressed} 
             checked={isPressed}
             onClick={_onToggleClick} 
             onChange={_onToggleChanged}/>
