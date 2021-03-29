@@ -81,6 +81,8 @@ export const cssLayoutPokemonBio = (props: cssLayoutPokemonBioProps) => css`
         font-size: 36pt;
         font-weight: 600;
 
+        text-align: center;
+
         @media (max-width: ${mqSizes.desktopS}) {
           display: flex;
           flex-direction: column;

@@ -36,11 +36,13 @@ export const LayoutPokemonBio: React.FC<Props> = ({
         <div className="poke-avatar">
           {
             !usePlaceholder ? (
-              (pokeData?.sprites?.front_default) && (
+              (pokeData?.sprites?.front_default) ? (
                 <AsyncImage src={pokeData?.sprites?.front_default} alt={`Pokemon '${pokeName}'`}>
                   <PokeSilhouette color="#00000033"/>
                 </AsyncImage>
-              ) 
+              ) : (
+                <PokeSilhouette color="#00000011"/>
+              )
             ) : (
               <PokeSilhouette color="#00000011"/>
             )
