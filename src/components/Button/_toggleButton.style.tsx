@@ -14,8 +14,11 @@ import {
   cssButtonBaseDisabled,
 } from './_base.style'
 
+export type ToggledStyle = 'raised-sunken' | 'raised' | 'sunken'
+
 export type ToggleButtonBaseProps = ButtonBaseProps & {
   oneWayToggle: boolean,
+  toggledStyle: ToggledStyle
 }
 
 
@@ -69,7 +72,10 @@ export const cssToggleButtonBase = (props: ToggleButtonBaseProps) => css`
 
     padding: 4px;
 
-    ${cssToggleButtonNormal(props)}
+    box-shadow: 0;
+    transition: box-shadow 150ms;
+
+    ${props.toggledStyle !== 'raised' && cssToggleButtonNormal(props)}
 
     .contentInner {
       padding: 8px 12px;
@@ -96,7 +102,7 @@ export const cssToggleButtonBase = (props: ToggleButtonBaseProps) => css`
     ${cssToggleButtonNormal(props)}
 
     .contentInner {
-      ${cssToggleButtonActive(props)}
+      ${props.toggledStyle !== 'raised' && cssToggleButtonActive(props)}
     }
 
     ${!props.oneWayToggle && css`
@@ -105,6 +111,15 @@ export const cssToggleButtonBase = (props: ToggleButtonBaseProps) => css`
         ${cssToggleButtonHover(props)}
       }
       
+      &:active {
+        .contentInner {
+          box-shadow: none;
+        }
+      }
+    `}
+
+    ${props.oneWayToggle && props.toggledStyle === 'raised' && css`
+
       &:active {
         .contentInner {
           box-shadow: none;

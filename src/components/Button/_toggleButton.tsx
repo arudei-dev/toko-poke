@@ -1,6 +1,7 @@
 // /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
 import { BaseButtonProps } from './_base'
+import { ButtonStyle } from './_base.style';
 import { cssToggleButtonBase } from './_toggleButton.style'
 
 
@@ -11,13 +12,14 @@ export type ToggleButtonProps = Partial<BaseButtonProps> & {
   checked?: boolean,
   oneWayToggle?: boolean,
   onChange?: OnToggleChangeFn,
+  toggledStyle?: 'raised-sunken' | 'raised' | 'sunken'
 }
 
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
   title, 
   oneWayToggle, checked,
   isLoading, isDisabled, 
-  themeStyle, buttonStyle,
+  themeStyle, buttonStyle, toggledStyle,
   stretchWidth, stretchHeight,
   onClick, onChange,
 }) => {
@@ -59,6 +61,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         stretchWidth: stretchWidth ?? false,
         stretchHeight: stretchHeight ?? false,
         oneWayToggle: oneWayToggle ?? true,
+        toggledStyle: toggledStyle ?? 'raised-sunken',
       })}>
         <label className="switch">
           <input 
