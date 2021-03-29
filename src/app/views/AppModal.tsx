@@ -25,7 +25,7 @@ export const AppModalView = () => {
   const _onOuterDivClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
 
-    _onCloseButtonClick()
+    // _onCloseButtonClick()
   }
 
   return (
