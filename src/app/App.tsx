@@ -13,15 +13,15 @@ function App() {
   return (
     <div className="App">
       <RootProviders>
-        <AppFrame>
-          <Router>
+        <Router>
+          <AppFrame>
             <Switch>
               <Route exact path="/"                          component={PokemonLists}/>
               <Route exact path="/pokemon/:pokeName/details" component={PokemonDetails}/>
               <Route exact path="/profile/poke-lists"        component={MyPokemonLists}/>
             </Switch>
-          </Router>
-        </AppFrame>
+          </AppFrame>
+        </Router>
       </RootProviders>
     </div>
   );
