@@ -5,9 +5,12 @@ export type TAppActionType = "CHANGE_THEME"
                               | "UPDATE_PROFILE_B" | "UPDATE_PROFILE_S" | "UPDATE_PROFILE_F"
                               | "ADD_POKEMON" | "REMOVE_POKEMON"
 
+export type TPokemonId = number
+
 export type TPayload = AppThemeStyle 
                         | TMyProfile
                         | TPokeBio
+                        | TPokemonId
 
 
 export type TAppAction = {
@@ -25,8 +28,14 @@ const actAddPokemon = (payload: TPokeBio): TAppAction => ({
   payload: payload
 })
 
+const actRemovePokemon = (id: number): TAppAction => ({
+  type: 'REMOVE_POKEMON',
+  payload: id
+})
+
 
 export {
   actChangeTheme,
-  actAddPokemon
+  actAddPokemon,
+  actRemovePokemon
 }

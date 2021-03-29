@@ -1,6 +1,6 @@
 import { AppThemeStyle } from 'core/types/general-types'
 import { TAppState, TPokeBio } from "./state"
-import { TAppAction } from './actions'
+import { TAppAction, TPokemonId } from './actions'
 
 
 const appReducer = (state: TAppState, action: TAppAction): TAppState => {
@@ -25,7 +25,23 @@ const appReducer = (state: TAppState, action: TAppAction): TAppState => {
         }
       }
     }
+    
+    case "REMOVE_POKEMON": {
+      const mpl = state.myProfile?.myPokeList || []
+
+      if (!mpl) {
+        return { ...state }
+      }
       
+      return {
+        ...state,
+        myProfile: {
+          ...state.myProfile,
+          myPokeList: mpl.filter((v, idx) => idx !== (action.payload as TPokemonId))
+        }
+      }
+
+    }
 
     case "UPDATE_PROFILE_B":
     case "UPDATE_PROFILE_S":
