@@ -60,6 +60,8 @@ const PokemonLists = () => {
     setIsLast(false)
 
     if (!loading && called) {
+      console.log(pokeData)
+
       if (!pokeData?.next) {
         setIsLast(true)
 
@@ -78,6 +80,9 @@ const PokemonLists = () => {
               }
             }
           })
+        }
+        else {
+          setcontentStatus('ready')
         }
       }
       else {
