@@ -68,7 +68,7 @@ export const LayoutCatchPokemonLucky: React.FC<Props> = ({
           Congratulations
         </div>
         <div className="content-msg">
-          You just catched <span>{pokeData?.name}</span>!
+          You just caught <span>{pokeData?.name}</span>!
         </div>
         <div className="content-hero">
           {
