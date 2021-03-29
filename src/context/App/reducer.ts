@@ -1,4 +1,4 @@
-import { AppThemeStyle } from 'core/types/general-types'
+import { AppThemeStyle } from 'core/types/GeneralTypes'
 import { TAppState, TPokeBio } from "./state"
 import { TAppAction, TPokemonId } from './actions'
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { AppThemeStyle as ThemeStyle } from 'core/types/general-types'
+import { AppThemeStyle as ThemeStyle } from 'core/types/GeneralTypes'
 export type { ThemeStyle };
 
 

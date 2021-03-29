@@ -1,4 +1,4 @@
-import { AppThemeStyle } from 'core/types/general-types'
+import { AppThemeStyle } from 'core/types/GeneralTypes'
 import { TMyProfile, TPokeBio } from "./state"
 
 export type TAppActionType = "CHANGE_THEME" 
