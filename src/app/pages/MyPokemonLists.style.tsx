@@ -1,9 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { DefaultThemeColors, ThemeAwareLayout } from 'components/theme'
 
-export const cssMyPokemonsListPage = () => css`
+export type CssMyPokemonsListPageProps = ThemeAwareLayout & {
+
+}
+
+export const cssMyPokemonsListPage = (props: CssMyPokemonsListPageProps) => css`
   width: 100%;
   height: 100%;
+
+  color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
 
   .poke-item {
     padding: 8px;

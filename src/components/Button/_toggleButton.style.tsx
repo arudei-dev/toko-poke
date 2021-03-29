@@ -85,6 +85,8 @@ export const cssToggleButtonBase = (props: ToggleButtonBaseProps) => css`
       flex-direction: row;
       align-items: center;
       justify-content: center;
+
+      color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
     }
 
     &:hover {
@@ -126,16 +128,6 @@ export const cssToggleButtonBase = (props: ToggleButtonBaseProps) => css`
         }
       }
     `}
-  }
-
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3; 
-  }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
   }
 
 `

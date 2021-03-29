@@ -2,8 +2,11 @@
 import { css } from '@emotion/react'
 import { ThemeAwareLayout, mqSizes } from 'components/theme'
 
+export type cssLayoutPokemonBioProps = ThemeAwareLayout & {
 
-export const cssLayoutPokemonBio = () => css`
+}
+
+export const cssLayoutPokemonBio = (props: cssLayoutPokemonBioProps) => css`
   width: 100%;
 
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { ThemeAwareLayout, mqSizes } from 'components/theme'
+import { ThemeAwareLayout, mqSizes, DefaultThemeColors } from 'components/theme'
 
 type Props = ThemeAwareLayout & {
 
@@ -9,6 +9,8 @@ type Props = ThemeAwareLayout & {
 export const cssPagePokemonDetails = (props: Props) => css`
   width: 100%;
   height: 100%;
+
+  background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
   
   .pokemon-details {
     width: 100%;
@@ -33,15 +35,6 @@ export const cssPagePokemonDetails = (props: Props) => css`
           ". .";
       }
 
-      /* @media (max-width: ${mqSizes.desktopM}) {
-        display: grid;
-        grid-template-rows: minmax(0, auto) minmax(0, 1fr);
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0px 0px;
-        grid-template-areas:
-          "."
-          ".";
-      } */
 
       @media (max-width: ${mqSizes.desktopM}) {
         display: flex;
@@ -60,6 +53,7 @@ export const cssPagePokemonDetails = (props: Props) => css`
           .poke-bio-enclose {
             width: 100%;
             height: 100%;
+            background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
             display: grid;
             grid-template-rows: minmax(0, auto) minmax(0, auto);

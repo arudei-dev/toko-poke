@@ -54,11 +54,13 @@ export const PokemonDetails = () => {
 
   const _renderPokeBio = () => (
     <CardView
+      themeStyle={themeStyle}
       stretchWidth={true}
       >
         <div className="poke-bio-enclose">
           <div className="poke-bio-content">
             <LayoutPokemonBio
+              themeStyle={themeStyle}
               pokeData={pokeData}
               />
           </div>
@@ -80,24 +82,24 @@ export const PokemonDetails = () => {
       <div className="details-inner tab">
         <div className="tab-item">
           <ToggleButton 
+            themeStyle={themeStyle}
             title="Moves"
             oneWayToggle={true}
             checked={tabActive === 'moves'}
             stretchWidth={false}
             stretchHeight={false}
-            themeStyle={themeStyle}
             onClick={e => _onToggleButtonClick('moves')}
             />
         </div>
 
         <div className="tab-item">
           <ToggleButton 
+            themeStyle={themeStyle}
             title="Stats"
             oneWayToggle={true}
             checked={tabActive === 'stats'}
             stretchWidth={false}
             stretchHeight={false}
-            themeStyle={themeStyle}
             onClick={e => _onToggleButtonClick('stats')}
             />
         </div>
@@ -109,7 +111,7 @@ export const PokemonDetails = () => {
             <div className="content-moves">
               <LayoutPokemonMovesList
                 isLoading={false}
-                themeStyle="light"
+                themeStyle={themeStyle}
                 movesList={pokeData?.moves}
                 />
             </div>
@@ -118,7 +120,7 @@ export const PokemonDetails = () => {
             <div className="content-stats">
               <LayoutPokemonStatsList
                 isLoading={false}
-                themeStyle="light"
+                themeStyle={themeStyle}
                 statsList={pokeData?.stats}
                 />
             </div>
@@ -142,9 +144,10 @@ export const PokemonDetails = () => {
   return (
     <div
       css={cssPagePokemonDetails({
-        themeStyle: 'light'
+        themeStyle
       })}>
         <PageBase
+          themeStyle={themeStyle}
           autoScrollRestore={true}>
             {(!loading && called) && _renderComplete()}
         </PageBase>

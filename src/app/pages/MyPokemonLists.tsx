@@ -48,6 +48,7 @@ export const MyPokemonLists = () => {
       </div>
       <div className="actions">
         <StandardButton
+          themeStyle={themeStyle}
           title="Go to Pokemons List"
           onClick={_onGoToPokeListClick}
           />
@@ -59,7 +60,9 @@ export const MyPokemonLists = () => {
     <PageBase
       themeStyle={themeStyle}
       autoScrollRestore={true}>
-        <div css={cssMyPokemonsListPage()}>
+        <div css={cssMyPokemonsListPage({
+          themeStyle
+        })}>
           {
             (currentPokeList.length !== 0) ? (
               <GridView>
@@ -67,13 +70,13 @@ export const MyPokemonLists = () => {
                   currentPokeList?.map((poke, idx) => (
                     <div className="poke-item">
                       <LayoutPokemonCardWithNickname
+                        themeStyle={themeStyle}
                         key={idx}
                         id={idx}
                         autoCapitalize={true}
                         nickname={poke?.nickname || "???"}
                         pokeName={poke?.species?.name || "???"}
                         pokeSpriteURL={poke?.species?.image || ""}
-                        themeStyle={themeStyle}
                         usePlaceholder={false}
                         onClick={_onPokemonCardClick}
                         buttonText="Release"

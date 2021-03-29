@@ -8,22 +8,25 @@ import {
 } from 'components'
 import { PokeSilhouette } from 'assets/svg/PokeSilhouette'
 import { cssLayoutPokemonBio } from './PokemonBio.style'
+import { ThemeAwareLayout } from 'components/theme'
 
 
-interface Props {
+interface Props extends Partial<ThemeAwareLayout> {
   pokeData?: PokemonDetailsByName_pokemon
 }
 
 export const LayoutPokemonBio: React.FC<Props> = ({
   pokeData,
+  themeStyle,
 }) => {
-  const themeStyle = 'light'
 
   const pokeName = "charizard"
 
   return (
     <div
-      css={cssLayoutPokemonBio()}
+      css={cssLayoutPokemonBio({
+        themeStyle: themeStyle ?? 'light'
+      })}
       >
       
       <div className="poke-bio">

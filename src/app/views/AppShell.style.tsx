@@ -8,7 +8,7 @@ type CssAppShellProps = ThemeAwareLayout & {
 
 export const cssAppShell = (props: CssAppShellProps) => css`
   width: 100%;
-  background-color: ${DefaultThemeColors('light').BACKGROUND_COLOR};
+  background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
   padding: 8px;
 
@@ -23,11 +23,13 @@ export const cssAppShell = (props: CssAppShellProps) => css`
     justify-content: center;
     
     
-    ${DefaultThemeProperties.boxShadowInset.small('light')}
+    ${DefaultThemeProperties.boxShadowInset.small(props.themeStyle)}
 
     .nav-item {
       padding-left: 8px;
       padding-right: 8px;
+
+      color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
     }
   }
 `

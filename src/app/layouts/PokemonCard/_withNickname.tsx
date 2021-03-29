@@ -4,24 +4,18 @@ import { PokeSilhouette } from "assets/svg/PokeSilhouette"
 import { capitalize1stLetterOfEachWord } from "core/utils/string-helper"
 import { AsyncImage, StandardButton } from "components"
 import { CardView } from "components"
-import {
-  cssPokemonCard,
-  // cssPokemonSpriteRoot,
-  // cssPokemonNameRoot,
-  // cssActionDivRoot,
-  ThemeStyle,
-} from './_withNickname.style'
+import { ThemeAwareLayout } from 'components/theme'
+import { cssPokemonCardWithNickname } from './_withNickname.style'
 
 type ClickEventProps = {e: React.MouseEvent, id: number}
 
-interface Props {
+interface Props extends Partial<ThemeAwareLayout> {
   id: number,
   nickname?: string,
   pokeName?: string,
   pokeSpriteURL?: string,
   autoCapitalize?: boolean,
   usePlaceholder?: boolean,
-  themeStyle?: ThemeStyle,
   onClick?: (p: ClickEventProps) => void;
   buttonText?: string,
   onButtonClick?: (p: ClickEventProps) => void;
@@ -63,7 +57,10 @@ export const LayoutPokemonCardWithNickname: React.FC<Props> = ({
       stretchWidth={true}
       themeStyle={themeStyle}
     >
-      <div css={cssPokemonCard}>
+      <div css={cssPokemonCardWithNickname({
+        isLoading: true,
+        themeStyle: themeStyle ?? 'light'
+      })}>
         <div className="part pokemon-hero">
           {
             (!usePlaceholder || pokeSpriteURL) ? (
