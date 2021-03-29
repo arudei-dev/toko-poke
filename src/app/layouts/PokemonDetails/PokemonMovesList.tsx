@@ -2,9 +2,9 @@
 import { css } from '@emotion/react'
 import { PokeDetails_moves } from 'context/Apollo/types/PokeDetails'
 import { mqSizes, ThemeStyle } from 'components/theme';
-import { GridView } from 'components/GridView';
-import { CardView } from 'components/CardView';
-import { Text } from 'components/Text';
+import { GridView } from 'components';
+import { CardView } from 'components';
+import { Text } from 'components';
 
 
 interface Props {
