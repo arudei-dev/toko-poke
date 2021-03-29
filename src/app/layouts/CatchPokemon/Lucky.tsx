@@ -10,6 +10,7 @@ import {
 } from 'components'
 
 const MSG_NO_NICKNAME = "Please enter a nickname."
+const MSG_MAX_LENGTH = "Maximum 15 characters"
 const MSG_NICKNAME_NOT_AVAILABLE = "Sorry, but there's already a pokemon with that nickname!"
 
 export type PokemonCatchSaveEventPkg = {
@@ -37,6 +38,11 @@ export const LayoutCatchPokemonLucky: React.FC<Props> = ({
   const _onSaveButtonClick = () => {
     if (!givenNickname) {
       setTextStatus(MSG_NO_NICKNAME)
+      return false;
+    }
+
+    if (givenNickname.length > 15) {
+      setTextStatus(MSG_MAX_LENGTH)
       return false;
     }
 
@@ -82,7 +88,7 @@ export const LayoutCatchPokemonLucky: React.FC<Props> = ({
             themeStyle={themeStyle}
             statusType={textStatus ? "error" : "none"}
             statusMsg={textStatus}
-            placeholder="Give it a nickname!"
+            placeholder="Nickname (max 15 characters)"
             onChange={({text}) => setGivenNickname(text)}
             onInputChange={() => textStatus && setTextStatus("")}/>
         </div>
