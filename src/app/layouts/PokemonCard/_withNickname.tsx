@@ -98,42 +98,6 @@ export const LayoutPokemonCardWithNickname: React.FC<Props> = ({
           }
         </div>
       </div>
-      {/* <div css={cssPokemonCard}>
-
-        <div css={cssPokemonSpriteRoot}>
-          {
-            (!usePlaceholder || pokeSpriteURL) ? (
-              <AsyncImage src={pokeSpriteURL} alt={`Pokemon '${pokeName}'`}>
-                <PokeSilhouette color="#00000033"/>
-              </AsyncImage>
-            ) : (
-              <PokeSilhouette color="#00000011"/>
-            )
-          }
-        </div>
-
-        <div css={cssPokemonNameRoot({
-          isLoading: usePlaceholder ?? false,
-          themeStyle: themeStyle ?? 'light',
-        })}>
-          {
-            nickname
-            // (!usePlaceholder && pokeName) ? (
-            //   // Add character ellipsis
-            //   autoCapitalize ? capitalize1stLetterOfEachWord(pokeName) : pokeName
-            // ) : (
-            //   "???"
-            // )
-          }
-        </div>
-        
-        <div css={cssActionDivRoot}>
-          <StandardButton
-            themeStyle={themeStyle}
-            isDisabled={usePlaceholder} 
-            title="Release"/>
-        </div>
-      </div> */}
     </CardView>
   )
 }
