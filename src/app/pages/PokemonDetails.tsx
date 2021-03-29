@@ -1,48 +1,25 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLQPokemonDetailsByName } from "context/Apollo/services/lqPokemonDetails";
-import { 
-  PokeDetails_moves, 
-  PokeDetails_stats 
-} from 'context/Apollo/types/PokeDetails';
-import { useAppState }          from 'context/App/hooks';
-import { useMediaQuery }         from 'core/services/mediaQuery';
-import { capitalizeEachWord }    from 'core/utils/string-helper';
-import { PokeSilhouette }        from 'assets/svg/PokeSilhouette';
-import {
-  PageBase,
-  CardView,
-  AsyncImage,
-  InfoChip,
-  Text,
-
-  StandardButton,
-  ToggleButton,
-} from 'components'
-
-import { mqSizes, ThemeStyle } from 'components/theme';
-import { LayoutPokemonMovesList } from '../layouts/PokemonMovesList';
-import { LayoutPokemonStatsList } from '../layouts/PokemonStatsList';
+import { useAppState } from 'context/App/hooks'
+import { useModalDispatch } from 'context/Modal/hooks'
+import { LayoutPokemonBio } from 'app/layouts/PokemonDetails/PokemonBio'
+import { CardView, PageBase, StandardButton, ToggleButton } from 'components'
 import { cssPagePokemonDetails } from './PokemonDetails.style'
+import { LayoutPokemonMovesList } from "app/layouts/PokemonDetails/PokemonMovesList";
+import { LayoutPokemonStatsList } from "app/layouts/PokemonDetails/PokemonStatsList";
 
-interface Props {}
+export const PokemonDetails = () => {
+  type RegisteredTabs = 'moves' | 'stats'
+  const [tabActive, setTabActive] = useState<RegisteredTabs>('moves')
 
-// Separate CardView:
-// - Clickable CardView (Elevated)
-// - Decoration CardView (Elevated, Sunken)
-//   https://dribbble.com/shots/9834284-Advertisement-Dashboard-ADPOD
+  const appState = useAppState()
+  const themeStyle = appState.useTheme
+  
+  const modalDispatch = useModalDispatch()
 
-
-const PokemonDetails: React.FC<Props> = ({ ...props }) => {
-  let enableOneColumn = useMediaQuery({
-    queryType: 'max-width',
-    queryValue: mqSizes.desktopL
-  })
   let { pokeName } = useParams<{ pokeName: string, }>()
-
-  const { useTheme: themeStyle } = useAppState()
-
   const [loadDetails, { called, loading, data: pokeData, error }] = useLQPokemonDetailsByName()
 
   useEffect(() => {
@@ -54,195 +31,53 @@ const PokemonDetails: React.FC<Props> = ({ ...props }) => {
   }, [])
 
 
-  const _renderComplete = () => (
-    <div className="poke-details-content">
-      
-      <div className="poke-bio">
+  const _onToggleButtonClick = (tab: 'moves' | 'stats') => {
+    setTabActive(tab)
+  } 
 
-        <div className="poke-avatar">
-          {
-            pokeData?.sprites?.front_default ? (
-              <AsyncImage src={pokeData.sprites.front_default} alt={`Pokemon '${pokeName}'`}>
-                <PokeSilhouette color="#00000033"/>
-              </AsyncImage>
-            ) : (
-              <PokeSilhouette color="#00000011"/>
-            )
-          }
-        </div>
+  const _onCatchButtonClick = () => {
+    modalDispatch({
+      type: 'SHOW_MODAL',
+      payload: {
+        modalType: "Catch Pokemon",
+        modalPayload: {
+          id: pokeData?.id,
+          name: pokeData?.name,
+          image: pokeData?.sprites?.front_default,
+        },
+      }
+    })
+  }
 
-        <div className="poke-details">
-          <div className="poke-infohero">
-            <Text 
-              text={capitalizeEachWord(pokeData?.name || "???")}
-              textColor='primary'
-              themeStyle={themeStyle}
+
+
+
+  const _renderPokeBio = () => (
+    <CardView
+      stretchWidth={true}
+      >
+        <div className="poke-bio-enclose">
+          <div className="poke-bio-content">
+            <LayoutPokemonBio
+              pokeData={pokeData}
               />
           </div>
 
-          <div className="poke-types">
-            <div className="poke-types-list">
-              {
-                pokeData?.types?.map((type, idx) => (
-                  type?.type?.name ? (
-                    <InfoChip 
-                      key={`pokeType-${type}-${idx}`}
-                      size="small"
-                      title={type.type.name}
-                      themeStyle={themeStyle}
-                      />
-                  ) : <></>
-                ))
-              }
-              {
-                pokeData?.weight && (
-                  <InfoChip 
-                    size="small"
-                    title={`Weight: ${pokeData?.weight / 10.0} kg`}
-                    themeStyle={themeStyle}
-                    />
-                )
-              }
-            </div>
+          <div className="poke-bio-actions">
+            <StandardButton 
+              title="Catch 'em"
+              stretchWidth={true}
+              themeStyle={themeStyle}
+              onClick={_onCatchButtonClick}
+              />
           </div>
         </div>
-
-      </div>
-
-      <div className="poke-actions">
-        <StandardButton 
-          // add buttonSize {small, med, large}
-          // add buttonStyle { highlight(color), normal }
-          title="Catch 'em!"
-          themeStyle={themeStyle}
-          stretchWidth={true}
-          />
-      </div>
-
-      {
-        !enableOneColumn && (
-          <div className="poke-stats-list flex-rwc">
-            <LayoutPokemonStatsList 
-              isLoading={loading}
-              themeStyle={themeStyle}
-              statsList={pokeData?.stats}/>
-          </div> 
-        )
-      }
-      
-    </div>
+    </CardView>
   )
 
-  return (
-    <PageBase 
-      themeStyle={themeStyle}
-      autoScrollRestore={true} 
-      noYScrolling={loading || !called}
-      >
-
-      <div 
-        className="page-pokemon-details" 
-        css={cssPagePokemonDetails({
-          themeStyle: themeStyle ?? 'light'
-        })}
-        >
-        <div className="fragment poke-details">
-          <CardView 
-            isLoading={loading || !called}
-            isClickable={false}
-            stretchWidth={true}
-            stretchHeight={true}
-            themeStyle={themeStyle}
-            >
-              {!loading && called 
-                  ? _renderComplete() 
-                  : <div></div> 
-              }
-          </CardView>
-        </div>
-        { 
-          !enableOneColumn 
-            ? (
-              <LayoutDetailsDesktop 
-                defaultTab="moves"
-                isLoading={loading || !called}
-                themeStyle={themeStyle}
-                movesList={pokeData?.moves}
-                />
-            )
-            : (
-              <LayoutDetailsMobile 
-                defaultTab="moves"
-                isLoading={loading || !called}
-                themeStyle={themeStyle}
-                movesList={pokeData?.moves}
-                statsList={pokeData?.stats}/>
-            )
-        }
-      </div>
-    </PageBase>
-  )
-}
-
-type LayoutDetailsTab = 'moves' | 'stats'
-
-interface LayoutDetailsProps {
-  defaultTab: LayoutDetailsTab
-  isLoading: boolean,
-  themeStyle: ThemeStyle,
-  movesList?: (PokeDetails_moves | null)[] | null,
-  statsList?: (PokeDetails_stats | null)[] | null,
-}
-
-const LayoutDetailsDesktop: React.FC<LayoutDetailsProps> = ({
-  defaultTab,
-  isLoading,
-  themeStyle,
-  movesList,
-}) => {
-  const [tabActive, setTabActive] = useState(defaultTab)
-
-  const onToggleButtonClick = (tab: LayoutDetailsTab) => {
-    setTabActive(tab)
-  }
-
-  return (
-    
-    <div className="fragment poke-additionals">
-      <div className="additionals-header">
-        <Text
-          themeStyle={themeStyle}
-          text="Available Moves"
-          />
-      </div>
-      <div className="additionals-list">
-        <LayoutPokemonMovesList
-          isLoading={isLoading}
-          themeStyle={themeStyle}
-          movesList={movesList}
-          />
-      </div>
-    </div>
-  )
-}
-
-const LayoutDetailsMobile: React.FC<LayoutDetailsProps> = ({
-  defaultTab,
-  isLoading,
-  themeStyle,
-  movesList,
-  statsList,
-}) => {
-  const [tabActive, setTabActive] = useState(defaultTab)
-
-  const onToggleButtonClick = (tab: LayoutDetailsTab) => {
-    setTabActive(tab)
-  }
-
-  return (
-    <div className="fragment poke-additionals">
-      <div className="additionals-header">
-        {/* Standardize Tab and TabItem as Component. */}
+  const _renderPokeDetails = () => (
+    <div className="poke-details-enclose">
+      <div className="details-inner tab">
         <div className="tab-item">
           <ToggleButton 
             title="Moves"
@@ -251,7 +86,7 @@ const LayoutDetailsMobile: React.FC<LayoutDetailsProps> = ({
             stretchWidth={false}
             stretchHeight={false}
             themeStyle={themeStyle}
-            onClick={e => onToggleButtonClick('moves')}
+            onClick={e => _onToggleButtonClick('moves')}
             />
         </div>
 
@@ -263,32 +98,56 @@ const LayoutDetailsMobile: React.FC<LayoutDetailsProps> = ({
             stretchWidth={false}
             stretchHeight={false}
             themeStyle={themeStyle}
-            onClick={e => onToggleButtonClick('stats')}
+            onClick={e => _onToggleButtonClick('stats')}
             />
         </div>
-        
       </div>
-      <div className="additionals-list">
+      <div className="details-inner content">
         {
-          tabActive === 'moves' ? (
-            <LayoutPokemonMovesList
-              isLoading={isLoading}
-              themeStyle={themeStyle}
-              movesList={movesList}
-              />
-          ) : (
-            <LayoutPokemonStatsList 
-              isLoading={isLoading}
-              themeStyle={themeStyle}
-              statsList={statsList}/>
+          tabActive === 'moves'
+          ? (
+            <div className="content-moves">
+              <LayoutPokemonMovesList
+                isLoading={false}
+                themeStyle="light"
+                movesList={pokeData?.moves}
+                />
+            </div>
+          )
+          : (
+            <div className="content-stats">
+              <LayoutPokemonStatsList
+                isLoading={false}
+                themeStyle="light"
+                statsList={pokeData?.stats}
+                />
+            </div>
           )
         }
       </div>
     </div>
   )
+
+  const _renderComplete = () => (
+    <div className={`pokemon-details multi`}>
+      <div className="column poke-bio">
+        {_renderPokeBio()}
+      </div>
+      <div className="column poke-details">
+        {_renderPokeDetails()}
+      </div>
+    </div>
+  )
+
+  return (
+    <div
+      css={cssPagePokemonDetails({
+        themeStyle: 'light'
+      })}>
+        <PageBase
+          autoScrollRestore={true}>
+            {(!loading && called) && _renderComplete()}
+        </PageBase>
+    </div>
+  )
 }
-
-
-
-
-export { PokemonDetails }

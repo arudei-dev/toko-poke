@@ -1,296 +1,161 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { mqSizes, ThemeStyle } from 'components/theme'
+import { ThemeAwareLayout, mqSizes } from 'components/theme'
 
+type Props = ThemeAwareLayout & {
 
-export const cssFragmentPokeDetails = () => css`
-  &.poke-details {
-    .poke-details-content {
-      width: 100%;
-      height: 100%;
-      padding-bottom: 8px;
+}
 
+export const cssPagePokemonDetails = (props: Props) => css`
+  width: 100%;
+  height: 100%;
+  
+  .pokemon-details {
+    width: 100%;
+    height: 100%;
+    
+    &.multi {
       display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: minmax(0, auto) minmax(0, auto) minmax(0, 1fr) !important;
-      gap: 0px 0px 0px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      grid-template-rows: minmax(0, 1fr);
+      gap: 0px 0px;
       grid-template-areas:
-        "."
-        "."
-        ".";
+        ". .";
+
+      
 
       @media (max-width: ${mqSizes.desktopL}) {
-        padding-bottom: 0;
-
-        grid-template-columns: minmax(0, 1fr) minmax(0, auto) !important;
-        grid-template-rows: 1fr;
-        gap: 0px;
-        grid-template-areas: ". .";
-      }
-      
-      @media (max-width: ${mqSizes.mobileM}) {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: 1fr;
-        gap: 0px;
-        grid-template-areas: ".";
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+        grid-template-rows: minmax(0, 1fr);
+        gap: 0px 0px;
+        grid-template-areas:
+          ". .";
       }
 
-      .poke-bio {
-        width: 100%;
-        height: 100%;
-        padding-bottom: 16px;
+      /* @media (max-width: ${mqSizes.desktopM}) {
+        display: grid;
+        grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0px 0px;
+        grid-template-areas:
+          "."
+          ".";
+      } */
 
+      @media (max-width: ${mqSizes.desktopM}) {
         display: flex;
         flex-direction: column;
-        align-items: center;
 
-        @media (max-width: ${mqSizes.desktopL}) {
-          width: 100%;
-          height: 100%;
-          padding-bottom: 0;
-          padding-right: 16px;
+        overflow-y: auto;
+      }
 
-          display: grid;
-          grid-template-columns: minmax(0, auto) minmax(0, 1fr) !important;
-          grid-template-rows: 1fr;
-          gap: 0px 0px;
-          grid-template-areas: ". .";
-        }
+      .column {
+        width: 100%;
+        height: 100%;
 
-        @media (max-width: ${mqSizes.mobileM}) {
-          padding-bottom: 8px;
+        &.poke-bio {
+          padding: 16px;
 
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+          .poke-bio-enclose {
+            width: 100%;
+            height: 100%;
 
-        .poke-avatar {
-          width: 200px;
-          height: 200px;
-          image-rendering: pixelated;
+            display: grid;
+            grid-template-rows: minmax(0, auto) minmax(0, auto);
+            grid-template-columns: minmax(0, 1fr);
+            gap: 0px 0px;
+            grid-template-areas:
+              "."
+              ".";
 
-          @media (max-width: ${mqSizes.desktopS}) {
-            width: 150px;
-            height: 150px;
-          }
 
-          @media (max-width: ${mqSizes.mobileL}) {
-            width: 100px;
-            height: 100px;
-          }
-
-          @media (max-width: ${mqSizes.mobileM}) {
-            width: 150px;
-            height: 150px;
-          }
-        }
-
-        .poke-details {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          @media (max-width: ${mqSizes.desktopL}) {
-            padding-left: 8px;
-            align-items: flex-start;
-          }
-          
-          @media (max-width: ${mqSizes.mobileM}) {
-            align-items: center;
-          }
-          
-          .poke-infohero {
-            color: white;
-            font-family: "Ubuntu";
-            font-size: 36pt;
-            font-weight: 600;
-
-            @media (max-width: ${mqSizes.desktopS}) {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              
-              font-size: 32pt;
-            }
-
-            @media (max-width: ${mqSizes.mobileL}) {
-              font-size: 22pt;
+            @media (max-width: ${mqSizes.desktopM}) {
+              display: grid;
+              grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+              grid-template-rows: minmax(0, 1fr);
+              gap: 0px 0px;
+              grid-template-areas:
+                ". .";
             }
 
             @media (max-width: ${mqSizes.mobileM}) {
+              display: grid;
+              grid-template-rows: minmax(0, auto) minmax(0, auto);
+              grid-template-columns: minmax(0, 1fr);
+              gap: 0px 0px;
+              grid-template-areas:
+                "."
+                ".";
+            }
+
+            .poke-bio-actions {
+              padding: 8px;
+            }
+
+          }
+        }
+
+        &.poke-details {
+          width: 100%;
+          height: 100%;
+
+          padding-top: 16px;
+          padding-left: 16px;
+          
+          .poke-details-enclose {
+            width: 100%;
+            height: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto minmax(0, 1fr) !important;
+            gap: 0px 0px;
+            grid-template-areas:
+              "."
+              ".";
+
+            
+            @media (max-width: ${mqSizes.desktopM}) {
               display: flex;
               flex-direction: column;
-              align-items: center;
-              
-              font-size: 32pt;
             }
-          }
 
-          .poke-types {
-            width: 100%;
-            // padding-top: 8px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .poke-types-list {
+            .details-inner {
               width: 100%;
-              padding-top: 4px;
 
-              display: flex;
-              flex-direction: row;
-              flex-wrap: wrap;
-              justify-content: center;
+              &.tab {
+                display: flex;
+                padding-bottom: 16px;
 
-              @media (max-width: ${mqSizes.desktopL}) {
-                justify-content: flex-start;
+                .tab-item {
+                  padding-right: 8px;
+
+                  font-family: 'Ubuntu';
+                  font-size: 14pt;
+                }
               }
 
-              @media (max-width: ${mqSizes.mobileM}) {
-                justify-content: center;
+              &.content {
+                height: 100%;
+                overflow-y: auto;
+
+                @media (max-width: ${mqSizes.desktopM}) {
+                  overflow-y: visible;
+                }
+
+                .content-stats {
+                  width: 100%;
+
+                  padding-right: 32px;
+                }
+
+                .content-moves {
+                  width: 100%;
+
+                }
               }
             }
-          }
-        }
-      }
-
-      .poke-actions {
-        width: 100%;
-
-        padding: 8px;
-        padding-top: 16px;
-        padding-bottom: 21px;
-
-        @media (max-width: ${mqSizes.desktopL}) {
-          padding-top: 8px;
-          padding-bottom: 0;
-        }
-
-
-        @media (max-width: ${mqSizes.mobileM}) {
-          padding-bottom: 8px;
-        }
-      }
-
-      .poke-stats-list {
-        width: 100%;
-        height: 100%;
-
-        overflow-y: auto;
-
-        .poke-stats {
-          width: 100%;
-          padding: 8px;
-          padding-bottom: 16px;
-
-          .poke-stats-label {
-            width: 100%;
-            padding-bottom: 8px;
-            text-transform: uppercase;
-
-            font-family: "Geomanist";
-            font-weight: 600;
-          }
-
-          .poke-stats-progress {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
-`
-
-type PagePokemonDetailsProps = {
-  themeStyle: ThemeStyle
-}
-
-export const cssPagePokemonDetails = (props: PagePokemonDetailsProps) => css`
-  width: 100%;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-  grid-template-areas: ". .";
-
-  @media (max-width: ${mqSizes.desktopL}) {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
-
-  // Flex, Row, Wrap, Center
-  .flex-rwc {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .flex-cwc {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .fragment {
-    width: 100%;
-    height: 100%;
-    padding: 24px;
-
-    min-height: 0 !important;
-    min-width: 0 !important;
-
-    ${cssFragmentPokeDetails()}
-
-    @media (max-width: ${mqSizes.desktopL}) {
-      height: auto;
-
-      min-height: auto !important;
-      min-width: auto !important;
-    }
-
-
-    &.poke-additionals {
-      width: 100%;
-      height: 100%;
-      
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: minmax(0, auto) minmax(0, 1fr) !important;
-      gap: 0px 0px;
-      grid-template-areas:
-        "."
-        ".";
-
-      @media (max-width: ${mqSizes.desktopL}) {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .additionals-header {
-        font-family: 'Ubuntu';
-        font-size: 21pt;
-        font-weight: 600;
-
-        padding-bottom: 16px;
-
-        color: ${props.themeStyle === 'dark' ? css`white` : css`black`};
-
-        @media (max-width: ${mqSizes.desktopL}) {
-          display: flex;
-          flex-direction: row;
-
-          .tab-item {
-            /* width: 120px;
-            height: 48px; */
-            padding-right: 16px;
           }
         }
       }
