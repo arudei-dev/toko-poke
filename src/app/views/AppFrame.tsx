@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { cssAppFrame } from "./AppFrame.style"
 import { AppModalView } from "./AppModal"
+import { AppShell } from "./AppShell"
 
 
 interface AppFrameProps {
@@ -13,7 +14,12 @@ export const AppFrame: React.FC<AppFrameProps> = ({
   return (
     <div css={cssAppFrame()}>
       <div className="app-main content">
-        { children }
+        <div className="content-shell">
+          <AppShell/>
+        </div>
+        <div className="content-inner">
+          { children }
+        </div>
       </div>
       
       <AppModalView/>
