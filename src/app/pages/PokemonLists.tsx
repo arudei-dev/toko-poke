@@ -29,13 +29,18 @@ const PokemonLists = () => {
     const currentPage = urlQueries["page"] 
 
     // Check if the page query is valid, a number & > 0.
-    if (!currentPage || (parseInt(urlQueries["page"]) || 0) < 1) {
+    if (!currentPage) {
+      setPage(1)
+      return;
+    }
+
+    else if ((parseInt(urlQueries["page"]) || 0) < 1) {
       history.push({
         pathname: `/`,
         search: `?page=1`
       })
     }
-
+    
     setPage(parseInt(urlQueries["page"]))
     window.scrollTo(0, 0);
   }, [history, location.search, location.pathname])
