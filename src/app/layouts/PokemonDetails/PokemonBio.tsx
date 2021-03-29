@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { PokemonDetailsByName_pokemon } from 'context/Apollo/types/PokemonDetailsByName'
-import { capitalizeEachWord } from 'core/utils/string-helper'
+import { capitalize1stLetterOfEachWord } from 'core/utils/string-helper'
 import { 
   AsyncImage,
   Text, 
@@ -43,7 +43,7 @@ export const LayoutPokemonBio: React.FC<Props> = ({
         <div className="poke-details">
           <div className="poke-infohero">
             <Text 
-              text={capitalizeEachWord(pokeData?.name || "???")}
+              text={capitalize1stLetterOfEachWord(pokeData?.name || "???")}
               textColor='primary'
               themeStyle={themeStyle}
               />

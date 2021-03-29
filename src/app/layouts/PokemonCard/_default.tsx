@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from "react"
 import { PokeSilhouette } from "assets/svg/PokeSilhouette"
-import { capitalizeEachWord } from "core/utils/string-helper"
+import { capitalize1stLetterOfEachWord } from "core/utils/string-helper"
 import { AsyncImage } from "components"
 import { CardView } from "components"
 import {
@@ -69,7 +69,7 @@ export const LayoutPokemonCardDefault: React.FC<Props> = ({
           {
             (!usePlaceholder && pokeName) ? (
               // Add character ellipsis
-              autoCapitalize ? capitalizeEachWord(pokeName) : pokeName
+              autoCapitalize ? capitalize1stLetterOfEachWord(pokeName) : pokeName
             ) : (
               "???"
             )

@@ -1,6 +1,6 @@
 
 
-function capitalizeEachWord(s: string): string {
+function capitalize1stLetterOfEachWord(s: string): string {
   const words = s.split(" ");
 
   return words.map(word => 
@@ -9,5 +9,5 @@ function capitalizeEachWord(s: string): string {
 }
 
 export {
-  capitalizeEachWord
+  capitalize1stLetterOfEachWord
 }
