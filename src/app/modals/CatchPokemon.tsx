@@ -11,7 +11,7 @@ import { LayoutCatchPokemonMessage } from 'app/layouts/CatchPokemon/Message'
 import { actAddPokemon } from 'context/App/actions'
 
 
-
+type DialogTypes = "x-nickname" | "release-confirm" | null
 
 export const ModalCatchPokemon = () => {
   const [appState, appDispatch] = useAppContext()
@@ -22,7 +22,8 @@ export const ModalCatchPokemon = () => {
 
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [nicknameOops, setNicknameOops] = useState(false)
+
+  const [showDialog, setShowDialog] = useState<DialogTypes>(null)
 
   useEffect(() => {
     setIsSuccess(
@@ -38,8 +39,6 @@ export const ModalCatchPokemon = () => {
   
 
   const _savePokemon = (p: PokemonCatchSaveEventPkg) => {
-    console.log("saving pokemon")
-
     const myPokeList = appState.myProfile?.myPokeList || []
 
     const nicknameNotAvailable = 
@@ -49,7 +48,7 @@ export const ModalCatchPokemon = () => {
       )).length > 0
 
     if (nicknameNotAvailable) {
-      setNicknameOops(true)
+      setShowDialog('x-nickname')
       return;
     }
 
@@ -71,6 +70,39 @@ export const ModalCatchPokemon = () => {
     })
   }
 
+  const _renderDialog = () => {
+    switch (showDialog) {
+      case "x-nickname":
+        return (
+          <LayoutCatchPokemonMessage 
+            themeStyle={themeStyle}
+            messageTitle="Oops!"
+            messageText="Looks like you tried to enter a nickname you already registered!"
+            primaryButtonText="Go back"
+            altButtonText="Release"
+            onPrimaryClick={() => setShowDialog(null)}
+            onAltClick={_closeModal}
+            />
+        )
+
+      case "release-confirm": 
+        return (
+          <LayoutCatchPokemonMessage 
+            themeStyle={themeStyle}
+            messageTitle="Releasing Pokemon"
+            messageText={`Are you sure you want to release ${pokeData?.name}?`}
+            primaryButtonText="Release"
+            altButtonText="Go back"
+            onPrimaryClick={_closeModal}
+            onAltClick={() => setShowDialog(null)}
+            />
+        )
+      
+      default:
+        return <></>
+    }
+  }
+
   return (
     isLoading ? (
       <LayoutCatchPokemonLoading
@@ -78,24 +110,16 @@ export const ModalCatchPokemon = () => {
         onCancelButtonClick={_closeModal}/>
     ) : (
       isSuccess ? (
-        !nicknameOops
+        !showDialog
         ? (
           <LayoutCatchPokemonLucky 
             themeStyle={themeStyle}
             pokeData={pokeData}
-            onReleaseClick={_closeModal}
+            onReleaseClick={() => setShowDialog("release-confirm")}
             onSaveClick={_savePokemon}/>
         )
         : (
-          <LayoutCatchPokemonMessage 
-            themeStyle={themeStyle}
-            messageTitle="Oops!"
-            messageText="Looks like you tried to enter a nickname you already registered!"
-            primaryButtonText="Go back"
-            altButtonText="Release"
-            onPrimaryClick={() => setNicknameOops(false)}
-            onAltClick={_closeModal}
-            />
+          _renderDialog()
         )
       ) : (
         <LayoutCatchPokemonFail
