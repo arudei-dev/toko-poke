@@ -9,6 +9,7 @@ import { LayoutCatchPokemonFail } from 'app/layouts/CatchPokemon/Fail'
 import { LayoutCatchPokemonLoading } from 'app/layouts/CatchPokemon/Loading'
 import { LayoutCatchPokemonMessage } from 'app/layouts/CatchPokemon/Message'
 import { actAddPokemon } from 'context/App/actions'
+import { TModalCatchPokemon } from '.'
 
 
 type DialogTypes = "x-nickname" | "release-confirm" | null
@@ -18,7 +19,7 @@ export const ModalCatchPokemon = () => {
   const themeStyle = appState.useTheme
   
   const [modalState, modalDispatch] = useModalContext()
-  const pokeData = modalState?.modal?.modalPayload
+  const pokeData = (modalState?.modal as TModalCatchPokemon)?.modalPayload
 
   const [isLoading, setIsLoading] = useState(true)
   const [isSuccess, setIsSuccess] = useState(false)
