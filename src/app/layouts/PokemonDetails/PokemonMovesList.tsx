@@ -103,6 +103,31 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
     }
   `
 
+  const MovesListItem = (props: { moveName: string }) => (
+    <div className="move-item">
+      <CardView 
+        themeStyle={themeStyle}
+        stretchHeight={true}
+        stretchWidth={true}>
+        <div className="item-cover">
+          <div className="item-subtitle">
+            <Text 
+              themeStyle={themeStyle}
+              textColor="secondary"
+              text="POKEMON MOVE"
+              />
+          </div>
+          <div className="item-title">
+            <Text 
+              themeStyle={themeStyle}
+              text={props.moveName || "Unknown move"}
+              />
+          </div>
+        </div>
+      </CardView>
+    </div>
+  )
+
   return (
     <div css={_cssLayout}>
       <GridView
@@ -110,28 +135,10 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
         usePadding="small">
         {
           movesList?.map((move, idx) => (
-            <div className="move-item">
-              <CardView 
-                themeStyle={themeStyle}
-                stretchHeight={true}
-                stretchWidth={true}>
-                <div className="item-cover">
-                  <div className="item-subtitle">
-                    <Text 
-                      themeStyle={themeStyle}
-                      textColor="secondary"
-                      text="POKEMON MOVE"
-                      />
-                  </div>
-                  <div className="item-title">
-                    <Text 
-                      themeStyle={themeStyle}
-                      text={move?.move?.name?.replace(/-/g, " ") || "Unknown move"}
-                      />
-                  </div>
-                </div>
-              </CardView>
-            </div>
+            <MovesListItem 
+              key={idx}
+              moveName={move?.move?.name?.replace(/-/g, " ") || "Unknown move"}
+              />
           ))
         }
       </GridView>

@@ -46,6 +46,25 @@ export const LayoutPokemonStatsList: React.FC<Props> = ({
     }
   `
 
+  const StatsListItem = (props: {statName: string, statVal: number, baseStat?: number}) => (
+    <div className="poke-stats flex-rwc">
+      <div className="poke-stats-label flex-rwc">
+        <Text 
+          text={`${props.statName} [${props.statVal}]`}
+          textColor="primary"
+          themeStyle={themeStyle}
+          />
+      </div>
+
+      <div className="poke-stats-progress">
+        <ProgressBar
+          themeStyle={themeStyle}
+          value={props.baseStat ?? 0}
+          />
+      </div>
+    </div>
+  )
+
   return (
     <div css={_cssLayout}>
       {
@@ -54,22 +73,12 @@ export const LayoutPokemonStatsList: React.FC<Props> = ({
           const statValue = stat?.base_stat ?? 0
           
           return (
-            <div className="poke-stats flex-rwc">
-              <div className="poke-stats-label flex-rwc">
-                <Text 
-                  text={`${statName} [${statValue}]`}
-                  textColor="primary"
-                  themeStyle={themeStyle}
-                  />
-              </div>
-  
-              <div className="poke-stats-progress">
-                <ProgressBar
-                  themeStyle={themeStyle}
-                  value={stat?.base_stat ?? 0}
-                  />
-              </div>
-            </div>
+            <StatsListItem 
+              key={idx}
+              statName={statName}
+              statVal={statValue}
+              baseStat={stat?.base_stat ?? 0}
+              />
           )
         })
       }
