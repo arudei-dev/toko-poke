@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from "react"
 import { PokeSilhouette } from "assets/svg/PokeSilhouette"
-import { capitalize1stLetterOfEachWord } from "core/utils/string-helper"
+import { capitalize1stLetterOfEachWord, truncateWithEllipsis } from "core/utils/string-helper"
 import { AsyncImage } from "components"
 import { CardView } from "components"
 import { ThemeAwareLayout, ThemeStyle } from 'components/theme'
@@ -25,7 +25,10 @@ export const LayoutPokemonCardDefault: React.FC<Props> = ({
   onClick,
   themeStyle
 }) => {
-
+  const sanitizedPokeName = truncateWithEllipsis(
+    capitalize1stLetterOfEachWord(pokeName?.replace(/-/g, ' ') ?? "???"),
+    20
+  )
 
   const _onClick = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -63,7 +66,7 @@ export const LayoutPokemonCardDefault: React.FC<Props> = ({
             {
               (!usePlaceholder && pokeName) ? (
                 // Add character ellipsis
-                autoCapitalize ? capitalize1stLetterOfEachWord(pokeName) : pokeName
+                sanitizedPokeName
               ) : (
                 "???"
               )

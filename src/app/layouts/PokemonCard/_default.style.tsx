@@ -13,6 +13,7 @@ export const cssPokemonCard = (props: CssPokemonCardProps) => css`
   align-items: center;
 
   width: 128px;
+  min-height: 160px;
 
   @media (max-width: ${mqSizes.mobileM}) {
     width:  120px;
@@ -31,6 +32,8 @@ export const cssPokemonCard = (props: CssPokemonCardProps) => css`
     -moz-user-drag: none;
     -o-user-drag: none;
     image-rendering: pixelated;
+
+    padding-bottom: 16px;
 
     @media (max-width: ${mqSizes.mobileM}) {
       width:  100px;
@@ -53,6 +56,8 @@ export const cssPokemonCard = (props: CssPokemonCardProps) => css`
     font-weight: 600;
     font-size: 14pt;
     padding-bottom: 8px;
+
+    text-align: center;
 
     @media (max-width: ${mqSizes.mobileM}) {
       font-size: 12pt;
