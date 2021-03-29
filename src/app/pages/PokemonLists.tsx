@@ -9,7 +9,7 @@ import { LayoutPokemonCardDefault } from 'app/layouts/PokemonCard'
 import { StandardButton } from 'components';
 import './PokemonLists.scss'
 
-const ITEM_LIMIT = 20;
+const ITEM_LIMIT = 40;
   // - check if pokeData.next is null (out of bounds)
   // - cache max-count inside our context state,
   //   and update each reload.
@@ -57,6 +57,12 @@ const PokemonLists = () => {
     history.push(`/pokemon/${name}/details`);
   }
 
+  const _onHomePageClick = () => {
+    history.push({
+      pathname: `/`,
+    })
+  }
+
   const _onPreviousPageClick = (e: React.MouseEvent) => {
     const prevPage = page - 1
 
@@ -77,6 +83,9 @@ const PokemonLists = () => {
     // setPage(page + 1)
   }
 
+
+
+
   const _renderComplete = () => (
     pokeData?.results?.map(poke => (
       <LayoutPokemonCardDefault 
@@ -91,7 +100,7 @@ const PokemonLists = () => {
   )
 
   const _renderLoading = () => (
-    Array.from({length: 20}, (_, i) => (
+    Array.from({length: 40}, (_, i) => (
       <LayoutPokemonCardDefault
         themeStyle={useTheme}
         key={i}
@@ -114,16 +123,29 @@ const PokemonLists = () => {
           }
         </GridView>
         <div className="view-actions">
+          {
+            page > 2 && (
+              <>
+                <StandardButton
+                  themeStyle={useTheme}
+                  isDisabled={page < 2 && true}
+                  title="<<"
+                  onClick={_onHomePageClick}
+                  />
+                <div className="separator"/>
+              </>
+            )
+          }
           <StandardButton
             themeStyle={useTheme}
             isDisabled={page < 2 && true}
-            title="Previous page"
+            title="< Previous"
             onClick={_onPreviousPageClick}
             />
           <div className="separator"/>
           <StandardButton
             themeStyle={useTheme}
-            title="Next page"
+            title="Next >"
             onClick={_onNextPageClick}
             />
         </div>
