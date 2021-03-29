@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, ThemeStyle } from './theme'
+import { DefaultThemeColors, ThemeStyle } from '../theme'
 
 export type CssPageBaseProps = {
   noYScrolling: boolean,

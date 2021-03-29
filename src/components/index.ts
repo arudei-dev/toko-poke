@@ -1,14 +1,13 @@
-export { AsyncImage } from './AsyncImage'
+export { AsyncImage } from './AsyncImage/AsyncImage'
 export { 
   StandardButton, 
   ToggleButton 
 } from './Button'
-export { CardView } from './CardView'
-export { GridView } from './GridView'
-export { InfoChip } from './InfoChip'
-export { PageBase } from './PageBase'
-export { PokemonCard } from './PokemonCard'
-export { ProgressBar } from './ProgressBar'
+export { CardView } from './CardView/CardView'
+export { GridView } from './GridView/GridView'
+export { InfoChip } from './InfoChip/InfoChip'
+export { PageBase } from './PageBase/PageBase'
+export { ProgressBar } from './ProgressBar/ProgressBar'
 export { Shimmer } from './Shimmer'
-export { Text } from './Text'
-export { TextField } from './TextField'
+export { Text } from './Text/Text'
+export { TextField } from './TextField/TextField'

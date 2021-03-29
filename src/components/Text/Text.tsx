@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { cssText, TTextColor } from "./Text.style"
-import { ThemeStyle } from "./theme"
+import { ThemeStyle } from "../theme"
 
 interface Props {
   text?: string,

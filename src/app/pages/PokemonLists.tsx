@@ -3,10 +3,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useLQPokemonLists } from "context/Apollo/services/lqPokemonLists";
 import { useAppState } from 'context/App/hooks';
 import { parseUrlQuery } from 'core/utils/url-helper';
-import { GridView } from 'components/GridView'
-import { PageBase } from 'components/PageBase'
-import { PokemonCard } from 'components/PokemonCard'
-import { StandardButton } from 'components/Button';
+import { GridView } from 'components'
+import { PageBase } from 'components'
+import { LayoutPokemonCardDefault } from 'app/layouts/PokemonCard'
+import { StandardButton } from 'components';
 import './PokemonLists.scss'
 
 const ITEM_LIMIT = 20;
@@ -74,7 +74,7 @@ const PokemonLists = () => {
 
   const _renderComplete = () => (
     pokeData?.results?.map(poke => (
-      <PokemonCard 
+      <LayoutPokemonCardDefault 
         themeStyle={useTheme}
         key={poke?.id!}
         id={poke?.id!}
@@ -87,7 +87,7 @@ const PokemonLists = () => {
 
   const _renderLoading = () => (
     Array.from({length: 20}, (_, i) => (
-      <PokemonCard
+      <LayoutPokemonCardDefault
         themeStyle={useTheme}
         key={i}
         id={i}

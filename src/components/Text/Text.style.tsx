@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react"
-import { ThemeStyle, DefaultThemeColors } from './theme'
+import { ThemeStyle, DefaultThemeColors } from '../theme'
 
 export type TTextColor = 'primary' | 'secondary' | 'disabled'
 

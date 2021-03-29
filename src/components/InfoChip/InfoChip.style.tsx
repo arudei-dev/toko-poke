@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { ThemeStyle } from './theme'
+import { ThemeStyle } from '../theme'
 
 export type TInfoChipSize = 'small' | 'medium' | 'large'
 

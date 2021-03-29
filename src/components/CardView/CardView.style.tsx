@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from './theme'
+import { DefaultThemeColors, DefaultThemeProperties, ThemeStyle } from '../theme'
 
 const cssCardViewHover = (type: ThemeStyle) => css`
   &:hover {

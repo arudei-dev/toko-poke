@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { cssInfoChip, TInfoChipSize } from './InfoChip.style'
-import { ThemeStyle } from './theme'
-import { Text } from './Text'
+import { ThemeStyle } from '../theme'
+import { Text } from 'components'
 
 interface Props {
   title: string

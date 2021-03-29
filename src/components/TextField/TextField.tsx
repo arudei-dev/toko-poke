@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState, useEffect } from 'react'
-import { cssTextFieldBase, ThemeAwareLayout } from "./_base.style"
+import { cssTextFieldBase, ThemeAwareLayout } from "./TextField.style"
 
 interface TextFieldProps extends Partial<ThemeAwareLayout> {
   id?: string
