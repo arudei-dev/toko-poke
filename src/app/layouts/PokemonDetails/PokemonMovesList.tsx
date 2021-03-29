@@ -21,12 +21,12 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
 
   const _cssLayout = css`
     width: 100%;
-    height: 100%;
-    overflow-y: auto;
+    /* height: 100%;
+    overflow-y: scroll; */
 
-    @media (max-width: ${mqSizes.desktopL}) {
+    /* @media (max-width: ${mqSizes.desktopL}) {
       overflow-y: visible;
-    }
+    } */
     
     padding-right: 8px;
 
