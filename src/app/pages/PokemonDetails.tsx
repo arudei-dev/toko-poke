@@ -68,6 +68,7 @@ export const PokemonDetails = () => {
           <div className="poke-bio-actions">
             <StandardButton 
               title="Catch 'em"
+              isLoading={loading && !called}
               stretchWidth={true}
               themeStyle={themeStyle}
               onClick={_onCatchButtonClick}
@@ -77,7 +78,7 @@ export const PokemonDetails = () => {
     </CardView>
   )
 
-  const _renderPokeDetails = () => (
+  const PokeDetails = () => (
     <div className="poke-details-enclose">
       <div className="details-inner tab">
         <div className="tab-item">
@@ -136,7 +137,41 @@ export const PokemonDetails = () => {
         {_renderPokeBio()}
       </div>
       <div className="column poke-details">
-        {_renderPokeDetails()}
+        <PokeDetails/>
+      </div>
+    </div>
+  )
+
+  const _renderLoading = () => (
+    <div className={`pokemon-details multi`}>
+      <div className="column poke-bio">
+        <CardView
+          themeStyle={themeStyle}
+          stretchWidth={true}
+          >
+            <div className="poke-bio-enclose">
+              <div className="poke-bio-content">
+                <LayoutPokemonBio
+                  themeStyle={themeStyle}
+                  usePlaceholder={true}
+                  pokeData={pokeData}
+                  />
+              </div>
+
+              <div className="poke-bio-actions">
+                <StandardButton 
+                  title="Catch 'em"
+                  isLoading={true}
+                  stretchWidth={true}
+                  themeStyle={themeStyle}
+                  onClick={_onCatchButtonClick}
+                  />
+              </div>
+            </div>
+        </CardView>
+      </div>
+      <div className="column poke-details">
+        
       </div>
     </div>
   )
@@ -149,7 +184,7 @@ export const PokemonDetails = () => {
         <PageBase
           themeStyle={themeStyle}
           autoScrollRestore={true}>
-            {(!loading && called) && _renderComplete()}
+            {(!loading && called) ? _renderComplete() : _renderLoading()}
         </PageBase>
     </div>
   )
