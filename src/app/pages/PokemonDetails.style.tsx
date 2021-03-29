@@ -50,6 +50,10 @@ export const cssPagePokemonDetails = (props: Props) => css`
         &.poke-bio {
           padding: 16px;
 
+          @media (max-width: ${mqSizes.desktopM}) {
+            height: auto;
+          }
+
           .poke-bio-enclose {
             width: 100%;
             height: 100%;
