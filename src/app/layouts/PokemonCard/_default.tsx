@@ -4,21 +4,15 @@ import { PokeSilhouette } from "assets/svg/PokeSilhouette"
 import { capitalize1stLetterOfEachWord } from "core/utils/string-helper"
 import { AsyncImage } from "components"
 import { CardView } from "components"
-import {
-  cssPokemonCard,
-  cssPokemonSpriteRoot,
-  cssPokemonNameRoot,
-  cssActionDivRoot,
-  ThemeStyle,
-} from './_base.style'
+import { ThemeAwareLayout, ThemeStyle } from 'components/theme'
+import { cssPokemonCard } from './_default.style'
 
-interface Props {
+interface Props extends Partial<ThemeAwareLayout> {
   id: number,
   pokeName?: string,
   pokeSpriteURL?: string,
   autoCapitalize?: boolean,
   usePlaceholder?: boolean,
-  themeStyle?: ThemeStyle,
   onClick?: (e: React.MouseEvent) => void;
 }
 
@@ -48,39 +42,33 @@ export const LayoutPokemonCardDefault: React.FC<Props> = ({
       stretchWidth={true}
       themeStyle={themeStyle}
     >
-      <div css={cssPokemonCard}>
-
-        <div css={cssPokemonSpriteRoot}>
-          {
-            (!usePlaceholder || pokeSpriteURL) ? (
-              <AsyncImage src={pokeSpriteURL} alt={`Pokemon '${pokeName}'`}>
-                <PokeSilhouette color="#00000033"/>
-              </AsyncImage>
-            ) : (
-              <PokeSilhouette color="#00000011"/>
-            )
-          }
-        </div>
-
-        <div css={cssPokemonNameRoot({
-          isLoading: usePlaceholder ?? false,
-          themeStyle: themeStyle ?? 'light',
+      <div css={cssPokemonCard({
+        isLoading: usePlaceholder ?? false,
+        themeStyle: themeStyle ?? 'light'
         })}>
-          {
-            (!usePlaceholder && pokeName) ? (
-              // Add character ellipsis
-              autoCapitalize ? capitalize1stLetterOfEachWord(pokeName) : pokeName
-            ) : (
-              "???"
-            )
-          }
-        </div>
-        {/* <div css={cssActionDivRoot}>
-          <Button
-            themeStyle={themeStyle}
-            isDisabled={usePlaceholder} 
-            title="Catch 'em!"/>
-        </div> */}
+
+          <div className="pokemon-sprite">
+            {
+              (!usePlaceholder || pokeSpriteURL) ? (
+                <AsyncImage src={pokeSpriteURL} alt={`Pokemon '${pokeName}'`}>
+                  <PokeSilhouette color="#00000033"/>
+                </AsyncImage>
+              ) : (
+                <PokeSilhouette color="#00000011"/>
+              )
+            }
+          </div>
+
+          <div className="pokemon-name">
+            {
+              (!usePlaceholder && pokeName) ? (
+                // Add character ellipsis
+                autoCapitalize ? capitalize1stLetterOfEachWord(pokeName) : pokeName
+              ) : (
+                "???"
+              )
+            }
+          </div>
       </div>
     </CardView>
   )
