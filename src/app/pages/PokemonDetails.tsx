@@ -1,18 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ContentLoadingStatus } from "core/types/AsyncStatus";
 import { useLQPokemonDetailsByName } from "context/Apollo/services/lqPokemonDetails";
 import { useAppState } from 'context/App/hooks'
 import { useModalDispatch } from 'context/Modal/hooks'
-import { LayoutPokemonBio } from 'app/layouts/PokemonDetails/PokemonBio'
 import { CardView, PageBase, StandardButton, ToggleButton } from 'components'
-import { cssPagePokemonDetails } from './PokemonDetails.style'
+import { LayoutPokemonBio } from 'app/layouts/PokemonDetails/PokemonBio'
 import { LayoutPokemonMovesList } from "app/layouts/PokemonDetails/PokemonMovesList";
 import { LayoutPokemonStatsList } from "app/layouts/PokemonDetails/PokemonStatsList";
+import { cssPagePokemonDetails } from './PokemonDetails.style'
 
 export const PokemonDetails = () => {
   type RegisteredTabs = 'moves' | 'stats'
   const [tabActive, setTabActive] = useState<RegisteredTabs>('moves')
+  const [contentStatus, setcontentStatus] = useState<ContentLoadingStatus>('loading')
 
   const appState = useAppState()
   const themeStyle = appState.useTheme
@@ -29,6 +31,33 @@ export const PokemonDetails = () => {
       }
     })
   }, [])
+
+  useEffect(() => {
+    if (!loading && called) {
+      if (!pokeData?.id) {
+        setcontentStatus('error')
+
+        modalDispatch({
+          type: 'SHOW_MODAL',
+          payload: {
+            modalType: 'Page Not Found',
+            modalPayload: {
+              errorTitle: "What pokemon?",
+              errorMessage: `
+                Oops, looks like there's no pokemon named ${pokeName}!
+              `
+            }
+          }
+        })
+      }
+      else {
+        setcontentStatus('ready')
+      }
+    }
+    else {
+      setcontentStatus('loading')
+    }
+  }, [loading, called])
 
 
   const _onToggleButtonClick = (tab: 'moves' | 'stats') => {
@@ -184,7 +213,13 @@ export const PokemonDetails = () => {
         <PageBase
           themeStyle={themeStyle}
           autoScrollRestore={true}>
-            {(!loading && called) ? _renderComplete() : _renderLoading()}
+            {
+              contentStatus === 'ready' 
+              ? _renderComplete() 
+              : contentStatus === 'loading'
+                ? _renderLoading()
+                : <></> 
+            }
         </PageBase>
     </div>
   )
