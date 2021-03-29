@@ -1,5 +1,5 @@
 import { PokemonLists_pokemons_results } from 'context/Apollo/types/PokemonLists'
-import { AppThemeStyle } from 'core/types/general-types'
+import { AppThemeStyle } from 'core/types/GeneralTypes'
 
 export type TPokeBio = {
   nickname: string,
