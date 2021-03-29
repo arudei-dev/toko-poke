@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from "react-router-dom";
+import { ContentLoadingStatus } from 'core/types/AsyncStatus';
+import { parseUrlQuery } from 'core/utils/url-helper';
 import { useLQPokemonLists } from "context/Apollo/services/lqPokemonLists";
 import { useAppState } from 'context/App/hooks';
 import { useModalDispatch } from 'context/Modal/hooks'
-import { parseUrlQuery } from 'core/utils/url-helper';
 import { LayoutPokemonCardDefault } from 'app/layouts/PokemonCard'
 import { GridView, PageBase, StandardButton } from 'components'
 import './PokemonLists.scss'
 
 const ITEM_LIMIT = 40;
-type PageStatus = 'loading' | 'ready' | 'none'
 
 
 const PokemonLists = () => {
@@ -23,7 +23,7 @@ const PokemonLists = () => {
   const urlQueries = parseUrlQuery(history.location.search ?? "")
   
   const [page, setPage] = useState(1)
-  const [pageStatus, setPageStatus] = useState<PageStatus>('loading')
+  const [contentStatus, setcontentStatus] = useState<ContentLoadingStatus>('loading')
   const [isLast, setIsLast] = useState(false)
 
   const [fetchPokeLists, {data: pokeData, loading, called, error}] = useLQPokemonLists()
@@ -64,7 +64,7 @@ const PokemonLists = () => {
         setIsLast(true)
 
         if (pokeData?.results?.length === 0) {
-          setPageStatus('none')
+          setcontentStatus('error')
 
           modalDispatch({
             type: 'SHOW_MODAL',
@@ -81,11 +81,11 @@ const PokemonLists = () => {
         }
       }
       else {
-        setPageStatus('ready')
+        setcontentStatus('ready')
       }
     }
     else {
-      setPageStatus('loading')
+      setcontentStatus('loading')
     }
 
   }, [pokeData, loading, called])
@@ -199,7 +199,7 @@ const PokemonLists = () => {
       themeStyle={themeStyle} 
       >
       {
-        pageStatus !== 'none' && (
+        contentStatus !== 'error' && (
           <div className="page-pokemon-lists">
             <div className="page-title">
               Available Pokemons
@@ -209,9 +209,9 @@ const PokemonLists = () => {
               </div>
             </div>
             {
-              pageStatus === 'loading'
+              contentStatus === 'loading'
               ? <LayoutLoading/>
-              : pageStatus === 'ready'
+              : contentStatus === 'ready'
                 ? <LayoutComplete/>
                 : <></>
             }
