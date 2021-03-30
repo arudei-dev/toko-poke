@@ -9,12 +9,14 @@ import { Text } from 'components';
 
 interface Props {
   isLoading: boolean,
-  themeStyle: ThemeStyle
+  usePlaceholder?: boolean,
+  themeStyle: ThemeStyle,
   movesList?: (PokeDetails_moves | null)[] | null,
 }
 
 export const LayoutPokemonMovesList: React.FC<Props> = ({
   isLoading,
+  usePlaceholder,
   themeStyle,
   movesList
 }) => {
@@ -103,7 +105,7 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
     }
   `
 
-  const MovesListItem = (props: { moveName: string }) => (
+  const MovesListItem = (props: { moveName: string, usePlaceholder?: boolean }) => (
     <div className="move-item">
       <CardView 
         themeStyle={themeStyle}
@@ -114,14 +116,24 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
             <Text 
               themeStyle={themeStyle}
               textColor="secondary"
-              text="POKEMON MOVE"
+              text="POKEMON MOVES"
               />
           </div>
           <div className="item-title">
-            <Text 
-              themeStyle={themeStyle}
-              text={props.moveName || "Unknown move"}
-              />
+            {
+              !usePlaceholder ? (
+                <Text 
+                  themeStyle={themeStyle}
+                  text={props.moveName || "Unknown move"}
+                  />
+              ) : (
+                <Text 
+                  themeStyle={themeStyle}
+                  textColor="secondary"
+                  text={"..."}
+                  />
+              )
+            }
           </div>
         </div>
       </CardView>
@@ -134,12 +146,21 @@ export const LayoutPokemonMovesList: React.FC<Props> = ({
         alignContent="space-evenly"
         usePadding="small">
         {
-          movesList?.map((move, idx) => (
-            <MovesListItem 
-              key={idx}
-              moveName={move?.move?.name?.replace(/-/g, " ") || "Unknown move"}
-              />
-          ))
+          !usePlaceholder ? (
+            movesList?.map((move, idx) => (
+              <MovesListItem 
+                key={idx}
+                moveName={move?.move?.name?.replace(/-/g, " ") || "Unknown move"}
+                />
+            ))
+          ) : (
+            Array.from({length: 40}, (_, i) => (
+              <MovesListItem 
+                key={i}
+                moveName={"???"}
+                />
+            ))
+          )
         }
       </GridView>
     </div>
