@@ -2,8 +2,6 @@
 import { css } from '@emotion/react'
 import {
   mqSizes,
-  DefaultThemeColors, 
-  ThemeStyle,
   ThemeAwareLayout
 } from 'components/theme'
 

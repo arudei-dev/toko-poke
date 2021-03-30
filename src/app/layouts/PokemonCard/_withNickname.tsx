@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React from "react"
 import { PokeSilhouette } from "assets/svg/PokeSilhouette"
-import { capitalize1stLetterOfEachWord } from "core/utils/string-helper"
 import { AsyncImage, StandardButton } from "components"
 import { CardView } from "components"
 import { ThemeAwareLayout } from 'components/theme'

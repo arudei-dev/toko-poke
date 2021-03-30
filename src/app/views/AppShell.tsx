@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react'
 import { useAppState } from 'context/App/hooks'
-import { PageBase, ToggleButton } from 'components'
+import { ToggleButton } from 'components'
 import { useHistory, useLocation } from 'react-router-dom'
 import { cssAppShell } from './AppShell.style'
 

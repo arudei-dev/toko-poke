@@ -25,7 +25,7 @@ const PageBase: React.FC<Props> = ({
     if (autoScrollRestore) {
       rootDivRef?.current?.scrollTo(0,0)
     }
-  }, [location.pathname, location.search])
+  }, [location.pathname, location.search, autoScrollRestore])
 
   return (
     <div ref={rootDivRef} css={cssPageBase({

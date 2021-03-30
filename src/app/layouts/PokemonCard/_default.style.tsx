@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, ThemeStyle, mqSizes, ThemeAwareLayout } from 'components/theme'
+import { DefaultThemeColors, mqSizes, ThemeAwareLayout } from 'components/theme'
 
 
 export type CssPokemonCardProps = ThemeAwareLayout & {

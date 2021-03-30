@@ -1,16 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { PokeDetails_stats } from 'context/Apollo/types/PokeDetails'
-import { mqSizes, ThemeStyle } from 'components/theme';
-import { GridView } from 'components';
-import { CardView } from 'components';
+import { ThemeAwareLayout } from 'components/theme';
 import { ProgressBar } from 'components/ProgressBar/ProgressBar';
 import { Text } from 'components';
 
 
-interface Props {
+interface Props extends Partial<ThemeAwareLayout> {
   isLoading: boolean,
-  themeStyle: ThemeStyle
   statsList?: (PokeDetails_stats | null)[] | null,
 }
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { ThemeStyle } from 'components/theme'
-import { CssProgressBarProps, CssProgressBarTypes } from './_base.style'
+import { CssProgressBarTypes } from './_base.style'
 import { cssLinearProgressBar } from './_linear.style'
 
 interface Props {

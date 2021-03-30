@@ -4,7 +4,7 @@ import { PokeSilhouette } from "assets/svg/PokeSilhouette"
 import { capitalize1stLetterOfEachWord, truncateWithEllipsis } from "core/utils/string-helper"
 import { AsyncImage } from "components"
 import { CardView } from "components"
-import { ThemeAwareLayout, ThemeStyle } from 'components/theme'
+import { ThemeAwareLayout } from 'components/theme'
 import { cssPokemonCard } from './_default.style'
 
 interface Props extends Partial<ThemeAwareLayout> {

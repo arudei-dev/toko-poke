@@ -22,7 +22,7 @@ export const PokemonDetails = () => {
   const modalDispatch = useModalDispatch()
 
   let { pokeName } = useParams<{ pokeName: string, }>()
-  const [loadDetails, { called, loading, data: pokeData, error }] = useLQPokemonDetailsByName()
+  const [loadDetails, { called, loading, data: pokeData }] = useLQPokemonDetailsByName()
 
   useEffect(() => {
     loadDetails({
@@ -30,7 +30,7 @@ export const PokemonDetails = () => {
         poke_name: pokeName
       }
     })
-  }, [])
+  }, [loadDetails, pokeName])
 
   useEffect(() => {
     if (!loading && called) {
@@ -57,7 +57,7 @@ export const PokemonDetails = () => {
     else {
       setcontentStatus('loading')
     }
-  }, [loading, called])
+  }, [modalDispatch, pokeData?.id, pokeName, loading, called])
 
 
   const _onToggleButtonClick = (tab: 'moves' | 'stats') => {
@@ -200,7 +200,13 @@ export const PokemonDetails = () => {
         </CardView>
       </div>
       <div className="column poke-details">
-        
+        <div className="content-moves">
+          <LayoutPokemonMovesList
+            isLoading={false}
+            usePlaceholder={true}
+            themeStyle={themeStyle}
+            />
+        </div>
       </div>
     </div>
   )
@@ -208,10 +214,12 @@ export const PokemonDetails = () => {
   return (
     <div
       css={cssPagePokemonDetails({
-        themeStyle
+        themeStyle,
+        isLoading: contentStatus !== 'ready'
       })}>
         <PageBase
           themeStyle={themeStyle}
+          noYScrolling={contentStatus !== 'ready'}
           autoScrollRestore={true}>
             {
               contentStatus === 'ready' 

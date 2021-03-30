@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { cssTextFieldBase, ThemeAwareLayout } from "./TextField.style"
 
 interface TextFieldProps extends Partial<ThemeAwareLayout> {
@@ -19,11 +19,9 @@ export const TextField: React.FC<TextFieldProps> = ({
   themeStyle
 }) => {
   const [isFocused, setIsFocused] = useState(false)
-  // const [isStatus, setIsStatus] = useState(statusType ?? 'none')
-
+  
 
   const _onInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    // isStatus !== 'none' && setIsStatus('none')
     onInputChange && onInputChange(e)
   }
 

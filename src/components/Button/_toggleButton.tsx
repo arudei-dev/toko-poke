@@ -1,7 +1,6 @@
 // /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from 'react';
 import { BaseButtonProps } from './_base'
-import { ButtonStyle } from './_base.style';
 import { cssToggleButtonBase } from './_toggleButton.style'
 
 

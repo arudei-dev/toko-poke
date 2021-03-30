@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { useState, useEffect } from 'react'
-import { StandardButton } from "components"
 import { useAppContext } from 'context/App/hooks'
 import { useModalContext } from 'context/Modal/hooks'
 import { tossACoin, CoinFace } from 'core/utils/random-helper'

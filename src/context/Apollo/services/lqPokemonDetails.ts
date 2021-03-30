@@ -1,5 +1,5 @@
 import { useLazyQuery } from '@apollo/client'
-import { TQueryHook, TLazyQueryHook } from 'context/Apollo/types/base'
+import { TLazyQueryHook } from 'context/Apollo/types/base'
 import { GET_POKE_DETAILS } from '../graphql/pokemon-details.gql'
 import { 
   PokemonDetailsByName,

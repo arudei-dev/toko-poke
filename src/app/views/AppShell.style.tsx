@@ -1,6 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { DefaultThemeColors, mqSizes, ThemeStyle, ThemeAwareLayout, DefaultThemeProperties } from 'components/theme'
+import { 
+  DefaultThemeColors, 
+  ThemeAwareLayout, 
+  DefaultThemeProperties 
+} from 'components/theme'
 
 type CssAppShellProps = ThemeAwareLayout & {
 

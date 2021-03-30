@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom";
-import { useAppContext } from 'context/App/hooks'
+import { useAppState } from 'context/App/hooks'
 import { useModalDispatch } from 'context/Modal/hooks'
 import { GridView, PageBase, StandardButton } from 'components'
 import { LayoutPokemonCardWithNickname } from 'app/layouts/PokemonCard'
@@ -10,7 +9,7 @@ import { cssMyPokemonsListPage } from './MyPokemonLists.style'
 export const MyPokemonLists = () => {
   const history = useHistory()
 
-  const [ appState, appDispatch ] = useAppContext()
+  const appState = useAppState()
   const currentPokeList = appState?.myProfile?.myPokeList ?? []
   const themeStyle = appState.useTheme
 

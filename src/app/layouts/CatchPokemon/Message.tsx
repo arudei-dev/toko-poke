@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 // import {} from 'react'
 import { cssLayoutCatchPokemonMessage, ThemeAwareLayout } from './Message.style'
-import { default as SadPikaImg } from 'assets/img/sad-pika-min.png'
 import { StandardButton } from 'components'
 
 

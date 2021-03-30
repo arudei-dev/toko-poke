@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { PokemonLists_pokemons_results } from "context/Apollo/types/PokemonLists"
 import { PokeSilhouette } from 'assets/svg/PokeSilhouette'
 import { cssLayoutCatchPokemonLucky, ThemeAwareLayout } from './Lucky.style'
@@ -11,7 +11,6 @@ import {
 
 const MSG_NO_NICKNAME = "Please enter a nickname."
 const MSG_MAX_LENGTH = "Maximum 15 characters"
-const MSG_NICKNAME_NOT_AVAILABLE = "Sorry, but there's already a pokemon with that nickname!"
 
 export type PokemonCatchSaveEventPkg = {
   pokeId: number, 

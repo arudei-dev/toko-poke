@@ -3,7 +3,6 @@ import { useLocalStorage } from 'core/services/localStorage'
 import { appReducer } from './reducer'
 import { TAppAction } from './actions'
 import {
-  TMyProfile,
   TAppState,
   initialState
 } from './state'
@@ -20,7 +19,7 @@ export const AppStateProvider: React.FC<{children: React.ReactNode}> = ({ childr
 
   useEffect(() => {
     setLocalState(state)
-  }, [state])
+  }, [state, setLocalState])
 
   return (
     <AppState.Provider value={state}>

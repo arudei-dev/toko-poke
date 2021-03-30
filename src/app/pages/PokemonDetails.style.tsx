@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { ThemeAwareLayout, mqSizes, DefaultThemeColors } from 'components/theme'
 
 type Props = ThemeAwareLayout & {
-
+  isLoading: boolean
 }
 
 export const cssPagePokemonDetails = (props: Props) => css`
@@ -11,6 +11,7 @@ export const cssPagePokemonDetails = (props: Props) => css`
   height: 100%;
 
   background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
+
   
   .pokemon-details {
     width: 100%;
@@ -40,7 +41,8 @@ export const cssPagePokemonDetails = (props: Props) => css`
         display: flex;
         flex-direction: column;
 
-        overflow-y: auto;
+        overflow-y: scroll; 
+        -webkit-overflow-scrolling: touch;
       }
 
       .column {
@@ -100,6 +102,10 @@ export const cssPagePokemonDetails = (props: Props) => css`
 
           padding-top: 16px;
           padding-left: 16px;
+
+          ${props.isLoading && css`
+            overflow-y: hidden;
+          `}
           
           .poke-details-enclose {
             width: 100%;
@@ -107,7 +113,7 @@ export const cssPagePokemonDetails = (props: Props) => css`
 
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: auto minmax(0, 1fr) !important;
+            grid-template-rows: minmax(0, auto) minmax(0, 1fr) !important;
             gap: 0px 0px;
             grid-template-areas:
               "."
@@ -115,8 +121,8 @@ export const cssPagePokemonDetails = (props: Props) => css`
 
             
             @media (max-width: ${mqSizes.desktopM}) {
-              display: flex;
-              flex-direction: column;
+              /* display: flex;
+              flex-direction: column; */
             }
 
             .details-inner {

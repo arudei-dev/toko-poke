@@ -2,16 +2,12 @@
 import { css } from '@emotion/react'
 import { 
   DefaultThemeColors, 
-  DefaultThemeProperties, 
-  ThemeStyle 
 } from 'components/theme'
 import {
   ButtonBaseProps, 
-  cssButtonBase,
   cssButtonBaseNormal,
   cssButtonBaseHover,
   cssButtonBaseActive,
-  cssButtonBaseDisabled,
 } from './_base.style'
 
 export type ToggledStyle = 'raised-sunken' | 'raised' | 'sunken'

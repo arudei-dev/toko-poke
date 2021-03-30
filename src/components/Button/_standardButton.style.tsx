@@ -2,12 +2,9 @@
 import { css } from '@emotion/react'
 import { 
   DefaultThemeColors, 
-  DefaultThemeProperties, 
-  ThemeStyle 
 } from 'components/theme'
 import {
   ButtonBaseProps, 
-  ButtonStyle,
   cssButtonBase,
   cssButtonBaseNormal,
   cssButtonBaseHover,

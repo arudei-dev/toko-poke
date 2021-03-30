@@ -1,12 +1,12 @@
 import { useHistory } from 'react-router-dom'
-import { useAppContext } from 'context/App/hooks'
+import { useAppState } from 'context/App/hooks'
 import { useModalContext } from 'context/Modal/hooks'
 import { LayoutCatchPokemonMessage } from "app/layouts/CatchPokemon/Message"
-import { TModalPageNotFound } from '.'
-import { actRemovePokemon } from 'context/App/actions'
+import { TModalPageNotFound } from '.'  
+
 
 export const ModalPageNotFound = () => {
-  const [appState, appDispatch] = useAppContext()
+  const appState = useAppState()
   const themeStyle = appState.useTheme
 
   const [modalState, modalDispatch] = useModalContext()
