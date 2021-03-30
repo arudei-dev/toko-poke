@@ -2,29 +2,23 @@
 
 
 /** @jsxImportSource @emotion/react */
-import { CardView, StandardButton } from "components"
-import { cssAppModalView } from "./AppModal.style"
 import { useAppState } from 'context/App/hooks'
-import { useModalContext } from 'context/Modal/hooks'
+import { useModalState } from 'context/Modal/hooks'
 import { ModalController } from "app/modals"
-import { React } from "@ungap/global-this"
+import { CardView } from "components"
+import { cssAppModalView } from "./AppModal.style"
 
 
 export const AppModalView = () => {
   const appState = useAppState()
   const themeStyle = appState.useTheme
 
-  const [modalState, modalDispatch] = useModalContext()
+  const modalState = useModalState()
 
-  const _onCloseButtonClick = () => {
-    modalDispatch({
-      type: "CLOSE_MODAL"
-    })
-  }
 
   const _onOuterDivClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault()
-
+    e.stopPropagation()
     // _onCloseButtonClick()
   }
 

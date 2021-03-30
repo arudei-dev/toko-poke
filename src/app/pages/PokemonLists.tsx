@@ -26,7 +26,7 @@ const PokemonLists = () => {
   const [contentStatus, setcontentStatus] = useState<ContentLoadingStatus>('loading')
   const [isLast, setIsLast] = useState(false)
 
-  const [fetchPokeLists, {data: pokeData, loading, called, error}] = useLQPokemonLists()
+  const [fetchPokeLists, {data: pokeData, loading, called}] = useLQPokemonLists()
 
   useEffect(() => {
     const currentPage = urlQueries["page"] 
@@ -46,7 +46,7 @@ const PokemonLists = () => {
     
     setPage(parseInt(urlQueries["page"]))
     window.scrollTo(0, 0);
-  }, [history, location.search, location.pathname])
+  }, [history, location.search, location.pathname, urlQueries])
 
   useEffect(() => {
     fetchPokeLists({
@@ -54,14 +54,12 @@ const PokemonLists = () => {
         limit: ITEM_LIMIT, offset: ((page - 1) * ITEM_LIMIT) 
       }
     })
-  }, [page])
+  }, [page, fetchPokeLists])
 
   useEffect(() => {
     setIsLast(false)
 
     if (!loading && called) {
-      console.log(pokeData)
-
       if (!pokeData?.next) {
         setIsLast(true)
 
@@ -93,7 +91,7 @@ const PokemonLists = () => {
       setcontentStatus('loading')
     }
 
-  }, [pokeData, loading, called])
+  }, [pokeData, loading, called, modalDispatch])
 
 
 
