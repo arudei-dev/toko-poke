@@ -38,7 +38,8 @@ export const StandardButton: React.FC<StandardButtonProps> = ({
         stretchWidth: stretchWidth ?? false,
         stretchHeight: stretchHeight ?? false,
       })} 
-      onClick={_onClick}>
+      onClick={_onClick}
+      className="noselect">
       {title}
     </button>
   )
