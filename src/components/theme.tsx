@@ -33,7 +33,7 @@ export const DefaultThemeColorsLight: DefaultThemeColorsProps = {
   BACKGROUND_OVERLAY_COLOR: "rgba(220, 225, 230, 0.9)",
   
   TEXT_COLOR_PRIMARY: "black",
-  TEXT_COLOR_ALT: "#00000077",
+  TEXT_COLOR_ALT: "#00000099",
   TEXT_COLOR_DISABLED: "#00000033",
 
   HIGHLIGHT_COLOR_FROM: "#d2d5d8",
