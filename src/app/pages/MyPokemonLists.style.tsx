@@ -9,6 +9,8 @@ export type CssMyPokemonsListPageProps = ThemeAwareLayout & {
 export const cssMyPokemonsListPage = (props: CssMyPokemonsListPageProps) => css`
   width: 100%;
   height: 100%;
+  padding: 8px;
+  padding-top: 16px;
 
   color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
 

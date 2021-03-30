@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { 
-  ThemeStyle, 
   ThemeAwareLayout,
   DefaultThemeColors,
   DefaultThemeProperties
@@ -20,6 +19,10 @@ export const cssTextFieldBase = (props: CssTextFieldBaseProps) => css`
   .input-enclosure {
     border-radius: 8px;
     padding: 2px;
+    -webkit-padding-before: 2px;
+    -webkit-padding-after: 2px;
+    -webkit-padding-start: 2px;
+    -webkit-padding-end: 2px;
     
     input[type=text] {
       width: 100%;
@@ -30,12 +33,17 @@ export const cssTextFieldBase = (props: CssTextFieldBaseProps) => css`
       box-sizing: border-box;
 
       outline: none;
-
+      -webkit-outline: none;
+      
+      appearance: none;
+      -webkit-appearance: none;
+      
       background-color: ${DefaultThemeColors(props.themeStyle).BACKGROUND_COLOR};
 
       color: ${DefaultThemeColors(props.themeStyle).TEXT_COLOR_PRIMARY};
       
-      ${DefaultThemeProperties.boxShadowInset.small(props.themeStyle)}
+      ${DefaultThemeProperties.boxShadowInset.small(props.themeStyle)};
+
     }
 
     &:hover {

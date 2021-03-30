@@ -5,6 +5,12 @@
   padding: 30px;
   padding-top: 12px;
 
+
+  @media (max-width: 900px) {
+    overflow-y: scroll; 
+    -webkit-overflow-scrolling: touch;
+  }
+
   @media (max-width: 420px) {
     padding: 8px;
   }
